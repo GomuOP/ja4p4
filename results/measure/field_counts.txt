@@ -1,0 +1,13 @@
+corpus: 42 captures
+quantity                                 cap  msgs  dist   p50   p95   p99   max  within cap
+TLS ClientHello cipher suites            128   241   132    15    28    46    86  241/241 (100.0%)
+TLS ClientHello extensions                64   241   132    16    16    18    18  241/241 (100.0%)
+TLS ClientHello signature algorithms      64   241   132     8    15    20    20  241/241 (100.0%)
+TLS ServerHello extensions                64   135    27     2     6     6     7  135/135 (100.0%)
+HTTP header-name bytes                   512   135    29    51   146   146   146  135/135 (100.0%)
+HTTP cookie bytes                       1024     7     7   108   863   863   863  7/7 (100.0%)
+DHCP option codes                         64    20    16     5     7     7     7  20/20 (100.0%)
+DHCP requested codes                     128    20    16     0     7     7     7  20/20 (100.0%)
+certificate issuer OID bytes             256    66    47    16    20    26    26  66/66 (100.0%)
+certificate subject OID bytes            256    66    47    16    26    60    60  66/66 (100.0%)
+certificate extension OID bytes          256    66    47    37    72    72    72  66/66 (100.0%)

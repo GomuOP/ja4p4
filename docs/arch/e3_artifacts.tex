@@ -1,0 +1,235 @@
+%=====================================================================
+\section{Every code artifact}
+\label{sec:artifacts}
+
+One card per file: its role, where it sits (Fig.~\ref{fig:map}), what it takes and gives, the logic it follows,
+why it is needed, the alternatives, and what checks it. Line counts are those of the current version.
+
+%---------------------------------------------------------------------
+\subsection{Data plane (P4)}
+
+\begin{card}{\code{p4/headers.p4} (323 lines)}
+Role & every header and metadata type: Ethernet, up to two VLAN tags, IPv4 (+options), IPv6, TCP, TCP option bytes
+(stack of 40), UDP; \code{packet\_in} (offset, fromClient, msgStart, msgType, connId) and \code{packet\_out} (kind, index); the metadata structs
+of each walk (\code{tls\_meta\_t}, \code{http\_meta\_t}, \code{dhcp\_meta\_t}, \code{x509\_meta\_t}, TCP options);
+\code{hs\_digest\_t}; the capacities; \code{CONN\_SLOTS} = 65,536, \code{COPY\_SESSION} = 100, \code{CPU\_PORT} = 255. \\
+Logic & metadata fields that must survive a resubmit or a clone are annotated \code{@field\_list(0)} (arrival port,
+pending handshake record) or \code{@field\_list(0,1)} (the copy's offset, direction, start, type, and the
+connection's number). \\
+Feeds & every other P4 file (included); P4Info names used by the controller. \\
+Why & one place for every layout: a digest struct here and the controller's field list must agree in order. \\
+\end{card}
+
+\begin{card}{\code{p4/parser.p4} (237 lines)}
+Role & \code{MyParser}: Ethernet, up to two VLAN tags (802.1Q; 802.1ad outside 802.1Q), IPv4/IPv6, TCP and its
+options, UDP; includes the four payload walks. \\
+Inputs & the packet; \code{instance\_type} and \code{ingress\_port} (resubmit $\to$ Ethernet only; port 255 $\to$
+\code{packet\_out} first). \\
+Outputs $\to$ & headers and metadata to ingress: addresses (as 128 bits for both versions), TTL, payload length,
+option kinds (shifted into a 320-bit field), MSS, window scale. \\
+Logic & option walk: \code{left} = data offset $\times$ 4 $-$ 20; each byte extracted into the stack (so the deparser
+re-emits it), values read with \code{lookahead} before extraction; EOL and NOP one byte, the walk continues after
+EOL; malformed length $\to$ the rest kept as padding (Fig.~\ref{fig:opt}). Only the first IPv4 fragment is read.
+VLAN tags are extracted and re-emitted by the deparser; a third tag: forwarded, not fingerprinted. \\
+Why & JA4T/JA4TS need every option kind in order; MSS and window scale values. \\
+Checked by & JA4T 62/62, JA4TS 51/51 exact; \code{test\_vlan\_and\_ssh\_port} (one and two tags). \\
+\end{card}
+
+\begin{card}{\code{p4/parser\_tls.p4} (356 lines)}
+Role & ClientHello / ServerHello walk for JA4 / JA4S; also decides ``incomplete'' and short segments. \\
+Inputs & TCP payload; \code{payLen}; packet-out kind (3 $\to$ certificate walk). \\
+Outputs $\to$ & \code{meta.tls}: hsType, versions, SNI flag, cipher(s), extension list, signature algorithms,
+first ALPN name (length, first and last byte), overflow bits, \code{walked} / \code{parsed} / \code{incomplete} $\to$
+Stream, Tls, main (resubmit). \\
+Logic & 9-byte peek (record + handshake header); complete if hsLen + 9 $\le$ payLen and hsLen + 4 $\le$ recLen
+(the record may continue: ServerHello and Certificate often share one record); each list read value by value with
+\code{lookahead}, skipped with \code{advance}; GREASE skipped in the \code{select}; past the capacity: overflow bit.
+Segments of 1--8 bytes starting with 0x16 or a method's first letter are treated as possible message starts.
+Its first state also notes whether the payload begins with ``SSH-'' (\code{meta.sshBanner}, for Ssh). \\
+Why & every JA4 / JA4S input comes from these lists. \\
+Alternatives & see D2, D11, D12. \\
+Checked by & JA4 152/152, JA4S 92 + 1 explained; split/reorder 202/202; capacity test. \\
+\end{card}
+
+\begin{card}{\code{p4/parser\_http.p4} (395 lines)}
+Role & HTTP/1.x request walk for JA4H. \\
+Inputs & a payload starting with one of nine methods (4-byte check). \\
+Outputs $\to$ & \code{meta.http}: method bytes, version (last 8 bytes of the request line), header names chain
+(512 B), header count, Cookie and Referer flags, cookie pairs chain (1,024 B), Accept-Language (4 chars), flags
+$\to$ Http, Stream. \\
+Logic & one byte per state (\code{HTTP\_READ\_BYTE}: lookahead, advance, left$-$1); names appended as read, with a
+lower-cased copy of the last 16 bytes for matching (bit 5 set); Cookie / Referer names removed afterwards by
+constant 6- / 7-byte slices; cookie value split at ``; '' with a zero byte between pairs; bare LF accepted; payload
+ends before the empty line $\to$ \code{incomplete}. \\
+Why & JA4H needs names in order, the cookie names and pairs, and the language. \\
+Checked by & JA4H 72/72; split/reorder (HTTP cases); capacity test (names, cookies). \\
+\end{card}
+
+\begin{card}{\code{p4/parser\_dhcp.p4} (354 lines)}
+Role & DHCPv4 (67/68) and DHCPv6 (546/547) option walks for JA4D / JA4D6. \\
+Logic & v4: skip the 240-byte BOOTP header and magic cookie; per option: code joins the list except 0, 50, 53, 81,
+255; 53 type, 57 max size, 50 requested IP, 81 domain if the name is non-empty, 55 request list. v6: type, 3-byte
+transaction id, then 2+2-byte options; containers (IA\_NA 3, IA\_PD 25: 12 bytes; IAADDR 5: 24; IAPREFIX 26: 25;
+IA\_TA 4: 4 and the \code{i} flag) skip only their fixed fields so nested options come next in packet order; 1 gives
+the DUID length; 39 sets \code{d} only for a non-empty name (fixed after the live run); 6 the requested codes. \\
+Outputs $\to$ & \code{meta.dhcp} $\to$ Dhcp; \code{walked} $\to$ resubmit. \\
+Checked by & JA4D/D6 10/10 on FoxIO's samples; live run; \code{test\_dhcp6\_fqdn}, capacity test. \\
+\end{card}
+
+\begin{card}{\code{p4/parser\_x509.p4} (371 lines)}
+Role & DER walk of one certificate (packet-out kind 3) for JA4X. \\
+Logic & one shared \code{tlv} reader (tag, short or long-form length) entered with a return code \code{ret}
+(\code{R\_CERT} \ldots\ \code{R\_EXT}); countdowns per level (tbs, name, set, item, extensions) mark where each
+SEQUENCE / SET ends; each OID's content copied as $\langle$len$\rangle\langle$bytes$\rangle$ into the issuer,
+subject or extension list (256 B each). \\
+Outputs $\to$ & \code{meta.x509} $\to$ X509. \\
+Checked by & JA4X 26/26; live run (chain of 2). \\
+\end{card}
+
+\begin{card}{\code{p4/main.p4} (213 lines)}
+Role & ingress, egress, deparser; ConnKey; ConnId (the connection's number, D21); the \code{forward} table. \\
+Logic & Fig.~\ref{fig:life} and the ingress flowchart: arrival port kept across resubmit; packets from the controller
+dropped after reading; controls in a fixed order; resubmit after a walk; the handshake digest from one call,
+postponed to pass 2 when this pass sent another digest (a message's, or Ssh's); egress E2E clone when
+\code{copy}, \code{packet\_in} filled on the clone (with the connection's number); deparser emits \code{packet\_in},
+Ethernet, VLAN tags, IP, TCP (+options), UDP. ConnId: a new number from a counter when the slot's check differs or
+a SYN brings a new initial sequence number; packets from the controller keep the slot's number. \\
+Why & the glue; every ordering rule here answers a target constraint (D5, D7, D9). \\
+Checked by & forwarding 9,013/9,013 frames unchanged; every fingerprint test; \code{test\_port\_reuse}. \\
+\end{card}
+
+\begin{card}{\code{p4/handshake.p4} (127 lines)}
+Role & JA4T, JA4TS, JA4L: state machine per slot (EMPTY, SYN, SYNACK, DONE, SYNACK\_ONLY). \\
+Logic & first SYN: store time A, client TTL, report JA4T; first SYN-ACK after it: time B, server TTL, JA4TS; the
+first ACK without SYN after that: latencyC = (C$-$B)/2, latencyS = (B$-$A)/2, JA4L; a SYN-ACK without its SYN: JA4TS
+only. The record goes to \code{meta.hsd} (sent by main.p4). \\
+Checked by & JA4T/TS exact; TTL 102/102; \code{test\_ja4l\_gaps}. \\
+\end{card}
+
+\begin{card}{\code{p4/stream.p4} (209 lines)}
+Role & which segments the controller must see (copy rules (a)--(e), Fig.~\ref{fig:copyrules}). \\
+State & per slot: connection number, client side, ISNs, started, pending, pendingSeq, edge, gap start, gap open,
+HTTP seen (per direction). \\
+Outputs $\to$ & \code{meta.copy}, offset, direction, msgStart, msgType $\to$ egress clone; \code{fromClient}. \\
+Logic & offset = seq $-$ ISN $-$ 1; window 16 KB; a returned joined message (or the certificates) clears pending; a
+retransmission bringing the whole message also clears it. Rule (e): the edge follows the furthest byte; a segment
+beyond it opens a gap (in a direction that carried an HTTP request, copied within 16 KB); a segment covering the
+gap's first byte closes it. Sequence numbers are compared modulo $2^{32}$ (signed difference). \\
+Why & the switch must copy every piece a split message may need, and nothing else. \\
+Checked by & 202/202 split/reorder cases; 8 limit cases never wrong; \code{test\_keepalive\_reorder} 18/18;
+\code{test\_server\_flight\_reorder} 19/19. \\
+\end{card}
+
+\begin{card}{\code{p4/tls.p4}, \code{http.p4}, \code{ssh.p4}, \code{dhcp.p4}, \code{x509.p4}}
+Role & one control per fingerprint family: decide when to report, keep the per-connection state for that, send one
+digest (Section~\ref{sec:channels}). \\
+Logic & Tls: once per direction (\code{tlsDone} bits, retransmissions not twice). Http: one per request, not twice
+for one sequence number; the request's sequence number in the digest. Ssh: a connection on port 22 or with an
+``SSH-'' banner (bare ACKs counted from the start); counts, batches of 8, window of 200, flush; on a reused port's
+SYN the previous connection's last window. Dhcp: every message. X509: every certificate with its index. DHCP, HTTP
+and SSH digests carry a serial number (D10); every TCP digest the connection's number (D21). \\
+\end{card}
+
+%---------------------------------------------------------------------
+\subsection{Controller (Python)}
+
+\begin{card}{\code{controller/p4runtime\_client.py} (201 lines)}
+Role & a minimal P4Runtime client: arbitration (become primary), \code{SetForwardingPipelineConfig}, table writes,
+clone session, digest configuration and acknowledgement, packet-in callback, packet-out with metadata. \\
+Logic & a background thread reads the stream; each digest list goes to its handler, then is acknowledged; P4Info is
+used to translate names to ids. \\
+Why & the only path between the controller and the switch. \\
+Alternatives & \code{p4runtime-shell}: interactive, heavier; this client does only what is needed and is easy to
+read. \\
+\end{card}
+
+\begin{card}{\code{controller/main.py} (240 lines)}
+Role & the Controller: start-up (program, forwarding, clone session, six digests), one handler per digest, packet-in
+to the reassembler and packet-out back, \code{finish()} (SSH flush). \\
+Outputs $\to$ & records (\code{records.py}), console lines, JSON file. \\
+Logic & each handler decodes its struct (field order = the P4 struct), finds the connection's record by its
+endpoints and number, sets the client / server roles (the SYN sender, the ClientHello sender, the SSH digest's
+direction), writes the text via the formatting module. JA4H are kept in stream order by each request's sequence
+number. An SSH connection is remembered for the final flush; an earlier one on the same endpoints is not flushed
+(its window came on the new SYN). \\
+\end{card}
+
+\begin{card}{\code{controller/handshake.py}, \code{tls.py}, \code{http.py}, \code{ssh.py}, \code{dhcp.py}, \code{x509.py}}
+Role & decode one digest struct and write FoxIO's text; no packet bytes. \\
+Logic & handshake: \code{window\_kinds\_mss\_scale}, JA4L halves. tls: version code (supported\_versions if present),
+SNI flag, two-digit counts (capped at 99 as FoxIO), ALPN first / last characters ('9' for a non-ASCII byte, '0' for a missing one, \code{00} without ALPN), sorted
+ciphers; sorted extensions without SNI and ALPN; signature algorithms in order; SHA-256 first 12 hex digits. http:
+method code, version, flags, count, language; three hashes. ssh: histogram and mode per direction (smallest length on
+a tie, as FoxIO). dhcp: type names, size, flags, lists. x509: OIDs as hex joined by ','. \\
+Checked by & every EXACT row of the comparison. \\
+\end{card}
+
+\begin{card}{\code{controller/reassembly.py} (199 lines)}
+Role & join split messages by framing (Section~\ref{sec:seq} and the algorithm in Section~\ref{sec:algos}). \\
+Inputs & copied segments with (endpoints, connection number, direction), seq, offset, start flag and type. \\
+Outputs $\to$ & complete messages with the sequence number of their first byte $\to$ packet-out kind 1, or a list of
+certificates $\to$ packet-out kind 3 each. \\
+Logic & bounded (D24): 32 KB per direction (lowest offsets dropped first), idle directions dropped after 60 s, at
+most 100,000 directions; a running byte count, so the bound costs nothing per piece. \\
+Checked by & split/reorder 202/202; \code{test\_controller\_state} (bounds, a false start inside a request). \\
+\end{card}
+
+\begin{card}{\code{controller/records.py} (57 lines)}
+Role & one record per connection (key: endpoints in a fixed order and the switch's connection number), first value of
+each name kept; lists for JA4H, JA4SSH, JA4D; per-message list for DHCP in arrival order. Records are kept until
+the run ends and written to JSON (a long-running deployment would export and drop them; see the assumptions). \\
+\end{card}
+
+%---------------------------------------------------------------------
+\subsection{Tools, tests, network}
+
+\begin{card}{\code{tools/replay.py} (242 lines) and \code{tools/nanoport.py} (57 lines)}
+Role & run the real switch and controller without root and send a capture through them. \\
+Logic & free gRPC / Thrift ports; ipc path in the runtime folder; switch dies with its parent; one nanomsg socket,
+opened after the switch answers; warm-up frame; client / server side by the SYN sender; gaps kept (max 2 s);
+\code{sent.pcap} with send times; frames out collected; forwarding count. \\
+Outputs $\to$ & records, messages, \code{sent.pcap}, forwarding numbers $\to$ \code{compare.py} and the tests. \\
+\end{card}
+
+\begin{card}{\code{tools/reference.py} (172 lines)}
+Role & the references: FoxIO's Rust tool (JSON per connection), tshark fields for JA4TS, FoxIO's stored Wireshark
+plugin output for JA4D, and the plugin's rule on tshark's PDML for captures without stored output (skipping DHCP
+quoted inside ICMP errors). A later TCP connection on the same endpoints is keyed with its place among them, from
+tshark's stream numbers (which FoxIO's tool reports). \\
+\end{card}
+
+\begin{card}{\code{tools/compare.py} (219 lines)}
+Role & per capture: replay, then a verdict per fingerprint per connection; totals; forwarding; JA4L distribution;
+not-compared counts (HTTP/2, TLS 1.3 certificates). \code{compare\_records} is shared with the live run. \\
+Outputs $\to$ & console report, \code{results/compare\_all.json} $\to$ the results tables of both PDFs. \\
+Logic & EXPLAINED only for differences checked by hand and written with their reason; EXCLUDED only tunnel captures;
+exit code non-zero on any WRONG or any altered frame. The switch's records are keyed like the references: endpoints,
+and the place among connections on them in the order of the connection numbers. \\
+\end{card}
+
+\begin{card}{\code{tools/measure\_field\_counts.py} (326 lines)}
+Role & the measurement study of list lengths (capacities). \\
+Logic & local listener records the first message of each installed client; corpus of 42 captures; tshark PDML
+(reassembled) for TLS / HTTP, the JA4D rule for DHCP, \code{cryptography} for certificates; per list: p50, p95, p99,
+max, distinct, share within the capacity. \\
+Outputs $\to$ & \code{results/measure/field\_counts.json} $\to$ \code{results\_field\_counts.tex}. \\
+\end{card}
+
+\begin{card}{\code{network/run\_live.py} (249 lines)}
+Role & the live run: Mininet h1 -- s1 -- h2 with BMv2 on real interfaces, real servers and clients, captures on the
+switch ports, comparison and forwarding check. \\
+Logic & offloads off; certificates made for a chain of 2; servers' process ids kept; clients start once h2 listens
+on every server port (\code{ss}); every client under \code{timeout -k 2 15}, its exit status checked; a Ctrl-C interrupts the running host command before cleanup; results chowned to the user. \\
+Outputs $\to$ & \code{results/live/} (report, rows, records, captures) $\to$ \code{tools/live\_tex.py}. \\
+\end{card}
+
+\begin{card}{\code{tools/live\_tex.py} (45 lines)}
+Role & writes the live run's results table for both PDFs, so the numbers are never typed by hand. \\
+Logic & counts verdicts per fingerprint in \code{rows.json}; forwarding lines from \code{report.txt}; JA4L
+latency differences recomputed from the rows (median as the live run prints it, the upper middle value). \\
+Outputs $\to$ & \code{docs/results\_live.tex} $\to$ \code{design.pdf} and this document (\code{make live} runs it). \\
+\end{card}
+
+\begin{card}{\code{tests/} (11 files, 27 tests) and \code{Makefile}}
+Role & tests in Section~\ref{sec:verif}; \code{make build / compare / test / live / docs / clean}. \\
+\end{card}

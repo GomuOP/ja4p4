@@ -1,0 +1,14 @@
+\begin{center}\begin{tabular}{lrrrrr}\toprule
+\textbf{Fingerprint} & \textbf{EXACT} & \textbf{EXPLAINED} & \textbf{WRONG} & \textbf{MISSING} & \textbf{EXTRA}\\\midrule
+JA4T & 62 & 0 & 0 & 0 & 0\\
+JA4TS & 51 & 0 & 0 & 0 & 0\\
+JA4L-C (TTL) & 51 & 0 & 0 & 0 & 0\\
+JA4L-S (TTL) & 51 & 0 & 0 & 0 & 0\\
+JA4 & 152 & 0 & 0 & 0 & 0\\
+JA4S & 92 & 1 & 0 & 0 & 0\\
+JA4H (per connection) & 72 & 0 & 0 & 0 & 0\\
+JA4SSH (per connection) & 6 & 4 & 0 & 0 & 0\\
+JA4X (per chain) & 26 & 0 & 0 & 0 & 0\\
+JA4D / JA4D6 (per message) & 10 & 0 & 0 & 0 & 0\\
+\midrule Total & 573 & 5 & 0 & 0 & 0\\\bottomrule\end{tabular}\end{center}
+All 33 of FoxIO's sample captures that hold traffic the switch reads, replayed with their original timing; 3 tunnel captures excluded. \textbf{Forwarding: 9,013 of 9,013 frames left the switch byte for byte unchanged.} JA4L latency (a measurement, see above), difference to the reference over the same frames: median 331~µs, 90th percentile 1341~µs, maximum 4759~µs (2 of the halves above 2~ms). Not compared: 16 JA4H of HTTP/2 requests and 3 JA4X of TLS~1.3 certificates that FoxIO's tool could compute only by decrypting with keys stored in the captures. The 5 EXPLAINED: one SOCKS4 ServerHello the reference cannot decode (checked by hand), four JA4SSH of malformed or SSH~v1 streams where tshark refuses a few segments as SSH. Source: \texttt{results/compare\_all.json}.

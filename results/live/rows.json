@@ -1,0 +1,548 @@
+[
+ {
+  "conn": [
+   "10.0.0.1",
+   36980,
+   "10.0.0.2",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "42340_2-4-8-1-3_1460_9",
+  "reference": "42340_2-4-8-1-3_1460_9",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   36980,
+   "10.0.0.2",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "43440_2-4-8-1-3_1460_9",
+  "reference": "43440_2-4-8-1-3_1460_9",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   36980,
+   "10.0.0.2",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13i3111h2_e8f1e7e78f70_b26ce05bbdd6",
+  "reference": "t13i3111h2_e8f1e7e78f70_b26ce05bbdd6",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   36980,
+   "10.0.0.2",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   36980,
+   "10.0.0.2",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "2741_64",
+  "reference": "2760_64",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   36980,
+   "10.0.0.2",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "2964_64",
+  "reference": "3002_64",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   36988,
+   "10.0.0.2",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "42340_2-4-8-1-3_1460_9",
+  "reference": "42340_2-4-8-1-3_1460_9",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   36988,
+   "10.0.0.2",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "43440_2-4-8-1-3_1460_9",
+  "reference": "43440_2-4-8-1-3_1460_9",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   36988,
+   "10.0.0.2",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13i3110px_e8f1e7e78f70_1f22a2ca17c4",
+  "reference": "t13i3110px_e8f1e7e78f70_1f22a2ca17c4",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   36988,
+   "10.0.0.2",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   36988,
+   "10.0.0.2",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "2970_64",
+  "reference": "2984_64",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   36988,
+   "10.0.0.2",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "2935_64",
+  "reference": "2970_64",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   42298,
+   "10.0.0.2",
+   80
+  ],
+  "name": "ja4t",
+  "switch": "42340_2-4-8-1-3_1460_9",
+  "reference": "42340_2-4-8-1-3_1460_9",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   42298,
+   "10.0.0.2",
+   80
+  ],
+  "name": "ja4ts",
+  "switch": "43440_2-4-8-1-3_1460_9",
+  "reference": "43440_2-4-8-1-3_1460_9",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   42298,
+   "10.0.0.2",
+   80
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn030000_fe444ad14866_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn030000_fe444ad14866_000000000000_000000000000"
+  ],
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   42298,
+   "10.0.0.2",
+   80
+  ],
+  "name": "ja4l_c",
+  "switch": "2901_64",
+  "reference": "2932_64",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   42298,
+   "10.0.0.2",
+   80
+  ],
+  "name": "ja4l_s",
+  "switch": "2834_64",
+  "reference": "2791_64",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   42302,
+   "10.0.0.2",
+   80
+  ],
+  "name": "ja4t",
+  "switch": "42340_2-4-8-1-3_1460_9",
+  "reference": "42340_2-4-8-1-3_1460_9",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   42302,
+   "10.0.0.2",
+   80
+  ],
+  "name": "ja4ts",
+  "switch": "43440_2-4-8-1-3_1460_9",
+  "reference": "43440_2-4-8-1-3_1460_9",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   42302,
+   "10.0.0.2",
+   80
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11cr04engb_8ddaef5d77af_3645093e176f_b1c22010166d"
+  ],
+  "reference": [
+   "ge11cr04engb_8ddaef5d77af_3645093e176f_b1c22010166d"
+  ],
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   42302,
+   "10.0.0.2",
+   80
+  ],
+  "name": "ja4l_c",
+  "switch": "2779_64",
+  "reference": "2809_64",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   42302,
+   "10.0.0.2",
+   80
+  ],
+  "name": "ja4l_s",
+  "switch": "3269_64",
+  "reference": "3249_64",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   42308,
+   "10.0.0.2",
+   80
+  ],
+  "name": "ja4t",
+  "switch": "42340_2-4-8-1-3_1460_9",
+  "reference": "42340_2-4-8-1-3_1460_9",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   42308,
+   "10.0.0.2",
+   80
+  ],
+  "name": "ja4ts",
+  "switch": "43440_2-4-8-1-3_1460_9",
+  "reference": "43440_2-4-8-1-3_1460_9",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   42308,
+   "10.0.0.2",
+   80
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn040000_5f54902ced79_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn040000_5f54902ced79_000000000000_000000000000"
+  ],
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   42308,
+   "10.0.0.2",
+   80
+  ],
+  "name": "ja4l_c",
+  "switch": "2885_64",
+  "reference": "2895_64",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   42308,
+   "10.0.0.2",
+   80
+  ],
+  "name": "ja4l_s",
+  "switch": "3180_64",
+  "reference": "3195_64",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   49086,
+   "10.0.0.2",
+   22
+  ],
+  "name": "ja4t",
+  "switch": "42340_2-4-8-1-3_1460_9",
+  "reference": "42340_2-4-8-1-3_1460_9",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   49086,
+   "10.0.0.2",
+   22
+  ],
+  "name": "ja4ts",
+  "switch": "43440_2-4-8-1-3_1460_9",
+  "reference": "43440_2-4-8-1-3_1460_9",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   49086,
+   "10.0.0.2",
+   22
+  ],
+  "name": "ja4ssh",
+  "switch": [
+   "c43s43_c7s6_c6s4"
+  ],
+  "reference": [
+   "c43s43_c7s6_c6s4"
+  ],
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   49086,
+   "10.0.0.2",
+   22
+  ],
+  "name": "ja4l_c",
+  "switch": "2784_64",
+  "reference": "2799_64",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   49086,
+   "10.0.0.2",
+   22
+  ],
+  "name": "ja4l_s",
+  "switch": "3169_64",
+  "reference": "3242_64",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   57060,
+   "10.0.0.2",
+   8443
+  ],
+  "name": "ja4t",
+  "switch": "42340_2-4-8-1-3_1460_9",
+  "reference": "42340_2-4-8-1-3_1460_9",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   57060,
+   "10.0.0.2",
+   8443
+  ],
+  "name": "ja4ts",
+  "switch": "43440_2-4-8-1-3_1460_9",
+  "reference": "43440_2-4-8-1-3_1460_9",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   57060,
+   "10.0.0.2",
+   8443
+  ],
+  "name": "ja4",
+  "switch": "t12i2806h2_d943125447b4_a44c6288192a",
+  "reference": "t12i2806h2_d943125447b4_a44c6288192a",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   57060,
+   "10.0.0.2",
+   8443
+  ],
+  "name": "ja4s",
+  "switch": "t120300_c030_460f64128655",
+  "reference": "t120300_c030_460f64128655",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   57060,
+   "10.0.0.2",
+   8443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "a373a9f83c6b_2e9214a636bc_a4df8b54db06",
+   "a373a9f83c6b_a373a9f83c6b_795797892f9c"
+  ],
+  "reference": [
+   "a373a9f83c6b_2e9214a636bc_a4df8b54db06",
+   "a373a9f83c6b_a373a9f83c6b_795797892f9c"
+  ],
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   57060,
+   "10.0.0.2",
+   8443
+  ],
+  "name": "ja4l_c",
+  "switch": "2909_64",
+  "reference": "2903_64",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   57060,
+   "10.0.0.2",
+   8443
+  ],
+  "name": "ja4l_s",
+  "switch": "3064_64",
+  "reference": "3087_64",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": "DHCP message 1",
+  "name": "ja4d",
+  "switch": "disco0576nn_57-55-60-61_1-3-6-12-15-28-42",
+  "reference": "disco0576nn_57-55-60-61_1-3-6-12-15-28-42",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": "DHCP message 2",
+  "name": "ja4d",
+  "switch": "offer0000nn_54-51-58-59-1-28-3_00",
+  "reference": "offer0000nn_54-51-58-59-1-28-3_00",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": "DHCP message 3",
+  "name": "ja4d",
+  "switch": "reqst0576in_54-57-55-60-61_1-3-6-12-15-28-42",
+  "reference": "reqst0576in_54-57-55-60-61_1-3-6-12-15-28-42",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": "DHCP message 4",
+  "name": "ja4d",
+  "switch": "dpack0000nn_54-51-58-59-1-28-3_00",
+  "reference": "dpack0000nn_54-51-58-59-1-28-3_00",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": "DHCP message 5",
+  "name": "ja4d",
+  "switch": "solct0010nn_8-3-6-39-1_23-24",
+  "reference": "solct0010nn_8-3-6-39-1_23-24",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": "DHCP message 6",
+  "name": "ja4d",
+  "switch": "advrt0010nn_1-2-3-5-13-7_00",
+  "reference": "advrt0010nn_1-2-3-5-13-7_00",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": "DHCP message 7",
+  "name": "ja4d",
+  "switch": "reqst0010nn_8-2-3-6-39-1_23-24",
+  "reference": "reqst0010nn_8-2-3-6-39-1_23-24",
+  "verdict": "EXACT"
+ },
+ {
+  "conn": "DHCP message 8",
+  "name": "ja4d",
+  "switch": "reply0010nn_1-2-3-5-13-7_00",
+  "reference": "reply0010nn_1-2-3-5-13-7_00",
+  "verdict": "EXACT"
+ }
+]

@@ -1,0 +1,127 @@
+python3 network/run_live.py
+switch and controller ready
+servers listening on h2: ports 22, 80, 443, 8443
+h1: HTTP GET
+  switch: ja4t     42340_2-4-8-1-3_1460_9                             10.0.0.1:42298 -> 10.0.0.2:80
+  switch: ja4ts    43440_2-4-8-1-3_1460_9                             10.0.0.1:42298 -> 10.0.0.2:80
+  switch: ja4l_c   2901_64                                            10.0.0.1:42298 -> 10.0.0.2:80
+  switch: ja4l_s   2834_64                                            10.0.0.1:42298 -> 10.0.0.2:80
+  switch: ja4h     ge11nn030000_fe444ad14866_000000000000_000000000000 10.0.0.1:42298 -> 10.0.0.2:80
+  (0.1 s, exit 0)
+h1: HTTP with cookies, Referer, Accept-Language
+  switch: ja4t     42340_2-4-8-1-3_1460_9                             10.0.0.1:42302 -> 10.0.0.2:80
+  switch: ja4ts    43440_2-4-8-1-3_1460_9                             10.0.0.1:42302 -> 10.0.0.2:80
+  switch: ja4l_c   2779_64                                            10.0.0.1:42302 -> 10.0.0.2:80
+  switch: ja4l_s   3269_64                                            10.0.0.1:42302 -> 10.0.0.2:80
+  switch: ja4h     ge11cr04engb_8ddaef5d77af_3645093e176f_b1c22010166d 10.0.0.1:42302 -> 10.0.0.2:80
+  (0.1 s, exit 0)
+h1: HTTP request of 3 KB (split by TCP)
+  switch: ja4t     42340_2-4-8-1-3_1460_9                             10.0.0.1:42308 -> 10.0.0.2:80
+  switch: ja4ts    43440_2-4-8-1-3_1460_9                             10.0.0.1:42308 -> 10.0.0.2:80
+  switch: ja4l_c   2885_64                                            10.0.0.1:42308 -> 10.0.0.2:80
+  switch: ja4l_s   3180_64                                            10.0.0.1:42308 -> 10.0.0.2:80
+  (0.2 s, exit 0)
+  switch: ja4h     ge11nn040000_5f54902ced79_000000000000_000000000000 10.0.0.1:42308 -> 10.0.0.2:80
+h1: TLS 1.3
+  switch: ja4t     42340_2-4-8-1-3_1460_9                             10.0.0.1:36980 -> 10.0.0.2:443
+  switch: ja4ts    43440_2-4-8-1-3_1460_9                             10.0.0.1:36980 -> 10.0.0.2:443
+  switch: ja4l_c   2741_64                                            10.0.0.1:36980 -> 10.0.0.2:443
+  switch: ja4l_s   2964_64                                            10.0.0.1:36980 -> 10.0.0.2:443
+  switch: ja4      t13i3111h2_e8f1e7e78f70_b26ce05bbdd6               10.0.0.1:36980 -> 10.0.0.2:443
+  switch: ja4s     t130200_1302_a56c5b993250                          10.0.0.1:36980 -> 10.0.0.2:443
+  (0.1 s, exit 0)
+h1: TLS 1.2 (certificates in the clear)
+  switch: ja4t     42340_2-4-8-1-3_1460_9                             10.0.0.1:57060 -> 10.0.0.2:8443
+  switch: ja4ts    43440_2-4-8-1-3_1460_9                             10.0.0.1:57060 -> 10.0.0.2:8443
+  switch: ja4l_c   2909_64                                            10.0.0.1:57060 -> 10.0.0.2:8443
+  switch: ja4l_s   3064_64                                            10.0.0.1:57060 -> 10.0.0.2:8443
+  switch: ja4      t12i2806h2_d943125447b4_a44c6288192a               10.0.0.1:57060 -> 10.0.0.2:8443
+  switch: ja4s     t120300_c030_460f64128655                          10.0.0.1:57060 -> 10.0.0.2:8443
+  switch: ja4x     a373a9f83c6b_2e9214a636bc_a4df8b54db06             certificate 1 of 10.0.0.1:57060 -> 10.0.0.2:8443
+  switch: ja4x     a373a9f83c6b_a373a9f83c6b_795797892f9c             certificate 2 of 10.0.0.1:57060 -> 10.0.0.2:8443
+  (0.1 s, exit 0)
+h1: ClientHello of about 2 KB (split by TCP)
+  switch: ja4t     42340_2-4-8-1-3_1460_9                             10.0.0.1:36988 -> 10.0.0.2:443
+  switch: ja4ts    43440_2-4-8-1-3_1460_9                             10.0.0.1:36988 -> 10.0.0.2:443
+  switch: ja4l_c   2970_64                                            10.0.0.1:36988 -> 10.0.0.2:443
+  switch: ja4l_s   2935_64                                            10.0.0.1:36988 -> 10.0.0.2:443
+  switch: ja4s     t130200_1302_a56c5b993250                          10.0.0.1:36988 -> 10.0.0.2:443
+  switch: ja4      t13i3110px_e8f1e7e78f70_1f22a2ca17c4               10.0.0.1:36988 -> 10.0.0.2:443
+  (0.2 s, exit 0)
+h1: DHCP
+  switch: ja4d     disco0576nn_57-55-60-61_1-3-6-12-15-28-42          0.0.0.0:68 -> 255.255.255.255:67
+  switch: ja4d     offer0000nn_54-51-58-59-1-28-3_00                  10.0.0.2:67 -> 10.0.0.101:68
+  switch: ja4d     reqst0576in_54-57-55-60-61_1-3-6-12-15-28-42       0.0.0.0:68 -> 255.255.255.255:67
+  switch: ja4d     dpack0000nn_54-51-58-59-1-28-3_00                  10.0.0.2:67 -> 10.0.0.101:68
+  (0.1 s, exit 0)
+h1: DHCPv6
+  switch: ja4d6    solct0010nn_8-3-6-39-1_23-24                       fe80::200:ff:fe00:1:546 -> ff02::1:2:547
+  switch: ja4d6    advrt0010nn_1-2-3-5-13-7_00                        fe80::200:ff:fe00:2:547 -> fe80::200:ff:fe00:1:546
+  switch: ja4d6    reqst0010nn_8-2-3-6-39-1_23-24                     fe80::200:ff:fe00:1:546 -> ff02::1:2:547
+  switch: ja4d6    reply0010nn_1-2-3-5-13-7_00                        fe80::200:ff:fe00:2:547 -> fe80::200:ff:fe00:1:546
+  (0.2 s, exit 0)
+h1: SSH
+  switch: ja4t     42340_2-4-8-1-3_1460_9                             10.0.0.1:49086 -> 10.0.0.2:22
+  switch: ja4ts    43440_2-4-8-1-3_1460_9                             10.0.0.1:49086 -> 10.0.0.2:22
+  switch: ja4l_c   2784_64                                            10.0.0.1:49086 -> 10.0.0.2:22
+  switch: ja4l_s   3169_64                                            10.0.0.1:49086 -> 10.0.0.2:22
+  (0.3 s, exit 255)
+  switch: ja4ssh   c43s43_c7s6_c6s4                                   10.0.0.1:49086 -> 10.0.0.2:22
+
+RESULTS (switch against FoxIO's references on the frames that entered the switch)
+  EXACT     ja4t    switch=42340_2-4-8-1-3_1460_9  reference=42340_2-4-8-1-3_1460_9  ('10.0.0.1', 36980, '10.0.0.2', 443)
+  EXACT     ja4ts   switch=43440_2-4-8-1-3_1460_9  reference=43440_2-4-8-1-3_1460_9  ('10.0.0.1', 36980, '10.0.0.2', 443)
+  EXACT     ja4     switch=t13i3111h2_e8f1e7e78f70_b26ce05bbdd6  reference=t13i3111h2_e8f1e7e78f70_b26ce05bbdd6  ('10.0.0.1', 36980, '10.0.0.2', 443)
+  EXACT     ja4s    switch=t130200_1302_a56c5b993250  reference=t130200_1302_a56c5b993250  ('10.0.0.1', 36980, '10.0.0.2', 443)
+  EXACT     ja4l_c  switch=2741_64  reference=2760_64  ('10.0.0.1', 36980, '10.0.0.2', 443)
+  EXACT     ja4l_s  switch=2964_64  reference=3002_64  ('10.0.0.1', 36980, '10.0.0.2', 443)
+  EXACT     ja4t    switch=42340_2-4-8-1-3_1460_9  reference=42340_2-4-8-1-3_1460_9  ('10.0.0.1', 36988, '10.0.0.2', 443)
+  EXACT     ja4ts   switch=43440_2-4-8-1-3_1460_9  reference=43440_2-4-8-1-3_1460_9  ('10.0.0.1', 36988, '10.0.0.2', 443)
+  EXACT     ja4     switch=t13i3110px_e8f1e7e78f70_1f22a2ca17c4  reference=t13i3110px_e8f1e7e78f70_1f22a2ca17c4  ('10.0.0.1', 36988, '10.0.0.2', 443)
+  EXACT     ja4s    switch=t130200_1302_a56c5b993250  reference=t130200_1302_a56c5b993250  ('10.0.0.1', 36988, '10.0.0.2', 443)
+  EXACT     ja4l_c  switch=2970_64  reference=2984_64  ('10.0.0.1', 36988, '10.0.0.2', 443)
+  EXACT     ja4l_s  switch=2935_64  reference=2970_64  ('10.0.0.1', 36988, '10.0.0.2', 443)
+  EXACT     ja4t    switch=42340_2-4-8-1-3_1460_9  reference=42340_2-4-8-1-3_1460_9  ('10.0.0.1', 42298, '10.0.0.2', 80)
+  EXACT     ja4ts   switch=43440_2-4-8-1-3_1460_9  reference=43440_2-4-8-1-3_1460_9  ('10.0.0.1', 42298, '10.0.0.2', 80)
+  EXACT     ja4h    switch=['ge11nn030000_fe444ad14866_000000000000_000000000000']  reference=['ge11nn030000_fe444ad14866_000000000000_000000000000']  ('10.0.0.1', 42298, '10.0.0.2', 80)
+  EXACT     ja4l_c  switch=2901_64  reference=2932_64  ('10.0.0.1', 42298, '10.0.0.2', 80)
+  EXACT     ja4l_s  switch=2834_64  reference=2791_64  ('10.0.0.1', 42298, '10.0.0.2', 80)
+  EXACT     ja4t    switch=42340_2-4-8-1-3_1460_9  reference=42340_2-4-8-1-3_1460_9  ('10.0.0.1', 42302, '10.0.0.2', 80)
+  EXACT     ja4ts   switch=43440_2-4-8-1-3_1460_9  reference=43440_2-4-8-1-3_1460_9  ('10.0.0.1', 42302, '10.0.0.2', 80)
+  EXACT     ja4h    switch=['ge11cr04engb_8ddaef5d77af_3645093e176f_b1c22010166d']  reference=['ge11cr04engb_8ddaef5d77af_3645093e176f_b1c22010166d']  ('10.0.0.1', 42302, '10.0.0.2', 80)
+  EXACT     ja4l_c  switch=2779_64  reference=2809_64  ('10.0.0.1', 42302, '10.0.0.2', 80)
+  EXACT     ja4l_s  switch=3269_64  reference=3249_64  ('10.0.0.1', 42302, '10.0.0.2', 80)
+  EXACT     ja4t    switch=42340_2-4-8-1-3_1460_9  reference=42340_2-4-8-1-3_1460_9  ('10.0.0.1', 42308, '10.0.0.2', 80)
+  EXACT     ja4ts   switch=43440_2-4-8-1-3_1460_9  reference=43440_2-4-8-1-3_1460_9  ('10.0.0.1', 42308, '10.0.0.2', 80)
+  EXACT     ja4h    switch=['ge11nn040000_5f54902ced79_000000000000_000000000000']  reference=['ge11nn040000_5f54902ced79_000000000000_000000000000']  ('10.0.0.1', 42308, '10.0.0.2', 80)
+  EXACT     ja4l_c  switch=2885_64  reference=2895_64  ('10.0.0.1', 42308, '10.0.0.2', 80)
+  EXACT     ja4l_s  switch=3180_64  reference=3195_64  ('10.0.0.1', 42308, '10.0.0.2', 80)
+  EXACT     ja4t    switch=42340_2-4-8-1-3_1460_9  reference=42340_2-4-8-1-3_1460_9  ('10.0.0.1', 49086, '10.0.0.2', 22)
+  EXACT     ja4ts   switch=43440_2-4-8-1-3_1460_9  reference=43440_2-4-8-1-3_1460_9  ('10.0.0.1', 49086, '10.0.0.2', 22)
+  EXACT     ja4ssh  switch=['c43s43_c7s6_c6s4']  reference=['c43s43_c7s6_c6s4']  ('10.0.0.1', 49086, '10.0.0.2', 22)
+  EXACT     ja4l_c  switch=2784_64  reference=2799_64  ('10.0.0.1', 49086, '10.0.0.2', 22)
+  EXACT     ja4l_s  switch=3169_64  reference=3242_64  ('10.0.0.1', 49086, '10.0.0.2', 22)
+  EXACT     ja4t    switch=42340_2-4-8-1-3_1460_9  reference=42340_2-4-8-1-3_1460_9  ('10.0.0.1', 57060, '10.0.0.2', 8443)
+  EXACT     ja4ts   switch=43440_2-4-8-1-3_1460_9  reference=43440_2-4-8-1-3_1460_9  ('10.0.0.1', 57060, '10.0.0.2', 8443)
+  EXACT     ja4     switch=t12i2806h2_d943125447b4_a44c6288192a  reference=t12i2806h2_d943125447b4_a44c6288192a  ('10.0.0.1', 57060, '10.0.0.2', 8443)
+  EXACT     ja4s    switch=t120300_c030_460f64128655  reference=t120300_c030_460f64128655  ('10.0.0.1', 57060, '10.0.0.2', 8443)
+  EXACT     ja4x    switch=['a373a9f83c6b_2e9214a636bc_a4df8b54db06', 'a373a9f83c6b_a373a9f83c6b_795797892f9c']  reference=['a373a9f83c6b_2e9214a636bc_a4df8b54db06', 'a373a9f83c6b_a373a9f83c6b_795797892f9c']  ('10.0.0.1', 57060, '10.0.0.2', 8443)
+  EXACT     ja4l_c  switch=2909_64  reference=2903_64  ('10.0.0.1', 57060, '10.0.0.2', 8443)
+  EXACT     ja4l_s  switch=3064_64  reference=3087_64  ('10.0.0.1', 57060, '10.0.0.2', 8443)
+  EXACT     ja4d    switch=disco0576nn_57-55-60-61_1-3-6-12-15-28-42  reference=disco0576nn_57-55-60-61_1-3-6-12-15-28-42  DHCP message 1
+  EXACT     ja4d    switch=offer0000nn_54-51-58-59-1-28-3_00  reference=offer0000nn_54-51-58-59-1-28-3_00  DHCP message 2
+  EXACT     ja4d    switch=reqst0576in_54-57-55-60-61_1-3-6-12-15-28-42  reference=reqst0576in_54-57-55-60-61_1-3-6-12-15-28-42  DHCP message 3
+  EXACT     ja4d    switch=dpack0000nn_54-51-58-59-1-28-3_00  reference=dpack0000nn_54-51-58-59-1-28-3_00  DHCP message 4
+  EXACT     ja4d    switch=solct0010nn_8-3-6-39-1_23-24  reference=solct0010nn_8-3-6-39-1_23-24  DHCP message 5
+  EXACT     ja4d    switch=advrt0010nn_1-2-3-5-13-7_00  reference=advrt0010nn_1-2-3-5-13-7_00  DHCP message 6
+  EXACT     ja4d    switch=reqst0010nn_8-2-3-6-39-1_23-24  reference=reqst0010nn_8-2-3-6-39-1_23-24  DHCP message 7
+  EXACT     ja4d    switch=reply0010nn_1-2-3-5-13-7_00  reference=reply0010nn_1-2-3-5-13-7_00  DHCP message 8
+TOTAL  EXACT 47  EXPLAINED 0  WRONG 0  MISSING 0  EXTRA 0
+FORWARDING s1-eth1 -> s1-eth2: 95 of 95 frames left unchanged
+FORWARDING s1-eth2 -> s1-eth1: 85 of 85 frames left unchanged
+JA4L LATENCY  14 halves; difference to the reference: median 23 us, maximum 73 us
+STEPS  all 9 steps ended as expected
+
+written to /home/gomtesh/Desktop/ja4p4_withoutrunreport/simpleja4p4/results/live
+python3 tools/live_tex.py
+/home/gomtesh/Desktop/ja4p4_withoutrunreport/simpleja4p4/docs/results_live.tex

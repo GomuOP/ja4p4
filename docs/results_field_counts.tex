@@ -1,0 +1,19 @@
+\begin{tabularx}{\textwidth}{X r r r r r r r}
+\toprule
+\textbf{Quantity} & \textbf{cap} & \textbf{msgs} & \textbf{distinct} & \textbf{p50} & \textbf{p95} & \textbf{p99} & \textbf{max} \\
+\midrule
+TLS ClientHello cipher suites & 128 & 241 & 132 & 15 & 28 & 46 & 86 \\
+TLS ClientHello extensions & 64 & 241 & 132 & 16 & 16 & 18 & 18 \\
+TLS ClientHello signature algorithms & 64 & 241 & 132 & 8 & 15 & 20 & 20 \\
+TLS ServerHello extensions & 64 & 135 & 27 & 2 & 6 & 6 & 7 \\
+HTTP header-name bytes & 512 & 135 & 29 & 51 & 146 & 146 & 146 \\
+HTTP cookie bytes & 1,024 & 7 & 7 & 108 & 863 & 863 & 863 \\
+DHCP option codes & 64 & 20 & 16 & 5 & 7 & 7 & 7 \\
+DHCP requested codes & 128 & 20 & 16 & 0 & 7 & 7 & 7 \\
+certificate issuer OID bytes & 256 & 66 & 47 & 16 & 20 & 26 & 26 \\
+certificate subject OID bytes & 256 & 66 & 47 & 16 & 26 & 60 & 60 \\
+certificate extension OID bytes & 256 & 66 & 47 & 37 & 72 & 72 & 72 \\
+\bottomrule
+\end{tabularx}
+
+\noindent 1238 of 1238 measured lists (100\%) are within their capacity. ``distinct'': messages counted once per distinct content, so one chatty client does not weigh more. 42 captures; certificates \code{cryptography} could not parse: 0. Source: \code{results/measure/field\_counts.json}.

@@ -1,0 +1,213 @@
+%=====================================================================
+\section{Design decisions: what, why, and why not the alternatives}
+\label{sec:decisions}
+
+Each decision is stated, then the reason, then the alternatives that were considered and why they were not taken.
+
+\newcommand{\decision}[4]{%
+\subsection{#1}#2
+\par\noindent\textbf{Decision.} #3
+\par\noindent\textbf{Why.} #4}
+
+\decision{D1. BMv2, v1model and a P4Runtime controller}{\label{sec:dec-target}}
+{The switch is BMv2's \code{simple\_switch\_grpc} running a P4-16 v1model program; a Python controller talks to it
+over P4Runtime.}
+{BMv2 is the reference P4 target, runs anywhere, needs no hardware, and supports everything the design uses:
+parser loops with \code{lookahead}/\code{advance}, registers, hashes, digests, resubmit, clone, packet-in/out.
+P4Runtime is the standard control interface, so ``a high-level program drives the switch'' means exactly: another
+P4Runtime client, or this controller's Python API.}
+\whynot{\emph{Tofino}: hardware limits (parser depth, stages, no 2,048-bit fields) would dominate the work; the
+faculty asked for fingerprinting, not a hardware port. \emph{eBPF/XDP}: not P4. \emph{Other P4 architectures}: v1model is the one
+\code{simple\_switch\_grpc} implements completely (resubmit, clone with preserved metadata, digests); PSA support in
+BMv2 is a separate, less complete switch, and TNA is Tofino's.}
+
+\decision{D2. The parser reads every fingerprint value}{\label{sec:dec-parser}}
+{All variable-length reading (TCP options, TLS lists, HTTP headers, DHCP options, DER) is done by P4 parser states.
+The controller never parses a fingerprint field.}
+{This is the contribution: fingerprinting in the data plane. The parser is the only P4 block that can loop over a
+variable number of items (a state may transition to itself).}
+\whynot{\emph{Send every packet to the controller and parse there}: a software fingerprinter with a switch in front.
+\emph{Parse with match-action tables}: tables match fixed offsets; variable-length lists need the parser's loops.}
+
+\decision{D3. Results leave the switch as digests}{\label{sec:dec-digest}}
+{Each control sends its values in one digest struct (six kinds), as soon as they are complete.}
+{A digest carries only the extracted values (a few hundred bytes), asynchronously, without the packet; the packet
+is forwarded at once. It is P4Runtime's standard channel for data-plane-to-controller events.}
+\whynot{\emph{Packet-in of every interesting packet}: sends the whole packet and makes the controller parse.
+\emph{Controller reads registers}: BMv2's P4Runtime server answers UNIMPLEMENTED for register reads (found, see
+the problems table), and polling would race with new connections. \emph{Write results into a header and mirror}:
+needs a custom receiver and still a clone per message.}
+
+\decision{D4. Sorting, SHA-256 and text in the controller}{\label{sec:dec-hash}}
+{The switch sends lists in packet order; the controller sorts the cipher and extension lists, hashes with SHA-256 and
+writes FoxIO's text.}
+{v1model has no SHA-256 extern, no strings, and no loops in the pipeline (only in the parser). The fingerprint is
+fully determined by the values the switch extracted; sorting and hashing them anywhere gives the same result.}
+\whynot{\emph{A sorting network in P4} (bitonic, as in the earlier ja4p4 plan): needed on a Tofino to report sorted
+lists from the data plane; on BMv2 it adds hundreds of compare-and-swap actions and proves nothing about
+fingerprinting. \emph{A CRC instead of SHA-256}: would not be JA4 and could not be compared with FoxIO.}
+
+\decision{D5. Walked packets are resubmitted and forwarded on a second pass}{\label{sec:dec-resubmit}}
+{A parser walk skips bytes with \code{advance}; the packet is then resubmitted, and on the second pass only
+Ethernet is parsed, so the original bytes are forwarded.}
+{\code{advance} removes the skipped bytes from what the deparser emits. Resubmit runs the original packet through
+the pipeline again, with chosen metadata preserved (field list 0: arrival port, the pending handshake record).}
+\whynot{\emph{Extract every byte into headers}: thousands of header-stack entries; the deparser would re-emit them
+(the TCP option walk does extract, since options are at most 40 bytes). \emph{Recirculate}: passes through egress
+and the deparser, which would emit the shortened packet.}
+
+\decision{D6. Split and out-of-order messages are joined by the controller and read by the switch}{\label{sec:dec-join}}
+{The switch decides which segments may hold pieces of a message (Fig.~\ref{fig:copyrules}) and copies them with
+their stream offset; the controller orders the bytes by framing only and sends the complete message back; the
+same parser reads it.}
+{A P4 switch processes one packet at a time and cannot hold a packet back or keep kilobytes of payload per
+connection. Joining needs a buffer; reading does not. So the buffer is in the controller and the reading stays in
+P4. The controller's join is framing only (record headers, the empty line, DER lengths), never a fingerprint field.}
+\whynot{\emph{Buffer segments in registers}: a ClientHello reaches 2 KB, certificates many KB; registers sized for
+that per connection are impossible on hardware and costly on BMv2, and register access is per packet, fixed-width.
+\emph{Parse each piece separately and merge partial states}: a list value can be cut in the middle and the order of
+pieces is unknown; the state machine would need to be resumable at every byte in both orders. \emph{Ignore split
+messages}: wrong by omission for exactly the cases the faculty named.}
+
+\decision{D7. Copies are made at egress (E2E clone)}{\label{sec:dec-e2e}}
+{\code{clone\_preserving\_field\_list(CloneType.E2E, 100, 1)} in egress; the clone gets the \code{packet\_in}
+header.}
+{An ingress-to-egress clone is parsed again from the start, and its walk consumes the bytes again: the copy
+arrived without payload (found by the tests). At egress the packet has all its bytes.}
+
+\decision{D8. Per-connection state in hashed register slots}{\label{sec:dec-slots}}
+{ConnKey orders the endpoints, hashes them (CRC16 slot, CRC32 check); every control keeps its state in register
+arrays of 65,536 entries indexed by the slot, together with the connection's number (D21).}
+{A P4 program cannot add table entries; registers are the data plane's writable memory. Ordering the endpoints
+makes both directions find the same slot. The 32-bit check tells two connections in one slot apart.}
+\whynot{\emph{One table entry per connection from the controller}: a round trip before the first packet's state
+exists, and the SYN's timestamp would be lost. \emph{Bigger slots / buckets}: unneeded for one link; one constant.}
+
+\decision{D9. One \code{digest()} call per control; the handshake digest sent last}{\label{sec:dec-onedigest}}
+{Every control has exactly one digest call; the handshake record is stored in metadata and sent from a single call
+at the end of ingress, on the second pass if this pass sent a message digest.}
+{p4c makes one learn list per call site (a second call site of the same struct is a different list the controller
+did not enable), and BMv2 keeps \emph{one digest per packet}: the handshake's ACK can carry a whole ClientHello, and
+its JA4L would be lost (found with SSH, then covered by \code{test\_one\_digest\_per\_packet}).}
+
+\decision{D10. A serial number in DHCP, HTTP and SSH digests}{\label{sec:dec-serial}\label{sec:serial}}
+{A 32-bit counter register per digest kind; each digest carries its value.}
+{BMv2 keeps every digest until it is acknowledged and drops a new one identical to it. Identical messages close
+together (DHCP retransmissions and their answers, the same HTTP request repeated, identical SSH windows of a bulk
+transfer) were lost. 32 bits: the serial need only differ among digests unacknowledged at the same time (rate
+$\times$ acknowledgement time, below $2^{20}$ even at $10^6$/s for 1\,s); wrapping at $2^{32}$ is harmless and needs
+no flag, because the controller never reads the value.}
+\whynot{\emph{Acknowledge faster}: the filter exists until the acknowledgement arrives, however fast. \emph{Use the
+timestamp}: two packets in one microsecond collide. \emph{Per-connection counters}: DHCP has no connection.}
+
+\decision{D11. GREASE is recognised in the parser's \code{select}}{}
+{\code{IS\_GREASE(v)}: low nibbles of both bytes are 0xA and the two bytes are equal; the value is skipped before
+it is stored.}
+{GREASE is a bit pattern, not a lookup; a \code{select} on it costs nothing and keeps the lists clean, so counts
+are right without a second pass.}
+\whynot{\emph{A match-action table marking slots invalid}: needs a list of slots to filter afterwards and then
+compaction; the parser simply never stores them.}
+
+\decision{D12. Capacities: 128 / 64 / 64 values, 512 / 1,024 / 256 bytes, then ``incomplete''}{}
+{Each list is kept in fixed-width fields (at most 2,048 bits each, chained); past its capacity the count stays
+right, an overflow bit is set, and the fingerprint is reported as incomplete.}
+{A wrong fingerprint is worse than none. The capacities were checked by a measurement study (every one of 1,238
+measured lists fits; closest: cookies 863 of 1,024 bytes, ciphers 86 of 128) and the overflow path by
+\code{test\_capacity\_limits}.}
+\whynot{\emph{Larger capacities}: cost digest bits and parser iterations for no measured case. \emph{Truncate
+silently}: would give wrong hashes.}
+
+\decision{D13. JA4L timed in the switch}{}
+{The switch stores the SYN and SYN-ACK times and TTLs and computes both halves when the ACK passes.}
+{The point of JA4L is the network position of the measuring device; the switch is that device. The controller
+would see digests later and with its own jitter.}
+\whynot{\emph{Controller time}: measures the control channel, not the network. Limit kept honest: BMv2 stamps when
+its pipeline takes the packet up, so the latency is reported as a measurement and the arithmetic is tested with
+known gaps.}
+
+\decision{D14. SSH: counts in the switch, the mode in the controller}{}
+{The switch counts SSH packets and bare ACKs per direction and window exactly, and sends the payload lengths in
+batches of 8; the controller computes the most frequent length.}
+{A mode needs a histogram over arbitrary lengths; a data plane has no dynamic map. Everything else of JA4SSH is
+counting, which registers do exactly.}
+\whynot{\emph{A fixed histogram in registers}: lengths range up to 64 KB; a per-connection histogram is
+impossible, and approximate buckets would give a different fingerprint.}
+
+\decision{D15. The last SSH window through a flush packet}{}
+{At the end, the controller sends a packet-out of kind 2 with the connection's endpoints; the switch reports the
+partial window itself.}
+{FoxIO's tool reports the partial last window; BMv2's P4Runtime cannot read registers.}
+
+\decision{D16. JA4X: the controller cuts certificates out, the switch walks DER}{}
+{The controller follows TLS framing to the Certificate message and sends each DER certificate back (kind 3, with its
+index); \code{parser\_x509.p4} reads the OIDs.}
+{Certificates always span segments, so they need the join path anyway; the DER walk (the fingerprint's reading) is
+in P4, with one shared TLV reader and return codes because a parser has no calls.}
+
+\decision{D17. Byte-per-state HTTP walk with chained 2,048-bit fields}{}
+{The request is read one byte per parser state; lists grow through chains of 2,048-bit fields by constant-width
+slices.}
+{HTTP has no length fields: the end of each name, value and line is found byte by byte. BMv2 allows at most 2,048
+bits per field and only short variable shifts, so a list longer than 256 bytes must be a chain grown by constant
+slices.}
+
+\decision{D18. A rootless replay bench next to the live network}{}
+{\code{tools/replay.py} runs the real switch and controller with BMv2's nanomsg packet socket as its ports.}
+{Hundreds of runs (every capture, every split case) without root or Mininet; the same binary and controller as in
+the live run. The live Mininet run then confirms the result on real TCP stacks.}
+
+\decision{D19. FoxIO's own tools as the reference}{}
+{The Rust \code{ja4} tool for most fingerprints, tshark fields for JA4TS (not in the open tool), FoxIO's Wireshark
+plugin output (or the same rule on tshark fields) for JA4D.}
+{Independent of this project: a match with the authors' implementation is the strongest evidence of correctness.}
+\whynot{\emph{Compare with my own Python implementation}: two implementations of my own reading could share the
+same misunderstanding.}
+
+\decision{D20. One design only}{}
+{The two approaches discussed at the start (pure P4 without external programs; P4 invoking high-level code) were
+set aside by the faculty; the design is one switch program plus one controller.}
+{Focus on correct fingerprints first.}
+
+\decision{D21. A number for every connection (port reuse)}{\label{sec:dec-connid}}
+{Control \code{ConnId} (\code{main.p4}) gives each connection a number from a counter: when another connection
+comes to the slot (a different check), and when a SYN with a new initial sequence number arrives on the same
+endpoints. Every control keeps its state with this number instead of the check; every TCP digest and every copy
+carries it; the controller keys records, the reassembler and SSH windows by (endpoints, number); the comparison keys
+FoxIO's records by (endpoints, place among the TCP streams on those endpoints).}
+{Endpoints do not identify a connection: clients and NATs reuse ports. Before, the controller kept the first value
+per endpoints (the second connection's JA4 was lost) and the SSH counts of two connections were added together into
+a wrong value. A repeated SYN (same sequence number) must not start a new connection.}
+\whynot{\emph{Key by the client's initial sequence number in the controller}: only the SYN carries it; every
+digest would need it, and connections without a SYN seen have none. \emph{Detect a new connection in the controller
+from a new JA4T}: digests of different kinds arrive in no fixed order. \emph{Key on FIN / RST}: they can be lost
+or missing from a capture; a SYN with a new sequence number is what tshark and FoxIO use.}
+
+\decision{D22. Rule (e): pieces ahead of a gap in an HTTP direction}{\label{sec:dec-gap}}
+{Per direction the switch keeps the edge (after the furthest byte seen). In a direction that has carried an HTTP
+request, a segment beyond the edge opens a gap, and segments within 16 KB of the gap's start are copied until a
+segment covering the gap's first byte arrives. The controller lists a connection's JA4H by each request's sequence
+number.}
+{Rule (c) covers only a direction's first message. On a keep-alive connection the second request, cut in two and
+second piece first, was never reported. Reporting in stream order is FoxIO's order; a joined request otherwise
+arrives after the whole requests that followed it.}
+\whynot{\emph{Copy every segment after a gap in every connection}: TLS and SSH connections carry nothing more to
+read after their hellos, so copies there are only load. \emph{Track every hole}: one gap per direction covers the
+case at the cost of four registers; further holes inside a pending message are covered by rule (b).}
+
+\decision{D23. VLAN tags and SSH on any port}{}
+{The parser reads up to two VLAN tags (802.1Q, 802.1ad outer). A connection is SSH when it is on port 22 or a side's
+data begins with ``SSH-''; bare ACKs are counted from the start of every connection, so those before the banner
+count.}
+{FoxIO's tool reads through VLAN tags and recognises SSH by its banner on any port (tshark's heuristic): the switch
+reported nothing on tagged frames and on SSH on port 2222. FoxIO counts the handshake's ACK of such a connection as
+a client bare ACK (the first version gave \code{c6s6} for FoxIO's \code{c7s6}).}
+\whynot{\emph{A list of SSH ports from the controller}: misses the unknown ones, and FoxIO needs no list.
+\emph{More than two tags}: not used on access links; such frames are forwarded, not fingerprinted.}
+
+\decision{D24. Bounded controller buffers}{}
+{The reassembler keeps at most 32 KB per direction (lowest offsets dropped first), drops a direction idle for 60 s,
+and keeps at most 100,000 directions.}
+{Without bounds a long run kept every copied piece forever, and half-sent messages could fill the controller.}
+\whynot{\emph{Drop a message's bytes as soon as it is joined}: tried, and it broke 3 of the 202 split cases. A
+one-byte segment in the middle of a request that begins like a request is ``joined'' first; the real request, whose
+first segment comes last, then lacked those bytes.}

@@ -1,0 +1,52 @@
+CVE-2018-6794.pcap                            EXACT 14
+badcurveball.pcap                             EXACT 7
+browsers-x509.pcapng                          EXACT 21
+WARNING: PcapNg: TLS Key Log available, but the TLS layer is not loaded! Scapy won't be able to decrypt the packets.
+chrome-cloudflare-quic-with-secrets.pcapng    EXACT 6
+dhcp.pcapng                                   EXACT 4
+dhcpv6.pcap                                   EXACT 6
+dtls-udp.notest.cap                           
+gre-erspan-vxlan.pcap                         EXCLUDED: tunnel (GRE/ERSPAN/VXLAN): the switch reads only the outer headers
+gre-sample.pcap                               EXCLUDED: tunnel (GRE): the switch reads only the outer headers
+http-empty-useragent.pcap                     EXACT 5
+http1-with-cookies.pcapng                     EXACT 5
+http1.pcapng                                  EXACT 55
+WARNING: PcapNg: TLS Key Log available, but the TLS layer is not loaded! Scapy won't be able to decrypt the packets.
+http2-with-cookies.pcapng                     EXACT 6
+https-connect.pcap                            EXACT 8
+https3-301-get.pcap                           EXACT 7
+WARNING: Mac address to reach destination not found. Using broadcast.
+WARNING: Mac address to reach destination not found. Using broadcast.
+WARNING: more Mac address to reach destination not found. Using broadcast.
+ipv6.pcapng                                   EXACT 7
+latest.pcapng                                 EXACT 39
+macos_tcp_flags.pcap                          EXACT 6
+quic-tls-handshake.pcapng                     
+quic-with-several-tls-frames.pcapng           
+sigalg-grease.pcapng                          EXACT 6
+single-packets.pcap                           EXACT 8
+socks-https-example.pcap                      EXACT 21
+socks4-https.pcap                             EXACT 4  EXPLAINED 1
+ssh-r.pcap                                    EXACT 15
+ssh-scp-1050.pcap                             EXACT 5
+ssh.pcapng                                    EXACT 1
+ssh2-malformed.pcap                           EXACT 4  EXPLAINED 1
+ssh2-moloch-crash.pcap                        EXACT 4  EXPLAINED 1
+ssh2.pcapng                                   EXACT 61
+sshv1.pcap                                    EXACT 4  EXPLAINED 1
+tcpdump-geneve.pcap                           EXCLUDED: tunnel (Geneve): the switch reads only the outer headers
+WARNING: Mac address to reach destination not found. Using broadcast.
+WARNING: Mac address to reach destination not found. Using broadcast.
+WARNING: more Mac address to reach destination not found. Using broadcast.
+tls-alpn-h2.pcap                              EXACT 7
+tls-handshake.pcapng                          EXACT 124
+tls-non-ascii-alpn.pcapng                     EXACT 2
+tls-sni.pcapng                                EXACT 59
+tls12.pcap                                    EXACT 1
+tls3.pcapng                                   EXACT 47
+v6.pcap                                       EXACT 4  EXPLAINED 1
+TOTAL  EXACT 573  EXPLAINED 5  WRONG 0  MISSING 0  EXTRA 0
+FORWARDING  9013 of 9013 frames left the switch byte for byte unchanged
+JA4L LATENCY  102 halves (TTL scored above); difference to the reference: median 331 us, 90th percentile 1341 us, maximum 4759 us; 2 above 2000 us
+NOT COMPARED  16 JA4H of HTTP/2 or HTTP/3 requests that FoxIO's tool decrypted with keys stored in the capture, and 3 JA4X of TLS 1.3 certificates it decrypted the same way (a switch cannot decrypt TLS)
+EXIT 0

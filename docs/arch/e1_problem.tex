@@ -1,0 +1,45 @@
+%=====================================================================
+\section{The problem and the scope}
+\label{sec:problem}
+
+\textbf{Goal (as set by the faculty).} A linear network with one switch and two hosts (h1 -- s1 -- h2). Traffic
+flows between the hosts; the switch computes every JA4+ fingerprint it can, with P4, \emph{correctly}, including
+when a message is split over several packets or its packets arrive out of order (``the server's 2nd packet may
+come first''). A controller is part of the design, so that higher-level programs can drive the switch. Nothing
+else: no attack mitigation, no flood protection, no hardware port. The contribution: JA4+ fingerprinting done in
+the P4 data plane.
+
+\textbf{What is fingerprinted.} Before a protocol's session is encrypted (or for protocols that are never
+encrypted), the two sides exchange clear-text messages whose structure depends on the software that sent them:
+
+\begin{center}\footnotesize
+\begin{tabularx}{\textwidth}{l >{\raggedright\arraybackslash}X l l}
+\toprule
+\textbf{Fingerprint} & \textbf{clear-text exchange read} & \textbf{per} & \textbf{reference} \\
+\midrule
+JA4T / JA4TS & client SYN / server SYN-ACK: window, TCP options, MSS, window scale & connection & FoxIO \code{ja4}; tshark \\
+JA4L-C / -S & timing of SYN, SYN-ACK, ACK and the TTLs & connection & FoxIO \code{ja4} \\
+JA4 / JA4S & TLS ClientHello / ServerHello (all versions; the hellos are always clear) & connection & FoxIO \code{ja4} \\
+JA4H & HTTP/1.x request header block & request & FoxIO \code{ja4} \\
+JA4SSH & sizes and directions of SSH packets (SSH payload is encrypted after key exchange) & 200 packets & FoxIO \code{ja4} \\
+JA4D / JA4D6 & DHCP / DHCPv6 messages (never encrypted) & message & FoxIO's Wireshark plugin \\
+JA4X & certificates in a TLS 1.2 (or older) server flight & certificate & FoxIO \code{ja4} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\textbf{Out of reach, by nature:} HTTP/2 and HTTP/3 requests and TLS 1.3 certificates are inside encryption (FoxIO's
+tool computes them only for captures that store the session keys). \textbf{Not implemented, by scope:} JA4 over QUIC
+(its ClientHello is in Initial packets whose keys are derived from public values: readable passively, but v1model
+has no AES or HKDF, so it would need the controller to decrypt), JA4 over DTLS, tunnels (GRE, VXLAN, Geneve: the
+inner headers would need a second parser path), IPv6 extension headers. Section~\ref{sec:coverage} lists what is
+done and what is not, with the reason and what doing it would take.
+
+\textbf{Target.} BMv2 (\code{simple\_switch\_grpc}), the P4-16 v1model architecture, P4Runtime over gRPC. BMv2 is
+the reference software switch of P4; a hardware target (Tofino) has different limits and is not part of this
+project.
+
+\textbf{What ``correct'' means here.} For every fingerprint, the switch's value equals the value FoxIO's own tools
+compute on the same frames, character for character; and every frame leaves the switch unchanged. JA4L is a time
+measurement, so its TTL part must be equal and its latency is reported as a difference distribution (BMv2 timestamps
+a packet when its pipeline takes it up, which a software switch delays by microseconds to milliseconds).

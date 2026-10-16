@@ -1,0 +1,14 @@
+\begin{center}\begin{tabular}{lrrrrr}\toprule
+\textbf{Fingerprint} & \textbf{EXACT} & \textbf{EXPLAINED} & \textbf{WRONG} & \textbf{MISSING} & \textbf{EXTRA}\\\midrule
+JA4T & 7 & 0 & 0 & 0 & 0\\
+JA4TS & 7 & 0 & 0 & 0 & 0\\
+JA4L-C (TTL) & 7 & 0 & 0 & 0 & 0\\
+JA4L-S (TTL) & 7 & 0 & 0 & 0 & 0\\
+JA4 & 3 & 0 & 0 & 0 & 0\\
+JA4S & 3 & 0 & 0 & 0 & 0\\
+JA4H (per connection) & 3 & 0 & 0 & 0 & 0\\
+JA4SSH (per connection) & 1 & 0 & 0 & 0 & 0\\
+JA4X (per chain) & 1 & 0 & 0 & 0 & 0\\
+JA4D / JA4D6 (per message) & 8 & 0 & 0 & 0 & 0\\
+\midrule Total & 47 & 0 & 0 & 0 & 0\\\bottomrule\end{tabular}\end{center}
+One live run of \code{network/run\_live.py}, compared on the frames that entered the switch. \textbf{Forwarding: s1-eth1 $\to$ s1-eth2: 95 of 95; s1-eth2 $\to$ s1-eth1: 85 of 85 frames left the switch unchanged.} JA4L latency (a measurement), difference to the reference over the same frames: 14 halves, median 23~µs, maximum 73~µs. Source: \texttt{results/live/rows.json}.

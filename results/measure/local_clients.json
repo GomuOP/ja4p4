@@ -1,0 +1,77 @@
+[
+ {
+  "kind": "tls",
+  "client": "openssl s_client",
+  "messages": 1
+ },
+ {
+  "kind": "tls",
+  "client": "openssl s_client -tls1_2",
+  "messages": 1
+ },
+ {
+  "kind": "tls",
+  "client": "curl",
+  "messages": 1
+ },
+ {
+  "kind": "tls",
+  "client": "curl --tlsv1.2 --tls-max 1.2",
+  "messages": 1
+ },
+ {
+  "kind": "tls",
+  "client": "wget",
+  "messages": 1
+ },
+ {
+  "kind": "tls",
+  "client": "python requests",
+  "messages": 1
+ },
+ {
+  "kind": "tls",
+  "client": "python urllib",
+  "messages": 1
+ },
+ {
+  "kind": "tls",
+  "client": "busybox wget",
+  "messages": 0
+ },
+ {
+  "kind": "http",
+  "client": "curl",
+  "messages": 1
+ },
+ {
+  "kind": "http",
+  "client": "wget",
+  "messages": 8
+ },
+ {
+  "kind": "http",
+  "client": "python requests",
+  "messages": 1
+ },
+ {
+  "kind": "http",
+  "client": "python urllib",
+  "messages": 1
+ },
+ {
+  "kind": "http",
+  "client": "busybox wget",
+  "messages": 1
+ },
+ {
+  "kind": "tls",
+  "client": "firefox (headless)",
+  "messages": 12
+ },
+ {
+  "kind": "http",
+  "client": "firefox (headless)",
+  "messages": 10
+ }
+]

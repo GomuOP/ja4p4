@@ -1,0 +1,103 @@
+%=====================================================================
+\section{How correctness is checked}
+\label{sec:verif}\label{sec:testing}
+
+\subsection{The replay bench (no root)}
+\begin{figure}[H]\centering
+\begin{tikzpicture}
+  \node[fibox, text width=30mm] (pcap) at (0,0) {capture (.pcap)\\ FoxIO's samples,\\ the live capture};
+  \node[rfbox, text width=40mm] (rp) at (4.8,0) {\code{replay.py}: frames in order,\\ original gaps (max 2 s);\\ client side $\to$ port 1, server $\to$ 2\\ (\code{PortChooser}: SYN sender)};
+  \node[rfbox, text width=26mm] (nn) at (9.2,0) {\code{nanoport.py}\\ nanomsg PAIR\\ = all switch ports};
+  \node[swbox, text width=30mm] (sw) at (13.2,0) {\code{simple\_switch\_grpc}\\ \code{--packet-in ipc://\ldots}\\ free gRPC port};
+  \node[ctbox, text width=30mm] (ct) at (13.2,-2.4) {Controller\\ (same process)};
+  \node[fibox, text width=30mm] (sent) at (4.8,-2.4) {sent.pcap: frames as\\ sent, with send times};
+  \node[fibox, text width=30mm] (out) at (9.2,-2.4) {frames out of the switch};
+  \node[fibox, text width=30mm] (recs) at (13.2,-4.4) {records};
+  \node[rfbox, text width=40mm] (fw) at (7.0,-4.4) {forwarding check: every frame\\ sent came out byte for byte};
+  \draw[arr] (pcap) -- (rp); \draw[arr] (rp) -- (nn); \draw[arr, <->] (nn) -- (sw);
+  \draw[arr, <->] (sw) -- node[lbl, right]{P4Runtime} (ct); \draw[arr] (ct) -- (recs);
+  \draw[arr] (rp) -- (sent); \draw[arr] (nn) -- (out);
+  \draw[arr] (sent) |- (fw); \draw[arr] (out) -- (fw);
+\end{tikzpicture}
+\caption{\code{tools/replay.py}. The real switch binary and the real controller, without network namespaces: BMv2's
+\code{--packet-in} option makes one nanomsg socket stand for all its ports. A warm-up frame goes first (the first
+frame after loading the program reaches the pipeline late). The switch dies with its parent
+(\code{PR\_SET\_PDEATHSIG}), so no run can leave one behind.}
+\end{figure}
+
+\subsection{Comparison against independent references}
+\begin{figure}[H]\centering
+\begin{tikzpicture}
+  \node[fibox, text width=26mm] (o) at (0,0) {original capture};
+  \node[fibox, text width=26mm] (s) at (0,-2.0) {sent.pcap\\ (send times)};
+  \node[rfbox, text width=40mm] (fx) at (4.6,0) {FoxIO \code{ja4} (Rust): JA4T, JA4,\\ JA4S, JA4H, JA4SSH, JA4X};
+  \node[rfbox, text width=40mm] (fl) at (4.6,-2.0) {FoxIO \code{ja4} on sent.pcap: JA4L;\\ tshark: JA4TS};
+  \node[rfbox, text width=40mm] (fd) at (4.6,-3.8) {FoxIO's Wireshark plugin output\\ (stored); else tshark fields: JA4D};
+  \node[ctbox, text width=26mm] (sw) at (4.6,1.8) {switch records};
+  \node[dec] (v) at (10.0,-1.0) {per fingerprint\\ of each connection};
+  \node[rfbox, text width=34mm, align=left] (verd) at (14.0,-1.0) {EXACT: equal\\ WRONG: both, differ\\ MISSING: only reference\\ EXTRA: only switch\\ EXPLAINED: checked by hand\\ JA4L: TTL scored,\\ \quad latency measured};
+  \draw[arr] (o) -- (fx); \draw[arr] (s) -- (fl); \draw[arr] (o) |- (fd);
+  \draw[arr] (fx) -- (v); \draw[arr] (fl) -- (v); \draw[arr] (fd) -| (v); \draw[arr] (sw) -| (v);
+  \draw[arr] (v) -- (verd);
+\end{tikzpicture}
+\caption{\code{tools/compare.py} with \code{tools/reference.py}. JA4 values come from the original capture
+(timing-free); JA4L and JA4TS from the frames as the switch received them, so both sides time the same packets.}
+\end{figure}
+
+\subsection{The live run (root)}
+\begin{figure}[H]\centering
+\begin{tikzpicture}
+  \node[hobox, text width=36mm, align=left] (h1) at (0,0) {\textbf{h1}: curl (3 requests, one\\ of 3 KB), curl TLS 1.3 / 1.2,\\ openssl 2 KB ClientHello,\\ udhcpc, udhcpc6, ssh};
+  \node[swbox, text width=30mm] (s1) at (6,0) {\textbf{s1}: BMv2 with\\ s1-eth1, s1-eth2};
+  \node[hobox, text width=36mm, align=left] (h2) at (12,0) {\textbf{h2}: http.server :80,\\ s\_server :443 (1.3),\\ :8443 (1.2, chain of 2),\\ dnsmasq, sshd};
+  \node[ctbox] (ct) at (6,1.9) {controller};
+  \node[rfbox, text width=60mm] (td) at (6,-2.0) {tcpdump \code{-Q in} / \code{-Q out} on both switch ports};
+  \node[fibox, text width=28mm] (en) at (2,-3.8) {entered.pcap};
+  \node[rfbox, text width=40mm] (fwd) at (10,-3.8) {forwarding: every frame that\\ entered left unchanged};
+  \node[rfbox, text width=40mm] (cmp) at (2,-5.6) {\code{compare\_records}: switch vs\\ references on entered.pcap};
+  \node[fibox, text width=36mm] (rep) at (10,-5.6) {results/live/report.txt,\\ rows.json, records.json};
+  \draw[arr, <->] (h1) -- (s1); \draw[arr, <->] (s1) -- (h2); \draw[arr, <->] (s1) -- (ct);
+  \draw[arr] (s1) -- (td); \draw[arr] (td) -| (en); \draw[arr] (td) -| (fwd);
+  \draw[arr] (en) -- (cmp); \draw[arr] (cmp) -- (rep); \draw[arr] (fwd) -- (rep);
+\end{tikzpicture}
+\caption{\code{network/run\_live.py}: real programs, real TCP stacks (offloads off, so TCP itself splits the large
+messages), the same switch and controller. The clients start only when h2 listens on every server port; every
+client runs under \code{timeout} and its exit status is checked (a failed step is reported); every server's process
+id is kept and only those processes are stopped. \code{tools/live\_tex.py} then writes the results table from \code{rows.json}.}
+\end{figure}
+
+\subsection{The tests: what each one protects}
+\begin{center}\footnotesize
+\begin{tabularx}{\textwidth}{l >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{38mm}}
+\toprule
+\textbf{test} & \textbf{what it sends and expects} & \textbf{protects} \\
+\midrule
+\code{test\_split\_reorder} & real hellos and requests cut into 2--5 pieces: in order, reversed, every permutation of 3, duplicated, overlapping, after 20 other bytes, without the SYN; expected = FoxIO on the message sent whole. 202 cases exact; 8 known limit cases must never be wrong & Stream, Reassembler, the parsers on joined messages \\
+\code{test\_server\_flight\_reorder} & h2's TLS 1.2 flight from the live run (ServerHello, chain of 2, 2,241 bytes) cut as TCP cut it, in every order of 3 pieces, in 100-byte pieces reversed, duplicated, overlapping; expected = FoxIO on the flight sent whole. 19 cases exact; a split ServerHello: JA4S exact, JA4X never wrong & rules (c), (d), (b) for the server; the flight's join \\
+\code{test\_keepalive\_reorder} & on one connection: a whole request, a second request cut into 2 or 3 pieces in 18 orders, a third whole; expected = FoxIO's three JA4H on the requests sent whole, in order. 18 cases exact & rule (e); JA4H in stream order \\
+\code{test\_port\_reuse} & two TLS connections and two SSH sessions, each pair on one four-tuple (FIN, then a new SYN; one SYN repeated); compared with FoxIO by stream & ConnId; records per connection; SSH window on reuse \\
+\code{test\_vlan\_and\_ssh\_port} & TLS in one 802.1Q tag, HTTP in 802.1ad + 802.1Q, the live SSH session on port 2222; compared with FoxIO & VLAN parsing; SSH by banner \\
+\code{test\_controller\_state} & reassembler alone, with a clock passed in: 300 split requests on one connection, an idle direction, 1,000 directions, 100 KB without a start, a false start inside a request & D24 bounds; no early pruning \\
+\code{test\_ja4l\_gaps} & a handshake with 1\,s and 0.5\,s gaps; JA4L within 2\%; JA4T/JA4TS exact & Handshake arithmetic (halving, order) \\
+\code{test\_one\_digest\_per\_packet} & a whole ClientHello / HTTP request on the handshake's ACK: JA4L and the message's fingerprint both reported & the deferred handshake digest \\
+\code{test\_identical\_digests} & 3 identical DHCP offers, 3 identical HTTP requests, 4 identical SSH windows (acknowledgements held back) & the serial numbers \\
+\code{test\_dhcp6\_fqdn} & option 39 with an empty and a real name: \code{n}, \code{d} & the JA4D6 domain flag \\
+\code{test\_capacity\_limits} & lists at and one past each capacity: exact, then ``incomplete'' & every overflow path \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{The measurement study}
+\begin{figure}[H]\centering
+\begin{tikzpicture}
+  \node[hobox, text width=40mm, align=left] (cl) at (0,0) {clients installed here: openssl,\\ curl, wget, Python requests /\\ urllib, busybox, headless Firefox};
+  \node[rfbox, text width=34mm] (rec) at (5.6,0) {local listener: records\\ each client's first message};
+  \node[fibox, text width=26mm] (lp) at (10.4,0) {local.pcap};
+  \node[fibox, text width=40mm] (cor) at (10.4,-2.0) {+ FoxIO samples, live capture,\\ earlier captures (42 in all)};
+  \node[rfbox, text width=40mm] (cnt) at (5.6,-2.0) {tshark (reassembly) and\\ \code{cryptography}: list lengths};
+  \node[fibox, text width=40mm] (res) at (0,-2.0) {per list: p50, p95, p99, max,\\ share within the capacity};
+  \draw[arr] (cl) -- (rec); \draw[arr] (rec) -- (lp); \draw[arr] (lp) -- (cor); \draw[arr] (cor) -- (cnt); \draw[arr] (cnt) -- (res);
+\end{tikzpicture}
+\caption{\code{tools/measure\_field\_counts.py}: are the switch's capacities large enough? (Results:
+Section~\ref{sec:results}.)}
+\end{figure}

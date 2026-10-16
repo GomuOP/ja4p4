@@ -1,0 +1,125 @@
+%=====================================================================
+\section{Questions and answers}
+\label{sec:faq}
+
+\newcommand{\qa}[2]{\par\noindent\textbf{Q: #1}\par\noindent #2\par\medskip}
+
+\qa{What exactly is done in P4, and what is not?}{Every byte of every fingerprinted message is read by the P4
+parser; the per-connection state, the decision what to copy, the JA4L times and the SSH counts are in the P4
+pipeline. Outside P4: sorting, SHA-256, the SSH mode, writing the text, and joining split messages by framing
+(Section~\ref{sec:glance}, D2--D6).}
+
+\qa{Is the controller not doing the real work for split messages?}{No. It only puts bytes in order by their offsets
+and cuts at framing boundaries (TLS record and handshake lengths, the empty line, the certificate list's lengths). It
+then sends the whole message back, and the same P4 parser reads every value. A P4 switch cannot hold packets, so
+some buffer must exist outside; the reading does not move with it.}
+
+\qa{How does the switch handle ``the server's second packet arriving first''?}{From the SYN-ACK the switch knows the
+server's initial sequence number, so it knows every segment's offset in the server's byte stream. A segment at a
+non-zero offset in a direction that has not started is copied (rule (c), Fig.~\ref{fig:copyrules}); when the first
+segment arrives, the controller has every piece and joins them (Section~\ref{sec:seq}). Tested in every order for 2
+and 3 pieces, plus reversed 4 and 5 pieces.}
+
+\qa{Is the server's side (h2) fingerprinted, or only the client's?}{Both. h1's ClientHello offers its versions,
+ciphers, extensions and ALPN: JA4. h2 does not send a list of its own; its ServerHello states its choice (one
+version, one cipher, the extensions it answers, the ALPN it picked): JA4S. In TLS 1.2 h2 then sends its certificate
+chain in the clear: one JA4X per certificate (TLS 1.3 encrypts it). h2's SYN-ACK gives JA4TS, its half of the round
+trip JA4L-S; JA4SSH counts both directions (\code{c\ldots} h1, \code{s\ldots} h2); h2's DHCP replies (Offer,
+Advertise, Reply) get their own JA4D. Only HTTP has no server value: JA4+ fingerprints the request, not the
+response. Live run, TLS 1.2: \code{t120300\_c030\_460f64128655} = TLS 1.2, 3 extensions, no ALPN, cipher
+\code{c030} chosen from h1's 28.}
+
+\qa{h2's messages over several segments, second half first?}{Handled the same way as the client's. From the
+SYN-ACK the switch knows h2's initial sequence number, so every segment of h2 has a known offset. A ServerHello cut
+in pieces is joined like a ClientHello (rules (a), (b), (c)). For the TLS 1.2 certificate flight: a later segment
+that arrives before the ServerHello is copied by rule (c) (h2's direction has not started); the segment with the
+ServerHello starts the flight (rule (d)); later segments are copied by rule (b); the controller cuts the
+certificates out once there is no gap, and sends each back for the switch's DER walk. Tested:
+\code{test\_server\_flight\_reorder}, 19 of 19 orders exact; JA4S also in the 202 split / reorder cases. Limit: a
+ServerHello that is itself split starts no certificate copy, so JA4X is not reported (never wrong); a TLS 1.2
+ServerHello is about 100 bytes, so TCP rarely splits it.}
+
+\qa{Does the same hold for HTTP and SSH split over packets?}{HTTP: yes, for the client's requests (JA4+ has no
+fingerprint of the server's response). A split request is joined like a hello: 76 of the 202 split / reorder cases
+are HTTP. A \emph{later} request on a keep-alive connection, split and second piece first, needs rule (e): pieces
+ahead of a gap in an HTTP direction are copied (18 of 18 orders exact), and the connection's JA4H are listed in
+stream order. SSH: nothing is joined, by definition. JA4SSH counts TCP segments (payload lengths, packets, bare ACKs
+per window of 200), as FoxIO's tool does; joining would make it differ. Counts do not depend on order, and the mode
+takes the smallest length on a tie, so reordering inside a window changes nothing.}
+
+\qa{What happens when a client reuses a port for a new connection?}{The SYN with a new sequence number gives the
+connection a new number (ConnId); every control starts over and the controller opens a new record. An SSH
+connection's last window is reported on that SYN. A repeated SYN (same sequence number) changes nothing. Before this
+fix the second connection's JA4 was lost and two SSH sessions were added into one wrong JA4SSH
+(\code{test\_port\_reuse}).}
+
+\qa{Does it work beyond h1 -- s1 -- h2?}{The fingerprints do not depend on the topology, but some assumptions do:
+both directions of a connection must pass the switch (asymmetric routing breaks JA4TS, JA4L, JA4S, JA4SSH and the
+server-side join), one switch should fingerprint a connection, JA4L depends on where the switch is, and the program
+is written for BMv2, not hardware. Port reuse, VLAN tags, SSH on other ports and bounded controller memory were
+fixed after this review. Section~\ref{sec:assumptions} lists each assumption with its status.}
+
+\qa{VLAN tags? SSH on another port?}{Up to two tags are read (802.1Q, and 802.1ad outside 802.1Q), as FoxIO's tool
+reads them. SSH is recognised on any port by its ``SSH-'' banner, as tshark does under FoxIO's tool; bare ACKs
+before the banner are counted, because FoxIO counts the handshake's ACK (\code{test\_vlan\_and\_ssh\_port}).}
+
+\qa{And without the SYN?}{Then the offsets are learned from the first segment that starts a message; a piece that
+came before it cannot be placed. The switch reports nothing rather than a wrong value (8 limit cases, tested).}
+
+\qa{Why are packets resubmitted? Does that change them?}{The parser skips bytes with \code{advance}, which removes
+them from the emitted packet. Resubmitting runs the original packet again; the second pass parses only Ethernet, so
+all bytes are forwarded unchanged. Checked on every run, frame by frame (9,013 of 9,013).}
+
+\qa{Why a hash of the endpoints and not a table entry per connection?}{The data plane cannot add table entries, and
+waiting for the controller would lose the first packets (and JA4L's SYN time). Hashed register slots exist from the
+first packet; a 32-bit check value detects another connection in the same slot (D8), and a connection number tells
+a new connection on reused ports from the old one (D21).}
+
+\qa{Why does the controller sort and hash instead of the switch?}{v1model has no SHA-256 and no loops in the
+pipeline; the fingerprint is fixed by the values the switch read, so sorting and hashing them elsewhere gives the
+same value. A sorting network in P4 would only be needed on hardware to emit sorted lists (D4).}
+
+\qa{Why 128 ciphers, 64 extensions, 512 bytes of names \ldots?}{Chosen generously, then measured: all 1,238
+lists of 42 captures fit (Section~\ref{sec:results}). Past a capacity the fingerprint is reported incomplete, never
+truncated (tested).}
+
+\qa{Why does a digest carry a serial number?}{BMv2 drops a digest identical to one not yet acknowledged; identical
+DHCP retransmissions, repeated HTTP requests and identical SSH windows were lost. 32 bits is far more than the
+number of unacknowledged digests can reach; wrapping is harmless because the value is never read (D10).}
+
+\qa{Why is JA4L not scored exact?}{It is a time. BMv2 stamps a packet when its pipeline takes it up, which a
+software switch delays (median 0.33\,ms in replay). The TTL part is scored; the latency is reported as a
+distribution; the arithmetic is tested with known 1\,s / 0.5\,s gaps.}
+
+\qa{How do you know the fingerprints are right?}{FoxIO's own tools compute the reference on the same frames:
+573 exact, 5 differences explained by hand (the reference cannot decode those streams), 0 wrong, 0 missing, 0 extra;
+the live Mininet run with real programs adds every fingerprint again: 49 of 49 exact, 196 of 196 frames forwarded
+unchanged.}
+
+\qa{What are the 5 EXPLAINED rows?}{One SOCKS4 ServerHello on port 9901 whose ClientHello is missing from the
+capture, so FoxIO's tool decodes no TLS there (decoded by hand: equal to the switch). Four SSH streams that are
+malformed or SSH version 1, where tshark refuses a few segments as SSH; the switch counts every port-22 payload
+segment.}
+
+\qa{Is fingerprinting complete in every respect?}{No, and the project does not claim it. What the evidence
+supports: for clear-text TCP and DHCP traffic, every JA4+ fingerprint computable without keys matches FoxIO's tools,
+for messages whole, split, reordered, duplicated or overlapping, from both sides (573 exact on FoxIO's samples,
+47 of 47 in the final live run, 27 tests). Not done: JA4 over QUIC and DTLS, tunnels, IPv6 extension headers; two
+cases are not tested (several Cookie headers, a HelloRetryRequest's second ClientHello). Section~\ref{sec:coverage}
+gives each item with the reason it is not done and what doing it would take.}
+
+\qa{What is not covered?}{Section~\ref{sec:limits}, known limits: encrypted content (HTTP/2, HTTP/3, TLS 1.3
+certificates), QUIC and DTLS, tunnels, IPv6 extension headers, more than two VLAN tags; and the deployment
+assumptions of Section~\ref{sec:assumptions}.}
+
+\qa{Can a higher-level program drive the switch?}{Yes: through P4Runtime, as the controller does (write
+\code{forward}, enable digests, send packet-out). The controller's Python class is the API; another P4Runtime client
+can replace it.}
+
+\qa{Where does each result file come from?}{\code{results/compare\_all.json}: \code{make compare};
+\code{results/live/}: \code{make live} (which also writes \code{results\_live.tex}); \code{results/measure/}: \code{tools/measure\_field\_counts.py};
+the PDFs' tables: \code{docs/results\_*.tex}, written from those files.}
+
+\qa{How is this document kept current?}{Both PDFs include the same problems table (\code{docs/problems.tex}) and
+results tables (\code{docs/results\_*.tex}). Every fix adds a row to the problems table; every design change updates
+the matching section here. \code{make docs} builds both.}

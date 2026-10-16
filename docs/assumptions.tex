@@ -1,0 +1,31 @@
+% Shared by design.tex and detailed_architecture.tex: what the project assumes, why it holds on h1 -- s1 -- h2, and
+% what changes on a real network. Every new assumption or deployment note goes here.
+{\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{30mm} >{\raggedright\arraybackslash}p{34mm} >{\raggedright\arraybackslash}p{46mm} >{\raggedright\arraybackslash}p{40mm}}
+\toprule
+\textbf{Assumption} & \textbf{Holds here because} & \textbf{On a real network} & \textbf{Status} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\multicolumn{4}{l}{\textit{Where the switch sits}} \\[2pt]
+both directions of a connection pass through the switch & one path between h1 and h2 & with asymmetric routing (ECMP, several uplinks) one switch may see one direction: JA4TS, JA4L, JA4S, JA4SSH and the server-side join need the other & a deployment requirement: place the switch where both directions pass (an access or edge link) \\[3pt]
+one switch fingerprints a connection & one switch & several P4 switches on a path would each report the same connection & a deployment choice: one fingerprinting point per path, or deduplicate in the controller by endpoints and time \\[3pt]
+JA4L measures from the switch & the switch is between h1 and h2 & JA4L-C is switch$\leftrightarrow$client, JA4L-S switch$\leftrightarrow$server: the values depend on where the switch is (FoxIO measures at the server) & correct for an observer in the path; stated with the results \\[3pt]
+\multicolumn{4}{l}{\textit{Identifying connections and roles}} \\[2pt]
+endpoints identify a connection & every run used fresh ports & clients and NATs reuse ports & \textbf{fixed}: a connection number (ConnId, D21); \code{test\_port\_reuse} \\[3pt]
+the client is the SYN sender & every connection starts with a SYN in the captures & a capture or a switch that starts mid-connection sees no SYN & the ClientHello or request sender is then the client; for SSH on port 22 the port; tested without the SYN (limit cases never wrong) \\[3pt]
+SSH runs on port 22 & sshd listened on 22 & SSH on other ports is common & \textbf{fixed}: recognised by its banner, as FoxIO's tool does (D23) \\[3pt]
+frames are untagged & Mininet's links carry no VLANs & access and trunk links carry 802.1Q / 802.1ad tags & \textbf{fixed}: up to two tags (D23); more: forwarded, not fingerprinted \\[3pt]
+two connections never share a slot & a few connections per run & with many connections, two can hash to the same of 65,536 slots & detected by the 32-bit check (never mixed); the older loses its remaining state; slots are one constant \\[3pt]
+the same addresses are not in use in two VLANs & one network & overlapping address spaces in different VLANs give the same slot & the VLAN id is not part of the key: a one-line change if needed \\[3pt]
+\multicolumn{4}{l}{\textit{Load and memory}} \\[2pt]
+split messages are uncommon & most test messages fit in a segment & current Chrome and Firefox ClientHellos carry post-quantum key shares (about 2 KB) and are always split: on browser traffic the controller's join is the common path for JA4 & correctness unaffected (the switch still reads every byte); the controller path's throughput is part of the performance evaluation \\[3pt]
+the controller's state fits in memory & runs of seconds & runs of days & \textbf{fixed} for the reassembler (D24); records are kept until the run ends and written as JSON: a long-running deployment exports and drops them \\[3pt]
+the machine is idle & tests run alone & BMv2 is software: a busy CPU delays pipeline pick-up, which JA4L measures & JA4L reported as a measurement; the gap test needs an idle machine; hardware stamps on arrival \\[3pt]
+\multicolumn{4}{l}{\textit{The target}} \\[2pt]
+the program runs on BMv2 (v1model) & BMv2 is the software target & a hardware target (Tofino) would not compile it as written: parser loops over hundreds of bytes, \code{advance}, resubmit for every walked packet, 2,048-bit fields, 16 KB windows & the claim is fingerprinting in a P4 data plane on a software target; a hardware port is a separate design \\[3pt]
+only h1 and h2 send into the switch & Mininet's links & the switch's interfaces (s1-eth1, s1-eth2) live in the VM's own network namespace, so the VM's operating system also sends frames on them (IPv6 neighbour discovery, multicast listener reports, mDNS); the switch takes them in and forwards them like any frame (seen in a live run with the switch's trace log: 30 such frames) & harmless here (nothing the switch fingerprints); on a real switch only the cables' traffic arrives \\[3pt]
+forwarding is port 1 $\leftrightarrow$ port 2 & two hosts & a real switch forwards by MAC or IP tables & independent of fingerprinting: the \code{forward} table can be any forwarding \\[3pt]
+\end{longtable}
+}

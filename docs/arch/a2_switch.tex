@@ -1,0 +1,283 @@
+%=====================================================================
+\section{Inside the switch}
+\label{sec:switch}
+
+\subsection{Life of a packet through the pipeline}
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}
+  \node[term] (in) at (0,0) {frame arrives on port 1 or 2 (or from the controller, port 255)};
+  \node[dec] (inst) at (0,-1.4) {second pass\\ (resubmit)?};
+  \node[swbox, text width=34mm] (eth) at (5,-1.4) {parse Ethernet only:\\ every other byte stays payload};
+  \node[dec] (cpu) at (0,-2.9) {from port 255?};
+  \node[swbox, text width=34mm] (po) at (5,-2.9) {read \code{packet\_out}: reinjected = 1,\\ kind, certificate index};
+  \node[swbox, text width=50mm] (l34) at (0,-4.3) {parse Ethernet (up to two VLAN tags), IPv4\\ (+options) or IPv6, TCP and every option byte, or UDP};
+  \node[dec] (pay) at (0,-5.8) {message in\\ the payload?};
+  \node[swbox, text width=34mm] (walk) at (-4.3,-7.3) {whole message: walk it\\ (TLS hello, HTTP request,\\ DHCP, certificate):\\ values $\to$ metadata};
+  \node[swbox, text width=34mm] (inc) at (4.3,-7.3) {message starts here but\\ continues later:\\ mark \code{incomplete}};
+  \node[swbox, text width=64mm] (ing) at (0,-9.0) {\textbf{Ingress}: forward table, ConnKey, ConnId, Handshake, Stream (copy?),\\ Tls, Http, Ssh, Dhcp, X509 $\to$ digests to the controller};
+  \node[dec] (wk) at (0,-10.6) {bytes consumed, or\\ a 2nd digest due?};
+  \node[swbox, text width=34mm] (rs) at (5,-10.6) {\code{resubmit}: the original\\ packet runs again, keeping\\ inPort, connection number\\ and the handshake record};
+  \node[swbox, text width=64mm] (eg) at (0,-12.1) {\textbf{Egress}: if \code{copy}: clone (E2E) to session 100, the CPU port;\\ on the clone: fill \code{packet\_in} (offset, direction, start, type)};
+  \node[swbox, text width=64mm] (dp) at (0,-13.4) {\textbf{Deparser}: emit the extracted headers, then the payload};
+  \node[term] (o1) at (-2.8,-14.7) {out of the other port,\\ byte for byte unchanged};
+  \node[term] (o2) at (2.8,-14.7) {copy to the controller\\ (packet-in)};
+  \draw[arr] (in) -- (inst);
+  \draw[arr] (inst) -- node[lbl, above]{yes} (eth);
+  \draw[arr] (inst) -- node[lbl, right]{no} (cpu);
+  \draw[arr] (cpu) -- node[lbl, above]{yes} (po);
+  \draw[arr] (po.south) |- ($(l34.east)+(0,0)$);
+  \draw[arr] (cpu) -- node[lbl, right]{no} (l34);
+  \draw[arr] (l34) -- (pay);
+  \draw[arr] (pay) -| node[lbl, above, pos=0.3]{whole} (walk);
+  \draw[arr] (pay) -| node[lbl, above, pos=0.3]{partial} (inc);
+  \draw[arr] (pay) -- node[lbl]{none} (ing);
+  \draw[arr] (walk) |- ($(ing.north west)+(6mm,0)$) -- ++(0,-0.01);
+  \draw[arr] (inc) |- ($(ing.north east)+(-6mm,0)$) -- ++(0,-0.01);
+  \draw[arr] (eth.east) -- (7.4,-1.4) |- ($(ing.east)+(0,0)$);
+  \draw[arr] (ing) -- (wk);
+  \draw[arr] (wk) -- node[lbl, above]{yes} (rs);
+  \draw[arr] (rs.east) -- (8.0,-10.6) |- (in.east);
+  \draw[arr] (wk) -- node[lbl, right]{no} (eg);
+  \draw[arr] (eg) -- (dp); \draw[arr] (dp) -- (o1); \draw[arr] (dp) -- (o2);
+\end{tikzpicture}
+\caption{One packet's path (\code{p4/parser.p4}, \code{p4/main.p4}). A walk reads a message with \code{advance},
+which removes the read bytes from the packet: such a packet is \emph{resubmitted}, and on the second pass only
+Ethernet is parsed, so the original bytes are forwarded. A packet from the controller (port 255) is read the same
+way but never forwarded.}
+\label{fig:life}
+\end{figure}
+
+\why{\code{advance} is the only way for a v1model parser to skip bytes it does not extract; extracting every byte
+into headers would need header stacks thousands of entries long and the deparser would have to re-emit all of
+them. Skipping and forwarding the untouched original on a second pass keeps the walk cheap and the forwarding
+exact (checked frame by frame: 9,013 of 9,013).}
+\whynot{\emph{Clone first, then walk the clone:} an ingress clone is parsed again from the start, so it would
+lose its bytes the same way. \emph{Recirculate:} goes through egress and the deparser, which would emit the already
+shortened packet.}
+
+%---------------------------------------------------------------------
+\subsection{The parser: top-level state machine}
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}
+  \node[st] (start) at (0,0) {start};
+  \node[st] (ethonly) at (4,0) {parse\_ethernet\_only\\ (second pass)};
+  \node[st, fill=white] (acc) at (8,0) {accept};
+  \node[st] (po) at (0,-1.2) {parse\_packet\_out};
+  \node[st] (eth) at (0,-2.4) {parse\_ethernet};
+  \node[st] (vl) at (-5.8,-2.4) {parse\_vlan\_outer /\\ parse\_vlan\_inner};
+  \node[st] (v4) at (-2.6,-3.6) {parse\_ipv4 (+options)};
+  \node[st] (v6) at (2.6,-3.6) {parse\_ipv6};
+  \node[st] (tcp) at (-2.6,-4.9) {parse\_tcp};
+  \node[st] (udp) at (2.6,-4.9) {parse\_udp};
+  \node[st] (opt) at (-2.6,-6.1) {TCP option walk (Fig.~\ref{fig:opt})};
+  \node[st] (d4) at (1.4,-6.1) {DHCPv4 walk (67/68)};
+  \node[st] (d6) at (4.6,-6.1) {DHCPv6 walk (546/547)};
+  \node[st] (tp) at (-2.6,-7.3) {tcp\_payload\\ (``SSH-''? noted)};
+  \node[st] (x) at (-6.4,-8.7) {x509\_start\\ (Fig.~\ref{fig:x509})};
+  \node[st] (short) at (-2.6,-8.7) {tls\_short};
+  \node[st] (peek) at (1.4,-8.7) {tls\_peek};
+  \node[st] (inc) at (-2.6,-10.1) {tls\_incomplete /\\ http\_incomplete};
+  \node[st] (tlschk) at (1.4,-10.1) {tls\_check $\to$ TLS walk};
+  \node[st] (httpchk) at (5.4,-10.1) {http\_check $\to$ HTTP walk};
+  \draw[arr] (start) -- node[lbl]{resubmit} (ethonly);
+  \draw[arr] (ethonly) -- (acc);
+  \draw[arr] (start) -- node[lbl, right]{port 255} (po);
+  \draw[arr] (start.west) -- (-1.6,0) |- node[lbl, pos=0.25, left]{other} (eth.west);
+  \draw[arr] (po) -- (eth);
+  \draw[arr] (eth) -- node[lbl]{0x0800} (v4); \draw[arr] (eth) -- node[lbl]{0x86DD} (v6);
+  \draw[arr] (eth) -- node[lbl, above]{0x8100 / 0x88A8} (vl); \draw[arr] (vl) |- node[lbl, pos=0.3, left]{IPv4} (v4);
+  \draw[arr] (v4) -- node[lbl, left]{6} (tcp); \draw[arr] (v6) -- node[lbl, right]{17} (udp);
+  \draw[arr] (v4.south east) -- node[lbl, pos=0.75]{17} (udp.north west); \draw[arr] (v6.south west) -- node[lbl, pos=0.75]{6} (tcp.north east);
+  \draw[arr] (tcp) -- (opt); \draw[arr] (opt) -- (tp);
+  \draw[arr] (udp) -- (d4); \draw[arr] (udp) -- (d6);
+  \draw[arr] (tp) -| node[lbl, pos=0.3, above]{kind 3 (certificate)} (x);
+  \draw[arr] (tp) -- node[lbl, right]{1--8 bytes} (short);
+  \draw[arr] (tp) -| node[lbl, pos=0.3, above]{$\ge$ 9 bytes} (peek);
+  \draw[arr] (short) -- node[lbl, left]{0x16 or a\\ method letter} (inc);
+  \draw[arr] (peek) -- node[lbl, right]{0x16 0x03, type 1 / 2} (tlschk);
+  \draw[arr] (peek) -| node[lbl, pos=0.3, above]{else} (httpchk);
+\end{tikzpicture}
+\caption{The parser's top level (\code{parser.p4} with \code{parser\_tls.p4}, \code{parser\_http.p4},
+\code{parser\_dhcp.p4}, \code{parser\_x509.p4} included inside it). IPv4 fragments other than the first are not
+read beyond IP. Anything not matched goes to \code{accept}: the packet is still forwarded.}
+\end{figure}
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}
+  \node[st] (next) at (0,0) {opt\_next\\ left = 0?};
+  \node[st] (kind) at (3.2,0) {opt\_kind: lookahead\\ kind, extract 1 byte,\\ append kind};
+  \node[st] (lc) at (6.6,0) {opt\_len\_check:\\ room for the\\ length byte?};
+  \node[st] (len) at (9.8,0) {opt\_len: lookahead\\ length, extract};
+  \node[st] (pad) at (13.6,0) {opt\_padding:\\ malformed, rest\\ kept, not read};
+  \node[st, fill=white] (pay) at (0,-2.4) {tcp\_payload};
+  \node[st] (skip) at (3.3,-2.4) {opt\_skip: extract\\ the body byte by byte};
+  \node[st] (ws) at (6.5,-2.4) {opt\_wscale: lookahead\\ 8 bits, extract 1};
+  \node[st] (mss) at (9.7,-2.4) {opt\_mss: lookahead\\ 16 bits, extract 2};
+  \draw[arr] (next) -- node[lbl, above=1mm]{no} (kind);
+  \draw[arr] (next) -- node[lbl, right]{yes} (pay);
+  \draw[arr] (kind) -- node[lbl, above=1mm]{kind $\ge$ 2} (lc);
+  \draw[arr] (kind.north) -- ++(0,0.55) -| node[lbl, pos=0.25]{0 (EOL), 1 (NOP): one byte, continue} (next.north);
+  \draw[arr] (lc) -- node[lbl, above=1mm]{yes} (len);
+  \draw[arr] (len) -- node[lbl, above=2mm]{len $<$ 2 or\\ too long} (pad);
+  \draw[arr] (len) -- node[lbl, right]{2, len 4} (mss);
+  \draw[arr] (len) -- node[lbl, pos=0.45]{3, len 3} (ws);
+  \draw[arr] (len) -- node[lbl, pos=0.3]{other} (skip);
+  \draw[arr] (pad.south) -- (13.6,-3.7) -| (pay.south);
+  \draw[arr] (mss.south) -- (9.7,-3.3) -- (-1.7,-3.3) |- (next.west);
+  \draw (ws.south) -- (6.5,-3.3); \draw (skip.south) -- (3.3,-3.3);
+\end{tikzpicture}
+\caption{TCP option walk (\code{parser.p4}): \code{left} = data offset $\times$ 4 $-$ 20 counts the option bytes
+still to read, so the walk never reads payload. Every byte is \emph{extracted} (into \code{hdr.tcp\_opt}), so the
+deparser re-emits the options unchanged and this walk needs no second pass. EOL is a one-byte option and the walk
+continues: FoxIO (through tshark) lists every padding byte after EOL as another 0.}
+\label{fig:opt}
+\end{figure}
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}
+  \node[st] (peek) at (0,0) {tls\_peek: 9 bytes:\\ record + handshake header};
+  \node[st] (chk) at (4.0,0) {tls\_check\\ hsLen + 9 $\le$ payLen and\\ hsLen + 4 $\le$ recLen};
+  \node[st] (hello) at (8.2,0) {tls\_hello: version,\\ random, session id};
+  \node[st] (inc) at (4.0,-1.8) {tls\_incomplete};
+  \node[st] (ch) at (7.0,-1.8) {ch\_ciphers: value by value,\\ GREASE? capacity?};
+  \node[st] (sh) at (10.6,-1.8) {sh\_body: the\\ chosen cipher};
+  \node[st] (ext) at (8.2,-3.5) {ext\_block: type, length\\ (appended in order)};
+  \node[st] (sk) at (12.2,-3.5) {ext\_skip: the rest\\ of a body};
+  \node[st] (sni) at (1.2,-5.3) {SNI (0): present};
+  \node[st] (alpn) at (4.6,-5.3) {ALPN (16): first name's\\ length, first, last byte};
+  \node[st] (sv) at (8.6,-5.3) {supported\_versions (43):\\ highest non-GREASE};
+  \node[st] (sig) at (12.4,-5.3) {signature\_algorithms (13):\\ value by value};
+  \draw[arr] (peek) -- (chk); \draw[arr] (chk) -- node[lbl]{yes} (hello);
+  \draw[arr] (chk) -- node[lbl, right]{no} (inc);
+  \draw[arr] (hello) -- node[lbl]{1} (ch); \draw[arr] (hello) -- node[lbl]{2} (sh);
+  \draw[arr] (ch) -- (ext); \draw[arr] (sh) -- (ext);
+  \draw[arr] (ext) -- (sni); \draw[arr] (ext) -- (alpn); \draw[arr] (ext) -- (sv); \draw[arr] (ext) -- (sig);
+  \draw[arr] (ext) -- (sk);
+\end{tikzpicture}
+\caption{TLS hello walk (\code{parser\_tls.p4}). Each list value is read with \code{lookahead} and skipped with
+\code{advance}; a GREASE value (\code{0x?a?a}, equal bytes) goes back to the loop without being kept; a value
+beyond the capacity sets an overflow bit. Every extension type is appended in order (client: without GREASE).}
+\end{figure}
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}
+  \node[st] (m) at (0,0) {method: bytes up to\\ the space};
+  \node[st] (t) at (3.6,0) {target: skipped up to\\ the space};
+  \node[st] (v) at (7.2,0) {version: the last 8 bytes\\ of the line};
+  \node[st] (n) at (7.2,-1.9) {header name: bytes\\ appended to names;\\ lower-cased copy kept};
+  \node[st] (end) at (11.2,-1.9) {empty line (CR LF\\ or bare LF):\\ parsed = 1};
+  \node[st] (k) at (3.6,-1.9) {is it cookie, referer\\ or accept-language?};
+  \node[st] (cv) at (0,-3.8) {Cookie value: pairs\\ split at "; " (a zero\\ byte between pairs)};
+  \node[st] (lv) at (3.6,-3.8) {Accept-Language: up to\\ 4 characters before ',',\\ '-' dropped};
+  \node[st] (val) at (7.2,-3.8) {any other value:\\ skipped to the line end};
+  \draw[arr] (m) -- (t); \draw[arr] (t) -- (v); \draw[arr] (v) -- (n); \draw[arr] (n) -- node[lbl]{':'} (k);
+  \draw[arr] (k) -- node[lbl]{cookie} (cv); \draw[arr] (k) -- node[lbl, right]{language} (lv);
+  \draw[arr] (k) -- node[lbl]{other} (val);
+  \draw[arr] (n) -- node[lbl]{empty} (end);
+  \draw[arr] (val.east) -| ($(n.south)+(4mm,0)$);
+\end{tikzpicture}
+\caption{HTTP request walk (\code{parser\_http.p4}), one byte per state. A name is appended to the names list as
+it is read; when it turns out to be Cookie or Referer (excluded from JA4H's name list), the last 6 or 7 bytes are
+removed with a constant-width slice. If the payload ends before the empty line, \code{incomplete} is set instead.}
+\end{figure}
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[node distance=4mm and 5mm]
+  \node[st] (tlv) {\textbf{tlv}: read tag,\\ length (short /\\ 0x8n long form)};
+  \node[st, right=14mm of tlv] (ret) {select on\\ \code{meta.x509.ret}};
+  \node[st, right=14mm of ret, yshift=14mm] (r1) {R\_CERT, R\_TBS:\\ enter SEQUENCE};
+  \node[st, below=of r1] (r2) {R\_VERSION, R\_SERIAL,\\ R\_SIGALG, R\_VALIDITY,\\ R\_SPKI: skip};
+  \node[st, below=of r2] (r3) {R\_NAME, R\_SET, R\_ATV:\\ countdowns nameLeft,\\ setLeft, itemLeft};
+  \node[st, below=of r3] (r4) {R\_OID: copy\\ $\langle$len$\rangle\langle$bytes$\rangle$ to\\ issuer / subject / exts};
+  \node[st, below=of r4] (r5) {R\_EXTSEQ, R\_EXT:\\ extension OIDs};
+  \draw[arr] (tlv) -- (ret);
+  \foreach \n in {r1,r2,r3,r4,r5} \draw[arr] (ret.east) -- (\n.west);
+  \draw[arr] (r3.south west) to[bend left=15] node[lbl]{next element:\\ set \code{ret}, go to tlv} (tlv.south);
+\end{tikzpicture}
+\caption{DER walk (\code{parser\_x509.p4}). A P4 parser has no calls, so one shared \code{tlv} reader is entered
+with a ``return code'' and a \code{select} on it continues in the right state. Nesting ends are known from byte
+countdowns per level, so no stack is needed.}
+\label{fig:x509}
+\end{figure}
+
+%---------------------------------------------------------------------
+\subsection{Ingress: the order of the controls}
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}
+  \node[swbox, text width=52mm] (fw) at (0,0) {inPort := ingress\_port (not on a resubmit);\\ from the controller? drop : \code{forward.apply()}};
+  \node[dec] (rs) at (0,-1.5) {second pass?};
+  \node[term] (nothing) at (5.4,-1.5) {nothing more: the original\\ is forwarded (and copied)};
+  \node[dec] (tcp) at (0,-2.9) {TCP?};
+  \node[swbox, text width=40mm] (udp) at (4.6,-2.9) {UDP: \textbf{Dhcp}; walked? resubmit};
+  \node[swbox, text width=52mm] (ck) at (0,-4.1) {\textbf{ConnKey}: slot (CRC16), check (CRC32)};
+  \node[swbox, text width=52mm] (cid) at (0,-5.0) {\textbf{ConnId}: the connection's number};
+  \node[swbox, text width=52mm] (hs) at (0,-5.9) {\textbf{Handshake} (real packets only): JA4T / JA4TS / JA4L};
+  \node[dec] (k) at (0,-7.2) {kind?};
+  \node[swbox, text width=30mm] (cert) at (-2.7,-8.6) {\textbf{Stream} + \textbf{X509}};
+  \node[swbox, text width=30mm] (msg) at (2.4,-8.6) {\textbf{Stream} + \textbf{Tls} + \textbf{Http}};
+  \node[swbox, text width=52mm] (ssh) at (0,-9.8) {\textbf{Ssh} (real packets and the flush): counts};
+  \node[swbox, text width=52mm] (re) at (0,-10.7) {walked? \code{resubmit\_preserving\_field\_list(0)}};
+  \node[swbox, text width=52mm] (hd) at (0,-11.9) {the handshake digest, from one call; postponed\\ to the second pass if this pass sent another digest};
+  \draw[arr] (fw) -- (rs); \draw[arr] (rs) -- node[lbl, above]{yes} (nothing);
+  \draw[arr] (rs) -- node[lbl, right]{no} (tcp); \draw[arr] (tcp) -- node[lbl, above]{UDP} (udp);
+  \draw[arr] (tcp) -- node[lbl, right]{yes} (ck); \draw[arr] (ck) -- (cid); \draw[arr] (cid) -- (hs); \draw[arr] (hs) -- (k);
+  \draw[arr] (k) -| node[lbl, above, pos=0.3]{3 (certificate)} (cert); \draw[arr] (k) -| node[lbl, above, pos=0.3]{0 or 1} (msg);
+  \draw[arr] (k.east) -- node[lbl, above, pos=0.7]{2 (flush)} (5.2,-7.2) |- ($(ssh.east)+(0,0.1)$);
+  \draw[arr] (cert) |- (ssh.west); \draw[arr] (msg) |- ($(ssh.east)+(0,-0.1)$);
+  \draw[arr] (ssh) -- (re); \draw[arr] (re) -- (hd);
+  \draw[arr] (nothing.east) -- (8.2,-1.5) |- ($(hd.east)+(0,0.12)$);
+  \draw[arr] (udp.south) -- (4.6,-11.78) -- ($(hd.east)+(0,-0.12)$);
+\end{tikzpicture}
+\caption{\code{MyIngress} in \code{main.p4}. ``kind'' is the packet-out kind of a packet from the controller (0
+for a real packet): 1 a joined message, 2 an SSH flush (Ssh only), 3 a certificate. Ssh runs after Stream, which
+sets the packet's direction (client or server) that Ssh needs on ports other than 22.}
+\end{figure}
+
+\why{Every control is applied exactly once and in this order because (a) BMv2 allows a table / control instance
+to be applied in one place only, (b) Stream must see the parse result (incomplete, parsed) before Tls/Http decide
+to report, and (c) BMv2 keeps \emph{one digest per packet}: the handshake digest is therefore taken out of
+Handshake and sent at the end, from one call, and postponed to the second pass when this pass sends a message
+digest (the handshake's ACK can carry a whole ClientHello) or Ssh's digest (on the SYN of a reused port, the previous
+connection's last window; on an SSH banner piggybacked on the handshake's ACK).}
+
+%---------------------------------------------------------------------
+\subsection{Per-connection state}
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[node distance=4mm and 6mm, every node/.style={font=\scriptsize}]
+  \node[swbox, text width=40mm] (k) {endpoints in a fixed order:\\ smaller (address, port) first};
+  \node[swbox, right=of k, text width=32mm] (h1) {slot = CRC16(ver, a1, p1, a2, p2)\\ mod 65,536};
+  \node[swbox, below=of h1, text width=32mm] (h2) {check = CRC32(same)};
+  \node[swbox, right=of h1, text width=50mm, yshift=-6mm, minimum height=26mm, align=left] (regs) {\textbf{registers[slot]}\\
+    ConnId: check, number, SYN sequence number\\
+    Handshake: number, state, tSYN, tSYNACK, TTLs\\
+    Stream: number, client side, ISNs, started, pending,\\ \quad pendingSeq, edge, gap, gap open, HTTP seen\\
+    Tls: number, done (bit 0 CH, bit 1 SH)\\
+    Http: number, seen, last request seq\\
+    Ssh: number, 4 counts, batch (8$\times$16 bits), count,\\ \quad banner seen};
+  \draw[arr] (k) -- (h1); \draw[arr] (k) |- (h2);
+  \draw[arr] (h1) -- (h1 -| regs.west); \draw[arr] (h2) -- (h2 -| regs.west);
+  \node[dec, below=12mm of regs] (m) {stored number =\\ connection's number?};
+  \node[term, left=10mm of m] (same) {same connection:\\ use the state};
+  \node[term, right=6mm of m] (new) {another one: start\\ fresh, take the slot};
+  \draw[arr] (regs) -- (m); \draw[arr] (m) -- node[lbl, above]{yes} (same); \draw[arr] (m) -- node[lbl, above]{no} (new);
+\end{tikzpicture}
+\caption{ConnKey and ConnId (\code{main.p4}) and the registers. Both directions of a connection find the same slot.
+ConnId gives the connection a number: a new one when another connection (a different check) comes to the slot, and
+when a SYN with a new initial sequence number arrives on the same endpoints (port reuse); a repeated SYN keeps it.
+Every control keeps its state with this number, and every digest and copy carries it.}
+\end{figure}
+
+\why{A P4 switch cannot insert table entries itself, so per-connection state lives in register arrays indexed by a
+hash. CRC16 gives the index; the independent CRC32 tells two connections in one slot apart with a 1 in $2^{32}$
+chance of a false match.}
+\why{\emph{The connection number}: the endpoints alone do not identify a connection. A client, and much faster a NAT,
+reuses addresses and ports for a new connection after the old one closed. Before the number, the second
+connection's fingerprints were dropped by the controller (it kept the first value per endpoints) and SSH counts of
+the two connections were added together into a wrong JA4SSH (found by \code{test\_port\_reuse}).}
+\whynot{\emph{The controller installs one table entry per connection:} each new connection would wait for a
+round trip to the controller before its SYN state exists, and the SYN's timestamp (JA4L) would be lost.
+\emph{A larger hash:} 65,536 slots is plenty for one link of a test network; the size is one constant.}

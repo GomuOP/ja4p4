@@ -1,0 +1,95 @@
+%=====================================================================
+\section{Each fingerprint, end to end}
+\label{sec:fps}
+
+Every fingerprint follows the same three steps: \textcolor{swd}{\textbf{the switch reads}} (parser + control,
+state in registers), \textcolor{swd}{\textbf{sends a digest}}, \textcolor{ctd}{\textbf{the controller writes the
+text}}. The figures show each step and the anatomy of the result.
+
+\newcommand{\fpstrip}[4]{%
+\begin{tikzpicture}
+  \node[swbox, text width=46mm, align=left, minimum height=20mm] (a) at (0,0) {#1};
+  \node[swbox, text width=40mm, align=left, minimum height=20mm] (b) at (5.4,0) {#2};
+  \node[ctbox, text width=46mm, align=left, minimum height=20mm] (c) at (10.8,0) {#3};
+  \draw[arr] (a) -- (b); \draw[arr] (b) -- node[lbl, above=2mm]{digest} (c);
+  \node[fibox, text width=158mm, align=left, font=\scriptsize] at (5.4,-1.75) {#4};
+\end{tikzpicture}}
+
+\subsection{JA4T, JA4TS, JA4L: the TCP handshake}
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}
+  \node[st, fill=white] (e) at (0,0) {EMPTY};
+  \node[st] (syn) at (3.6,0) {SYN\\ (A, client TTL)};
+  \node[st] (sa) at (7.6,0) {SYNACK\\ (B, server TTL)};
+  \node[st] (done) at (11.6,0) {DONE};
+  \node[st] (so) at (5.6,-2.0) {SYNACK\_ONLY\\ (no SYN seen)};
+  \draw[arr] (e) -- node[lbl, above=1mm]{first SYN:\\ JA4T} (syn);
+  \draw[arr] (syn) -- node[lbl, above=1mm]{first SYN-ACK:\\ JA4TS} (sa);
+  \draw[arr] (sa) -- node[lbl, above=1mm]{ACK, no SYN: JA4L\\ C$-$B / 2, B$-$A / 2} (done);
+  \draw[arr] (e) |- node[lbl, pos=0.75, above]{SYN-ACK first: JA4TS only} (so);
+  \draw[arr] (done.north) -- ++(0,0.6) -| node[lbl, pos=0.25, above]{a new SYN (port reused): start over} (syn.north);
+\end{tikzpicture}
+\caption{\code{p4/handshake.p4}: one state per connection slot. A repeated SYN or SYN-ACK changes nothing (the
+reference also takes the first). Time = the switch's ingress timestamp in microseconds.}
+\end{figure}
+
+\begin{figure}[H]\centering
+\fpstrip{\textbf{parser}: every TCP option byte; kinds in order, MSS (kind 2), window scale (kind 3); window from
+the TCP header}{\textbf{Handshake}: state machine above; timestamps and TTLs in registers; JA4L computed in the
+switch}{\textbf{handshake.py}: \code{window\_kinds\_mss\_scale}; JA4L: \code{latency\_ttl} for each half}%
+{JA4T = \textbf{64240}\_\textbf{2-4-8-1-3}\_\textbf{1460}\_\textbf{7}: window \_ option kinds in order \_ MSS \_ window
+scale (00 if absent) \quad JA4TS: same, of the SYN-ACK \quad JA4L-C = \textbf{1320}\_\textbf{64}: (ACK $-$ SYN-ACK)/2
+in $\mu$s \_ client TTL; JA4L-S: (SYN-ACK $-$ SYN)/2 \_ server TTL}
+\end{figure}
+
+\subsection{JA4 and JA4S: TLS hellos}
+\begin{figure}[H]\centering
+\fpstrip{\textbf{parser\_tls.p4}: complete hello only; legacy and supported versions, SNI present, every cipher
+and extension (GREASE out), signature algorithms, first ALPN name}{\textbf{Tls}: once per connection and
+direction (\code{tlsDone} bits); a split hello is walked when the controller sends it back}{\textbf{tls.py}: version
+code, counts, ALPN chars; sorted ciphers and extensions (SNI, ALPN out); SHA-256, 12 hex digits}%
+{JA4 = \textbf{t13d1516h2}\_\textbf{8daaf6152771}\_\textbf{02713d6af862}: t = TCP, 13 = TLS 1.3, d = SNI present
+(i: absent), 15 ciphers, 16 extensions, h2 = first and last character of the first ALPN \_ hash(sorted ciphers) \_
+hash(sorted extensions \_ signature algorithms in order)\quad JA4S = \textbf{t130200}\_\textbf{1302}\_\textbf{a56c5b993250}:
+version, extension count, ALPN \_ chosen cipher \_ hash(extensions in order)}
+\end{figure}
+
+\subsection{JA4H: HTTP requests}
+\begin{figure}[H]\centering
+\fpstrip{\textbf{parser\_http.p4}: method, version, every header name (case kept), Cookie pairs, Accept-Language
+(4 chars), Referer present}{\textbf{Http}: one per request; a retransmission (same sequence number) not twice;
+serial number; the request's sequence number}{\textbf{http.py}: method code, version, flags, count, language;
+hash(names), hash(sorted cookie names), hash(sorted cookie pairs); a connection's list kept in stream order}%
+{JA4H = \textbf{ge11cr04engb}\_\textbf{8ddaef5d77af}\_\textbf{3645093e176f}\_\textbf{b1c22010166d}: ge = GET, 11 =
+HTTP/1.1, c = cookie, r = referer, 04 headers (without Cookie, Referer), engb = language \_ hash(header names in
+order) \_ hash(sorted cookie names) \_ hash(sorted cookie name=value pairs)}
+\end{figure}
+
+\subsection{JA4SSH: SSH packet sizes}
+\begin{figure}[H]\centering
+\fpstrip{\textbf{parser}: TCP on port 22, or a connection whose data begins with ``SSH-'' (any port; bare ACKs
+before the banner count too). An SSH packet = a segment with payload; a bare ACK = no payload, flags exactly ACK}{\textbf{Ssh}: counts per direction; lengths in batches of 8; window closes at 200 SSH packets;
+flush at the end}{\textbf{ssh.py}: histogram of the window's lengths per direction; mode (smallest on a tie)}%
+{JA4SSH = \textbf{c36s52}\_\textbf{c100s100}\_\textbf{c0s0}: most frequent client / server payload length \_ client /
+server SSH packets \_ client / server bare ACKs (one value per window of 200 packets)}
+\end{figure}
+
+\subsection{JA4D and JA4D6: DHCP}
+\begin{figure}[H]\centering
+\fpstrip{\textbf{parser\_dhcp.p4}: v4 options after the 240-byte header; v6 options including nested ones in
+packet order}{\textbf{Dhcp}: one digest per message (not a connection); serial number}{\textbf{dhcp.py}: type name
+(5 letters), size, flags, lists joined by '-'}%
+{JA4D = \textbf{disco0576nn}\_\textbf{57-55-60-61}\_\textbf{1-3-6-12-15-28-42}: type, max message size (v6: DUID
+length), i = requested IP (v6: IA\_TA), d = a domain name in the FQDN option \_ option codes (v4 without 0, 50, 53, 81,
+255) \_ requested codes}
+\end{figure}
+
+\subsection{JA4X: certificates}
+\begin{figure}[H]\centering
+\fpstrip{\textbf{parser\_x509.p4}: the DER walk of one certificate sent back by the controller; OIDs of issuer,
+subject, extensions}{\textbf{X509}: one digest per certificate, with its index in the chain}{\textbf{x509.py}: each
+OID as hex, joined by ','; SHA-256, 12 hex digits per list}%
+{JA4X = \textbf{a373a9f83c6b}\_\textbf{2e9214a636bc}\_\textbf{a4df8b54db06}: hash(issuer attribute OIDs) \_
+hash(subject attribute OIDs) \_ hash(extension OIDs), per certificate of a TLS 1.2 (or older) chain}
+\end{figure}

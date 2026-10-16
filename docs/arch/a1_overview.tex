@@ -1,0 +1,178 @@
+%=====================================================================
+\section{The system at a glance}
+\label{sec:glance}
+
+\textbf{What it does.} Two hosts talk through one P4 switch. Before any protocol encrypts its session, the two sides
+exchange clear-text messages (TCP handshake, TLS hellos, HTTP request headers, SSH packet sizes, DHCP options,
+TLS 1.2 certificates). The switch reads those messages \emph{in its P4 parser and pipeline} while forwarding every
+packet unchanged, and produces the ten JA4+ fingerprints. A controller next to it writes the final text.
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[node distance=5mm and 6mm, every node/.style={font=\small}]
+  % hosts
+  \node[hobox, text width=26mm, minimum height=34mm] (h1) {\textbf{h1} (client)\\ 10.0.0.1, fd00::1\\[2pt]\scriptsize curl, openssl,\\ \scriptsize udhcpc, ssh,\\ \scriptsize browsers};
+  % switch
+  \node[swbox, right=12mm of h1, text width=20mm, minimum height=10mm, yshift=12mm] (par) {Parser\\ \scriptsize read fields};
+  \node[swbox, below=3mm of par, text width=20mm, minimum height=10mm] (ing) {Ingress\\ \scriptsize state, digests};
+  \node[swbox, below=3mm of ing, text width=20mm, minimum height=8mm] (eg) {Egress\\ \scriptsize copies};
+  \node[swbox, right=4mm of ing, text width=17mm, minimum height=22mm] (reg) {Registers\\ \scriptsize per-connection\\ \scriptsize state (65,536\\ \scriptsize slots)};
+  \node[grp, draw=swd, fit=(par)(ing)(eg)(reg), label={[font=\small\bfseries, text=swd]above:s1: BMv2 \code{simple\_switch\_grpc}, \code{p4/main.p4}}] (s1) {};
+  % h2
+  \node[hobox, right=12mm of s1, text width=26mm, minimum height=34mm] (h2) {\textbf{h2} (server)\\ 10.0.0.2, fd00::2\\[2pt]\scriptsize http.server,\\ \scriptsize openssl s\_server,\\ \scriptsize dnsmasq, sshd};
+  \draw[arr, <->] (h1) -- node[lbl, above]{port 1} (h1 -| s1.west);
+  \draw[arr, <->] (s1.east |- h2) -- node[lbl, above]{port 2} (h2);
+  % controller
+  \node[ctbox, below=14mm of s1, text width=70mm, minimum height=14mm] (ctl) {\textbf{Controller} (\code{controller/}, Python)\\ \scriptsize joins split messages by framing only $\cdot$ sorts lists $\cdot$ SHA-256 $\cdot$ writes FoxIO's text};
+  \draw[arr] ($(s1.south)+(-18mm,0)$) -- node[lbl]{digests\\(fields read)} ($(ctl.north)+(-18mm,0)$);
+  \draw[arr] ($(s1.south)+(0,0)$) -- node[lbl]{packet-in\\(copied segments)} ($(ctl.north)+(0,0)$);
+  \draw[arr] ($(ctl.north)+(18mm,0)$) -- node[lbl]{packet-out\\(joined message)} ($(s1.south)+(18mm,0)$);
+  % outputs
+  \node[fibox, below=7mm of ctl, text width=70mm] (out) {records: one per connection, every fingerprint\\ e.g. ja4=t13d1516h2\_8daaf6152771\_02713d6af862};
+  \draw[arr] (ctl) -- (out);
+  % verification
+  \node[rfbox, left=8mm of out, text width=34mm] (ref) {FoxIO's \code{ja4} tool,\\ tshark: \textbf{references}\\ \scriptsize on the same frames};
+  \node[rfbox, right=8mm of out, text width=34mm] (cmp) {\code{tools/compare.py}\\ EXACT / WRONG /\\ MISSING / EXTRA};
+  \draw[arr] (out) -- (cmp); \draw[arr] (ref.south) |- ++(0,-5mm) -| (cmp.south);
+\end{tikzpicture}
+\caption{The whole system. Every packet is forwarded unchanged between the hosts; the switch reads the clear-text
+exchange and reports what it read; the controller only orders bytes and writes text; independent tools check the
+result.}
+\label{fig:glance}
+\end{figure}
+
+\subsection{Who does what, and why the line is drawn there}
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[node distance=4mm]
+  \node[swbox, text width=50mm, align=left, minimum height=56mm, anchor=north west] (s) at (0,0) {\textbf{Switch (P4) --- reads}\\[2pt]\scriptsize
+  $\bullet$ parses Ethernet, IPv4/IPv6, TCP, UDP\\
+  $\bullet$ walks every TCP option byte\\
+  $\bullet$ walks TLS hellos value by value, drops GREASE\\
+  $\bullet$ walks HTTP request headers byte by byte\\
+  $\bullet$ walks DHCPv4 / DHCPv6 options\\
+  $\bullet$ walks X.509 DER (certificates)\\
+  $\bullet$ timestamps the handshake, computes JA4L\\
+  $\bullet$ counts SSH packets and ACKs per window\\
+  $\bullet$ per-connection state in registers\\
+  $\bullet$ decides which segments the controller must see\\
+  $\bullet$ forwards every packet byte for byte};
+  \node[ctbox, text width=50mm, align=left, minimum height=56mm, anchor=north west] (c) at (5.65,0) {\textbf{Controller (Python) --- writes}\\[2pt]\scriptsize
+  $\bullet$ loads the program, fills \code{forward}\\
+  $\bullet$ receives digests: the values read\\
+  $\bullet$ sorts cipher / extension lists\\
+  $\bullet$ SHA-256, first 12 hex digits\\
+  $\bullet$ writes FoxIO's text formats\\
+  $\bullet$ mode of SSH lengths (histogram)\\
+  $\bullet$ \emph{joins} split messages by framing\\
+  \hphantom{$\bullet$} (TLS records, empty line, DER lengths)\\
+  \hphantom{$\bullet$} and sends them back to be read\\
+  $\bullet$ never reads a fingerprint field\\
+  $\bullet$ keeps one record per connection};
+  \node[rfbox, text width=50mm, align=left, minimum height=56mm, anchor=north west] (t) at (11.3,0) {\textbf{Tools (Python) --- check}\\[2pt]\scriptsize
+  $\bullet$ replay captures into the real switch\\
+  \hphantom{$\bullet$} without root (nanomsg ports)\\
+  $\bullet$ FoxIO's Rust tool and tshark as\\
+  \hphantom{$\bullet$} independent references\\
+  $\bullet$ verdict per fingerprint\\
+  $\bullet$ forwarding check per frame\\
+  $\bullet$ live run in Mininet\\
+  $\bullet$ measurement of list lengths\\
+  $\bullet$ unit tests: split, reorder, limits,\\
+  \hphantom{$\bullet$} digests, JA4L arithmetic};
+\end{tikzpicture}
+\caption{The division of work. The line: everything that must look at packet bytes to extract a fingerprint
+value is in P4; what P4 on this target cannot do (sort, SHA-256, a histogram, text) is in the controller, working
+only on values the switch extracted.}
+\end{figure}
+
+\why{The project's claim is ``fingerprinting done in P4''. Reading the clear-text exchange (the variable-length
+parsing, GREASE, completeness, per-connection state, timing) is the hard part and is done in the data plane. The
+v1model / BMv2 target has no SHA-256 extern, no loops outside the parser, no sorting, and no strings; those last
+steps are cheap, need no packet bytes, and are done by the controller on the switch's output.}
+
+\whynot{(1) The controller could parse whole packets sent to it (packet-in of every packet): that would be a
+software fingerprinter with a switch in front, not P4 fingerprinting. (2) Sorting and hashing in P4: possible only
+with a sorting network sized to the list (many pipeline stages on hardware) and a hash the target does not have;
+the result would be identical and the claim no stronger. (3) No controller at all: the switch would have nowhere
+to put the text, and split messages could not be joined (a P4 switch cannot hold packets back).}
+
+%---------------------------------------------------------------------
+\subsection{Map of the code: every file, what it feeds}
+\label{sec:map}
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[node distance=2.2mm, every node/.style={font=\scriptsize}]
+  % P4 column
+  \node[swbox, text width=34mm, font=\scriptsize] (main) {\code{p4/main.p4}\\ ingress / egress / deparser};
+  \node[swbox, text width=34mm, font=\scriptsize, above=of main] (hdr) {\code{p4/headers.p4}\\ headers, metadata, digests};
+  \node[swbox, text width=34mm, font=\scriptsize, below=of main] (par) {\code{p4/parser.p4}\\ L2--L4, TCP options};
+  \node[swbox, text width=34mm, font=\scriptsize, below=of par] (ptls) {\code{parser\_tls.p4} TLS hellos};
+  \node[swbox, text width=34mm, font=\scriptsize, below=of ptls] (phttp) {\code{parser\_http.p4} HTTP};
+  \node[swbox, text width=34mm, font=\scriptsize, below=of phttp] (pdhcp) {\code{parser\_dhcp.p4} DHCP};
+  \node[swbox, text width=34mm, font=\scriptsize, below=of pdhcp] (px509) {\code{parser\_x509.p4} DER};
+  \node[swbox, text width=34mm, font=\scriptsize, below=of px509] (ctrls) {\code{handshake stream tls http}\\ \code{ssh dhcp x509 .p4}: controls};
+  \node[grp, draw=swd, fit=(hdr)(ctrls), label={[text=swd, font=\small\bfseries]above:data plane}] (gp4) {};
+  % build
+  \node[fibox, right=8mm of main, text width=30mm, yshift=6mm] (json) {build/main.json\\ build/main.p4info.txtpb};
+  \node[hobox, above=4mm of json, text width=30mm] (p4c) {\code{p4c} (make build)};
+  \draw[arr] (gp4.east |- p4c) -- (p4c); \draw[arr] (p4c) -- (json);
+  % controller column
+  \node[ctbox, right=8mm of json, text width=36mm, font=\scriptsize, yshift=-6mm] (cmain) {\code{controller/main.py}\\ Controller: dispatch};
+  \node[ctbox, above=of cmain, text width=36mm, font=\scriptsize] (client) {\code{p4runtime\_client.py}\\ gRPC, digests, packet I/O};
+  \node[ctbox, below=of cmain, text width=36mm, font=\scriptsize] (fmt) {\code{handshake tls http ssh}\\ \code{dhcp x509 .py}: text};
+  \node[ctbox, below=of fmt, text width=36mm, font=\scriptsize] (reasm) {\code{reassembly.py}\\ join by framing};
+  \node[ctbox, below=of reasm, text width=36mm, font=\scriptsize] (recs) {\code{records.py}\\ one record per connection};
+  \node[grp, draw=ctd, fit=(client)(recs), label={[text=ctd, font=\small\bfseries]above:controller}] (gct) {};
+  \draw[arr] (json) -- (json -| gct.west);
+  % tools
+  \node[rfbox, below=12mm of json, text width=30mm, font=\scriptsize] (replay) {\code{tools/replay.py}\\ bench, no root};
+  \node[rfbox, below=of replay, text width=30mm, font=\scriptsize] (nano) {\code{tools/nanoport.py}\\ switch ports};
+  \node[rfbox, below=of nano, text width=30mm, font=\scriptsize] (cmp) {\code{tools/compare.py}\\ verdicts};
+  \node[rfbox, below=of cmp, text width=30mm, font=\scriptsize] (ref) {\code{tools/reference.py}\\ FoxIO, tshark};
+  \node[rfbox, below=of ref, text width=34mm, font=\scriptsize] (meas) {\code{tools/measure\_field\_}\\ \code{counts.py}};
+  \node[hobox, below=of meas, text width=30mm, font=\scriptsize] (live) {\code{network/run\_live.py}\\ Mininet h1--s1--h2};
+  \node[rfbox, below=of live, text width=30mm, font=\scriptsize] (tests) {\code{tests/} (11 files)};
+  \draw[arr] (replay) -- (replay -| gct.west);
+  \draw[arr] (live.east) -- (live -| gct.west);
+  % results
+  \node[fibox, below=5mm of gct, text width=36mm] (res) {results/compare\_all.json\\ results/live/*\\ results/measure/*};
+  \draw[arr] (cmp.east) -- (cmp -| res.west) ; \draw[arr] (meas.east) -| ($(res.south west)+(4mm,0)$);
+  \node[fibox, below=5mm of res, text width=36mm] (pdf) {docs/*.pdf\\ (results\_*.tex, problems.tex)};
+  \draw[arr] (res) -- (pdf);
+\end{tikzpicture}
+\caption{Every code file and what it feeds. \code{make build} compiles the P4 files into the program the switch
+runs; the controller loads it and talks to the switch; the tools drive switch + controller (replay without root, or
+the live Mininet network), compare with the references and write results, which the PDFs include.}
+\label{fig:map}
+\end{figure}
+
+%---------------------------------------------------------------------
+\subsection{Build and run: what each command produces}
+
+\begin{figure}[H]\centering
+\begin{tikzpicture}[node distance=4mm and 6mm, every node/.style={font=\scriptsize}]
+  \node[term] (b) {\code{make build}};
+  \node[hobox, right=of b, text width=36mm, font=\scriptsize] (p4c) {p4c --target bmv2\\ --arch v1model};
+  \node[fibox, right=of p4c, text width=34mm] (j) {build/main.json (program)\\ build/main.p4info.txtpb (names, ids)};
+  \draw[arr] (b) -- (p4c); \draw[arr] (p4c) -- (j);
+  \node[term, below=9mm of b] (c) {\code{make compare}};
+  \node[rfbox, right=of c, text width=36mm, font=\scriptsize] (c1) {replay FoxIO's sample\\ captures through\\ switch + controller};
+  \node[fibox, right=of c1, text width=34mm] (c2) {verdict per fingerprint,\\ forwarding check;\\ results/compare\_all.json};
+  \draw[arr] (c) -- (c1); \draw[arr] (c1) -- (c2);
+  \node[term, below=9mm of c] (t) {\code{make test}};
+  \node[rfbox, right=of t, text width=36mm, font=\scriptsize] (t1) {11 test files, 27 tests\\ (crafted traffic)};
+  \node[fibox, right=of t1, text width=34mm] (t2) {OK / FAILED; split/reorder\\ 202 cases, 8 limit cases};
+  \draw[arr] (t) -- (t1); \draw[arr] (t1) -- (t2);
+  \node[term, below=9mm of t] (l) {\code{sudo \ldots\ make live}};
+  \node[hobox, right=of l, text width=36mm, font=\scriptsize] (l1) {Mininet h1--s1--h2,\\ real servers + clients};
+  \node[fibox, right=of l1, text width=34mm] (l2) {results/live/report.txt,\\ rows.json, captures};
+  \draw[arr] (l) -- (l1); \draw[arr] (l1) -- (l2);
+  \node[term, below=9mm of l] (m) {\code{python3 -m tools.measure\_field\_counts --local}};
+  \node[fibox, right=of m, text width=34mm, xshift=0mm] (m2) {results/measure/\\ field\_counts.json};
+  \draw[arr] (m) -- (m2);
+  \node[term, below=9mm of m] (d) {\code{make docs}};
+  \node[fibox, right=of d, text width=40mm] (d2) {docs/design.pdf,\\ docs/detailed\_architecture.pdf};
+  \draw[arr] (d) -- (d2);
+\end{tikzpicture}
+\caption{Commands and their outputs. Only \code{make live} needs root (Mininet's network namespaces).}
+\end{figure}

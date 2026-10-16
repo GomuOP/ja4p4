@@ -1,0 +1,66 @@
+% Shared by design.tex and detailed_architecture.tex: what is done, what is not, and why not.
+% Keep it in step with every change: a gap closed moves from the second table to the first.
+
+\textbf{The claim the evidence supports.} For clear-text TCP and DHCP traffic through the switch, every JA4+
+fingerprint that can be computed passively without keys (JA4, JA4S, JA4H, JA4X, JA4T, JA4TS, JA4L, JA4SSH, JA4D,
+JA4D6) is computed in the P4 data plane and matches FoxIO's own tools, for messages whole, split, reordered,
+duplicated or overlapping, sent by the client or by the server. The project does \emph{not} claim that
+fingerprinting is complete in every respect: the second table lists what is missing and why.
+
+\subsubsection*{Done, and the evidence}
+{\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{24mm} >{\raggedright\arraybackslash}p{40mm} >{\raggedright\arraybackslash}p{24mm} >{\raggedright\arraybackslash}p{60mm}}
+\toprule
+\textbf{Fingerprint} & \textbf{FoxIO's samples} (exact / explained) & \textbf{final live run} & \textbf{tests} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+JA4T, JA4TS & 62, 51 & 7, 7 & split / reorder bench; port reuse; VLAN; one digest per packet \\
+JA4L (C, S) & TTL 51 / 51; latency as a measurement (median 331\,µs off the reference) & 7, 7 & \code{test\_ja4l\_gaps} (1\,s and 0.5\,s gaps, within 2\,\%; needs an idle machine) \\
+JA4 & 152 & 3 (one hello split by TCP) & 202 split / reorder cases; capacity edges; port reuse; VLAN \\
+JA4S & 92 / 1 & 3 & split / reorder (ServerHello); server flight in 19 orders \\
+JA4H & 72 (per connection) & 3 (one 3\,KB request split by TCP) & split / reorder (HTTP); keep-alive in 18 orders; capacity; identical requests; two VLAN tags \\
+JA4X & 26 (per chain) & 1 chain of 2 & server flight in 19 orders \\
+JA4SSH & 6 / 4 & 1 & identical windows; port reuse; SSH on port 2222 \\
+JA4D, JA4D6 & 10 & 8 (Discover, Offer, Request, ACK; Solicit, Advertise, Request, Reply) & identical messages; DHCPv6 empty name; capacity \\
+\midrule
+forwarding & 9,013 / 9,013 frames unchanged & 182 / 182 & every replay test \\
+\end{longtable}
+}
+
+\clearpage
+\subsubsection*{Not done, or not proven, and why}
+{\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{32mm} >{\raggedright\arraybackslash}p{28mm} >{\raggedright\arraybackslash}p{50mm} >{\raggedright\arraybackslash}p{38mm}}
+\toprule
+\textbf{What} & \textbf{Effect} & \textbf{Why it is not done} & \textbf{What doing it would take} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\multicolumn{4}{l}{\textit{Fingerprints not implemented}} \\[2pt]
+JA4 over QUIC (\code{q\ldots}), the client's HTTP/3 & no JA4 for HTTP/3 browser traffic, a large share of real traffic & the scope set for the project is TCP and DHCP. QUIC carries the ClientHello in Initial packets protected with keys derived from public values (HKDF over the connection id, AES-GCM, header protection): readable passively, so FoxIO computes it, but v1model has no AES or HKDF, so the P4 pipeline cannot decrypt & the controller decrypts the Initial packets and sends the CRYPTO frames back for the same TLS parser (as joined messages are now); a scope decision for the faculty \\[3pt]
+JA4 over DTLS (\code{d\ldots}) & no JA4 for DTLS (WebRTC, VPNs) & not in the scope; not in the test traffic & a DTLS record parser in front of the TLS walk (clear hellos, no decryption) \\[3pt]
+JA4TScan & -- & an \emph{active} fingerprint (it sends probes); a switch that observes traffic does not probe & not applicable \\[3pt]
+\multicolumn{4}{l}{\textit{Traffic not read}} \\[2pt]
+tunnels (GRE, VXLAN, Geneve) & inner connections forwarded, not fingerprinted; 3 FoxIO captures excluded & not in the scope (no tunnels on h1 -- s1 -- h2) & a second parser path for the inner headers, the key on the inner endpoints \\[3pt]
+IPv6 extension headers & such packets forwarded, not fingerprinted & none in the test traffic; not yet written & a parser loop over the extension headers (hop-by-hop, routing, destination options, first fragment) \\[3pt]
+more than two VLAN tags & forwarded, not fingerprinted & not used on access links & one more parser state per tag \\[3pt]
+encrypted content: HTTP/2, HTTP/3 requests, TLS 1.3 certificates & no JA4H / JA4X there & impossible without the session keys; FoxIO computes them only from captures that store the keys (16 JA4H and 3 JA4X not compared) & not possible on the wire \\[3pt]
+\multicolumn{4}{l}{\textit{Documented limits (the value is missing, never wrong; each one tested)}} \\[2pt]
+a piece before its message's first segment, no SYN seen & that message not reported & without the SYN the offset of an early piece is unknown, so it cannot be placed & not possible without the SYN \\[3pt]
+a TLS hello after other bytes (SOCKS), split and out of order & not reported & rule (e) covers HTTP directions only; copying after every gap in TLS connections would be load for a rare case & extend (e) to a direction whose first message was not a hello \\[3pt]
+a TLS 1.2 ServerHello itself split & no JA4X for that flight & the certificate copy starts at a ServerHello that is complete in one segment; a ServerHello is about 100 bytes, so this is rare & start the flight copy when the joined ServerHello comes back \\[3pt]
+two connections in one slot at once & the older loses its remaining state & 65,536 hashed slots, detected by the 32-bit check & more slots (one constant) or buckets \\[3pt]
+lists longer than the capacities & reported ``incomplete'' & fixed-size fields in P4; measured: 1,238 of 1,238 lists in 42 captures fit & larger fields (cost: metadata and digest size) \\[3pt]
+\multicolumn{4}{l}{\textit{Not tested, so not proven}} \\[2pt]
+several Cookie headers in one request & the switch uses the first one's pairs; FoxIO's behaviour not checked & no sample has it & a test against FoxIO's tool \\[3pt]
+a second ClientHello after a TLS 1.3 HelloRetryRequest & the switch reports the first only (once per direction); FoxIO's behaviour not checked & no sample has it & a test against FoxIO's tool \\[3pt]
+\multicolumn{4}{l}{\textit{Measurement and evidence}} \\[2pt]
+JA4L on BMv2 & the time is stamped when the pipeline takes the packet up; on a busy CPU that is late & a property of the software target, not of the program; the TTL part is exact & a hardware target stamps on arrival \\[3pt]
+the corpus & FoxIO's 33 sample captures, the live runs and generated cases, not a large real-world capture & evaluation is the next phase of the project & a real-traffic evaluation (planned) \\[3pt]
+\multicolumn{4}{l}{\textit{Deployment (not fingerprinting bugs; see the assumptions table)}} \\[2pt]
+both directions through one switch; one fingerprinting point; BMv2 only & see the assumptions table & properties of where the switch is placed and of the target & placement rules; a hardware port is a separate design \\[3pt]
+\end{longtable}
+}

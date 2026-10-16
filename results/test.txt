@@ -1,0 +1,131 @@
+python3 -m unittest tests.test_ja4l_gaps tests.test_one_digest_per_packet tests.test_identical_digests \
+                    tests.test_dhcp6_fqdn tests.test_capacity_limits tests.test_split_reorder \
+                    tests.test_server_flight_reorder tests.test_port_reuse tests.test_keepalive_reorder \
+                    tests.test_controller_state tests.test_vlan_and_ssh_port
+<frozen importlib._bootstrap_external>:753: ResourceWarning: unclosed file <_io.FileIO name='/home/gomtesh/ja4/pcap/http1-with-cookies.pcapng' mode='rb' closefd=True>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+WARNING: getmacbyip failed on [Errno 1] Operation not permitted
+WARNING: Mac address to reach destination not found. Using broadcast.
+WARNING: getmacbyip failed on [Errno 1] Operation not permitted
+WARNING: Mac address to reach destination not found. Using broadcast.
+WARNING: more getmacbyip failed on [Errno 1] Operation not permitted
+WARNING: more Mac address to reach destination not found. Using broadcast.
+./home/gomtesh/p4dev-python-venv/lib/python3.12/site-packages/scapy/packet.py:1673: ResourceWarning: unclosed file <_io.FileIO name='/home/gomtesh/ja4/pcap/latest.pcapng' mode='rb' closefd=True>
+  def __new__(cls, *args, **kargs):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+../home/gomtesh/p4dev-python-venv/lib/python3.12/site-packages/scapy/packet.py:1103: ResourceWarning: unclosed file <_io.BufferedReader name='/home/gomtesh/ja4/pcap/http1-with-cookies.pcapng'>
+  def loop(todo, done, self=self):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+./home/gomtesh/Desktop/ja4p4_withoutrunreport/simpleja4p4/tools/replay.py:163: ResourceWarning: unclosed file <_io.BufferedReader name='/tmp/identical-ssh-4i4jeyrs/ssh.pcap'>
+  for pkt in PcapReader(str(pcap)):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+...../home/gomtesh/p4dev-python-venv/lib/python3.12/site-packages/scapy/packet.py:484: ResourceWarning: unclosed file <_io.FileIO name='/home/gomtesh/ja4/pcap/sigalg-grease.pcapng' mode='rb' closefd=True>
+  def __setattr__(self, attr, val):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.12/threading.py:287: ResourceWarning: unclosed file <_io.FileIO name='/home/gomtesh/ja4/pcap/latest.pcapng' mode='rb' closefd=True>
+  if hasattr(lock, '_release_save'):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.12/threading.py:287: ResourceWarning: unclosed file <_io.FileIO name='/home/gomtesh/ja4/pcap/http1-with-cookies.pcapng' mode='rb' closefd=True>
+  if hasattr(lock, '_release_save'):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/gomtesh/p4dev-python-venv/lib/python3.12/site-packages/scapy/packet.py:176: ResourceWarning: unclosed file <_io.BufferedReader name='/home/gomtesh/ja4/pcap/latest.pcapng'>
+  continue
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+...../home/gomtesh/p4dev-python-venv/lib/python3.12/site-packages/scapy/packet.py:1673: ResourceWarning: unclosed file <_io.FileIO name='/home/gomtesh/ja4/pcap/latest.pcapng' mode='rb' closefd=True>
+  def __new__(cls, *args, **kargs):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/gomtesh/p4dev-python-venv/lib/python3.12/site-packages/scapy/packet.py:1673: ResourceWarning: unclosed file <_io.FileIO name='/home/gomtesh/ja4/pcap/sigalg-grease.pcapng' mode='rb' closefd=True>
+  def __new__(cls, *args, **kargs):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/gomtesh/Desktop/ja4p4_withoutrunreport/simpleja4p4/tests/test_port_reuse.py:56: ResourceWarning: unclosed file <_io.BufferedReader name='/home/gomtesh/Desktop/ja4p4_withoutrunreport/simpleja4p4/tests/data/ssh_session.pcap'>
+  frames = list(PcapReader(str(ROOT / "tests/data/ssh_session.pcap")))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/gomtesh/Desktop/ja4p4_withoutrunreport/simpleja4p4/tools/replay.py:163: ResourceWarning: unclosed file <_io.BufferedReader name='/tmp/reuse-bue0mzoe/reuse.pcap'>
+  for pkt in PcapReader(str(pcap)):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+........../home/gomtesh/p4dev-python-venv/lib/python3.12/site-packages/scapy/packet.py:1673: ResourceWarning: unclosed file <_io.FileIO name='/home/gomtesh/ja4/pcap/latest.pcapng' mode='rb' closefd=True>
+  def __new__(cls, *args, **kargs):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/gomtesh/p4dev-python-venv/lib/python3.12/site-packages/scapy/packet.py:1673: ResourceWarning: unclosed file <_io.FileIO name='/home/gomtesh/ja4/pcap/http1-with-cookies.pcapng' mode='rb' closefd=True>
+  def __new__(cls, *args, **kargs):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/gomtesh/Desktop/ja4p4_withoutrunreport/simpleja4p4/tests/test_port_reuse.py:56: ResourceWarning: unclosed file <_io.BufferedReader name='/home/gomtesh/Desktop/ja4p4_withoutrunreport/simpleja4p4/tests/data/ssh_session.pcap'>
+  frames = list(PcapReader(str(ROOT / "tests/data/ssh_session.pcap")))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/gomtesh/Desktop/ja4p4_withoutrunreport/simpleja4p4/tools/replay.py:163: ResourceWarning: unclosed file <_io.BufferedReader name='/tmp/vlan-kt7d9qiq/vlan.pcap'>
+  for pkt in PcapReader(str(pcap)):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.F.
+======================================================================
+FAIL: test_every_fingerprint_exact (tests.test_vlan_and_ssh_port.TestVlanAndSshPort.test_every_fingerprint_exact)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gomtesh/Desktop/ja4p4_withoutrunreport/simpleja4p4/tests/test_vlan_and_ssh_port.py", line 74, in test_every_fingerprint_exact
+    self.assertEqual([r for r in self.rows if r["verdict"] != "EXACT"], [])
+AssertionError: Lists differ: [{'conn': ('10.5.0.1', 42022, '10.5.0.2', [91 chars]RA'}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'conn': ('10.5.0.1', 42022, '10.5.0.2', 2222), 'name': 'ja4ssh', 'switch': ['c43s43_c7s6_c7s6'], 'reference': None, 'verdict': 'EXTRA'}
+
++ []
+- [{'conn': ('10.5.0.1', 42022, '10.5.0.2', 2222),
+-   'name': 'ja4ssh',
+-   'reference': None,
+-   'switch': ['c43s43_c7s6_c7s6'],
+-   'verdict': 'EXTRA'}]
+
+----------------------------------------------------------------------
+Ran 27 tests in 118.151s
+
+FAILED (failures=1)
+
+202 of 202 cases exact
+
+  limit case ClientHello, 2,039 bytes (Chrome, post-quantum key share) / no SYN seen, second piece first: not reported
+
+  limit case ClientHello, 2,039 bytes (Chrome, post-quantum key share) / after 20 other bytes, split, second piece first: not reported
+
+  limit case ClientHello, 517 bytes (Firefox) / no SYN seen, second piece first: not reported
+
+  limit case ClientHello, 517 bytes (Firefox) / after 20 other bytes, split, second piece first: not reported
+
+  limit case ServerHello (TLS 1.3) / no SYN seen, second piece first: not reported
+
+  limit case ServerHello (TLS 1.3) / after 20 other bytes, split, second piece first: not reported
+
+  limit case HTTP request with cookies (FoxIO sample) / no SYN seen, second piece first: not reported
+
+  limit case HTTP request, 1,700 bytes (browser-like) / no SYN seen, second piece first: not reported
+
+19 of 19 cases exact (JA4S and both JA4X)
+
+  limit case ServerHello split at 40, in order: JA4S exact, JA4X not reported
+
+  limit case ServerHello split at 40, reversed: JA4S exact, JA4X not reported
+
+  EXACT    ja4t    8192_00_00_00  ('10.3.0.1', 40022, '10.3.0.2', 22)
+  EXACT    ja4ts   8192_00_00_00  ('10.3.0.1', 40022, '10.3.0.2', 22)
+  EXACT    ja4ssh  ['c43s43_c7s6_c7s6']  ('10.3.0.1', 40022, '10.3.0.2', 22)
+  EXACT    ja4t    8192_00_00_00  ('10.3.0.1', 40022, '10.3.0.2', 22, 2)
+  EXACT    ja4ts   8192_00_00_00  ('10.3.0.1', 40022, '10.3.0.2', 22, 2)
+  EXACT    ja4ssh  ['c43s43_c7s6_c7s6']  ('10.3.0.1', 40022, '10.3.0.2', 22, 2)
+  EXACT    ja4t    8192_00_00_00  ('10.3.0.1', 40443, '10.3.0.2', 443)
+  EXACT    ja4ts   8192_00_00_00  ('10.3.0.1', 40443, '10.3.0.2', 443)
+  EXACT    ja4     t13d1516h2_8daaf6152771_e5627efa2ab1  ('10.3.0.1', 40443, '10.3.0.2', 443)
+  EXACT    ja4t    8192_00_00_00  ('10.3.0.1', 40443, '10.3.0.2', 443, 2)
+  EXACT    ja4ts   8192_00_00_00  ('10.3.0.1', 40443, '10.3.0.2', 443, 2)
+  EXACT    ja4     t13d1517h2_8daaf6152771_cb7bf5808d99  ('10.3.0.1', 40443, '10.3.0.2', 443, 2)
+
+18 of 18 cases exact (all three JA4H, in order)
+
+  EXACT    ja4t    8192_00_00_00  ('10.5.0.1', 41080, '10.5.0.2', 80)
+  EXACT    ja4ts   8192_00_00_00  ('10.5.0.1', 41080, '10.5.0.2', 80)
+  EXACT    ja4h    ['ge11cr04da00_8ddaef5d77af_280f366eaa04_c2fb0fe53442']  ('10.5.0.1', 41080, '10.5.0.2', 80)
+  EXACT    ja4t    8192_00_00_00  ('10.5.0.1', 41443, '10.5.0.2', 443)
+  EXACT    ja4ts   8192_00_00_00  ('10.5.0.1', 41443, '10.5.0.2', 443)
+  EXACT    ja4     t13d1516h2_8daaf6152771_e5627efa2ab1  ('10.5.0.1', 41443, '10.5.0.2', 443)
+  EXACT    ja4t    8192_00_00_00  ('10.5.0.1', 42022, '10.5.0.2', 2222)
+  EXACT    ja4ts   8192_00_00_00  ('10.5.0.1', 42022, '10.5.0.2', 2222)
+  EXTRA    ja4ssh  ['c43s43_c7s6_c7s6']  ('10.5.0.1', 42022, '10.5.0.2', 2222)
+make: *** [Makefile:28: test] Error 1

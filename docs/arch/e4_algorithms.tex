@@ -1,0 +1,182 @@
+%=====================================================================
+\section{The algorithms, step by step}
+\label{sec:algos}
+
+Pseudo-code that follows the code line for line (names as in the files). P4 parser states are written as labelled
+steps; ``read'' means \code{lookahead} then \code{advance} (or \code{extract} where the bytes must be re-emitted).
+
+\fvset{fontsize=\scriptsize, frame=single, framesep=2mm, rulecolor=\color{gray}}
+
+\subsection{Connection key (\code{main.p4}, ConnKey)}
+\begin{Verbatim}
+(a1,p1,a2,p2) := (src,sport,dst,dport) if (src,sport) <= (dst,dport) else (dst,dport,src,sport)
+srcIsFirst    := whether the source came first
+slot  := CRC16(ipVersion, a1, p1, a2, p2) mod 65536        -- index of every per-connection register
+check := CRC32(ipVersion, a1, p1, a2, p2)                  -- stored in the slot; a mismatch = another connection
+\end{Verbatim}
+Why: the same slot from both directions; two independent hashes so that a slot collision is detected.
+
+\subsection{Connection number (\code{main.p4}, ConnId)}
+\begin{Verbatim}
+read connCheck[slot], connNumber[slot] (id), connSynSeq[slot]
+another := connCheck != check or id == 0
+reused  := not another and packet is a SYN (not SYN-ACK) and seq != connSynSeq
+real packet:
+   if another or reused:  id := ++counter; connCheck := check; connNumber := id
+                          if reused: connReused := 1; prevConnId := the old id
+   if SYN: connSynSeq := seq
+   connId := id
+from the controller:  connId := (another ? 0 : id)          -- never a new number
+\end{Verbatim}
+Why: a repeated SYN (same sequence number) is the same connection; a SYN with a new one on the same endpoints is
+port reuse. Every control compares its stored number with \code{connId} and starts over when they differ.
+
+\subsection{TLS hello walk (\code{parser\_tls.p4})}
+\begin{Verbatim}
+peek 9 bytes: type, version, recLen | hsType, hsLen
+if type != 0x16 or version major != 3 or hsType not in {1,2}:  try HTTP
+if not (hsLen + 9 <= payLen and hsLen + 4 <= recLen):          incomplete := 1; stop   -- Stream copies it
+walked := 1; skip 9; legacyVersion := read16; skip random (32); skip session id (1 + n)
+ClientHello: n := read16 (cipher bytes)
+   repeat n/2 times: v := read16
+       if GREASE(v): continue
+       if cipherCount == 128: overflow |= 1; continue
+       ciphers := ciphers << 16 | v; cipherCount += 1
+   skip compression methods
+ServerHello: cipher := read16; skip compression (1)
+extensions: left := read16
+   while left > 0: type := read16; len := read16
+       ClientHello and GREASE(type): skip body; continue
+       append type (cap 64, overflow bit 2)
+       type 0  (SNI):                 sni := 1
+       type 16 (ALPN):                first name: alpnLen, first byte, last byte
+       type 43 (supported_versions):  maxVersion := highest non-GREASE (ServerHello: the selected one)
+       type 13 (signature_algorithms):each non-GREASE value appended (cap 64, overflow bit 4)
+       skip what is left of the body
+parsed := 1
+GREASE(v) := (v & 0x0f0f) == 0x0a0a and high byte == low byte
+\end{Verbatim}
+
+\subsection{HTTP request walk (\code{parser\_http.p4})}
+\begin{Verbatim}
+first 4 bytes must be one of: "GET " "POST" "PUT " "HEAD" "DELE" "OPTI" "CONN" "PATC" "TRAC"
+method  := bytes up to the first space (at most 8 kept)
+skip the target up to the next space
+version := the last 8 bytes before the line end                 -- e.g. "HTTP/1.1"
+loop over lines:
+   empty line (CR LF or LF)        -> parsed := 1; stop
+   name bytes up to ':'            -> appended to names (one byte at a time, chain of 2 x 2048 bits),
+                                      lower-cased copy of the last 16 bytes in cur
+   cur == "cookie"                 -> hasCookie; remove the 6 name bytes again (constant slice);
+                                      first Cookie value: pairs split at "; ", zero byte between pairs
+   cur == "referer"                -> hasReferer; remove the 7 name bytes again
+   any other name                  -> headerCount += 1, a zero byte after it in names
+   cur == "accept-language"        -> (also counted) first value: up to 4 characters before ',', '-' dropped
+   other values                    -> skipped to the line end
+   payload exhausted before the empty line -> incomplete := 1    -- Stream copies it
+\end{Verbatim}
+Lower-casing sets bit 5 of every byte: for letters it gives the lower case, and '-' (0x2D) already has bit 5 set, so
+the three names compare correctly whatever their case.
+
+\subsection{DER walk with return codes (\code{parser\_x509.p4})}
+\begin{Verbatim}
+ret := R_CERT; goto tlv
+tlv:    tag := read8; b := read8
+        if b < 0x80: len := b  else: len := next (b & 0x7f) bytes, big-endian
+        select ret:
+          R_CERT    -> ret := R_TBS;     goto tlv                  -- Certificate SEQUENCE: go inside
+          R_TBS     -> tbsLeft := len;   ret := R_VERSION; goto tlv
+          R_VERSION -> tag 0xA0? skip; ret := R_SERIAL ... (serial, signature: skipped)
+          R_NAME    -> nameLeft := len   -- issuer first, subject second
+          R_SET / R_ATV -> setLeft, itemLeft countdowns
+          R_OID     -> copy <len><content bytes> to issuer | subject | exts (256 bytes each, overflow bit)
+          R_VALIDITY, R_SPKI -> skipped
+          R_TBS_OPT -> [1] [2] skipped; [3] -> R_EXTSEQ -> each extension: R_EXT -> its OID
+every element read decreases the countdown of every level that contains it; a countdown at 0 ends that level
+\end{Verbatim}
+
+\subsection{Handshake and JA4L (\code{handshake.p4})}
+\begin{Verbatim}
+now := ingress_global_timestamp (us)
+SYN only:   if new connection or state in {DONE, SYNACK_ONLY}: state := SYN; A := now; ttlC := ttl; report JA4T
+SYN+ACK:    if state == SYN: state := SYNACK; B := now; ttlS := ttl; report JA4TS
+            if another connection held the slot: state := SYNACK_ONLY; report JA4TS
+ACK only:   if state == SYNACK: latencyC := (now - B) >> 1; latencyS := (B - A) >> 1;
+                                 state := DONE; report JA4L
+the record is put in meta.hsd; main.p4 sends it from one digest call (on pass 2 if a message digest was sent)
+\end{Verbatim}
+
+\subsection{Which segments are copied (\code{stream.p4})}
+\begin{Verbatim}
+SYN from the client:  ISN_client := seq; started := 0; pending := 0
+SYN-ACK:              ISN_server := seq
+no ISN and a message starts here: ISN := seq - 1           -- the stream is taken to start with this message
+offset := seq - ISN - 1
+(a) message starts here and is incomplete      -> pending; pendingSeq := seq; copy (start, TLS/HTTP)
+(d) complete TLS <= 1.2 ServerHello            -> pending; copy (start, type 3: certificates follow)
+(b) pending and seq - pendingSeq < 16384       -> copy
+(c) direction not started, offset in 1..16383  -> copy    -- a piece that may precede the first segment
+(e) HTTP seen in this direction and aheadOfGap  -> copy    -- a later request's piece before its first segment
+gap bookkeeping (started directions; differences of sequence numbers taken as signed 32-bit):
+   gap open: seq <= gap < seq+len -> gap closed;  0 < seq-gap < 16384 -> aheadOfGap;  seq-gap >= 16384 -> given up
+   no gap:   seq > edge -> gap := edge; open; aheadOfGap
+   edge := max(edge, seq + len)                  -- edge starts at ISN + 1
+offset == 0 -> started
+a joined message (or certificate) returned at pendingSeq -> pending cleared
+\end{Verbatim}
+
+\subsection{Joining (\code{reassembly.py})}
+\begin{Verbatim}
+add(key, seq, offset, start, type, payload):          -- key: (endpoints, connId, direction)
+   once a second: drop directions idle for 60 s; above 100,000 directions: drop the least recently used
+   base := seq - offset
+   pieces[offset] := (bytes already held at offset) + (the rest of payload)   -- first received wins
+   if start: starts[offset] := type
+   for each start not done, in order:
+       data := contiguous(pieces, start)        -- up to the first gap, at most 16384 + 9 bytes
+       TLS:    strip 5-byte record headers, join fragments until 4 + hsLen bytes -> one record
+       HTTP:   data up to the first \r?\n\r?\n
+       flight: handshake messages until type 11 -> its certificates (3-byte length each); type 14 first -> []
+       complete -> done; return (base + start, type, message)
+   more than 32 KB held: drop pieces from the lowest offset up (and starts below the lowest piece)
+\end{Verbatim}
+
+\subsection{JA4SSH (\code{ssh.p4}, \code{ssh.py})}
+\begin{Verbatim}
+switch, per segment of an SSH connection (port 22, or an "SSH-" banner seen; direction: port 22 side = server,
+   else the SYN sender = client):
+   reused port's SYN and the old connection had counts: FINAL digest for the old connId; reset
+   not SSH yet: only bare ACKs are counted (FoxIO counts the handshake's ACK of a connection found by its banner)
+   payload > 0: count SSH packet per direction; batch := batch << 16 | (direction bit | length)
+   no payload and flags == ACK: count bare ACK per direction
+   sshClient + sshServer == 200: WINDOW_END digest (counts + last lengths); reset
+   batch holds 8: BATCH_FULL digest; batch reset
+   flush packet: FINAL digest (current counts and lengths); reset
+   first banner on a port other than 22: START digest (the controller remembers the connection for the flush)
+controller: lengths of the window per direction in a Counter;
+   mode := min{ length : count == max count }; JA4SSH := c<modeC>s<modeS>_c<sshC>s<sshS>_c<ackC>s<ackS>
+\end{Verbatim}
+
+\subsection{Text and hashes (controller)}
+\begin{Verbatim}
+hash12(s)  := first 12 hex digits of SHA-256(s), "000000000000" for an empty s
+JA4  := t + version + (d|i) + %02d ciphers + %02d extensions + alpn
+        _ hash12(sorted ciphers as %04x, ',')
+        _ hash12(sorted extensions without 0000 and 0010, ',' + '_' + signature algorithms in order)
+JA4S := t + version + %02d extensions + alpn _ %04x cipher _ hash12(extensions in order)
+JA4H := method + version + (c|n) + (r|n) + %02d count + lang(4) _ hash12(names) _ hash12(sorted cookie names)
+        _ hash12(sorted cookie pairs)
+JA4X := hash12(issuer OIDs hex, ',') _ hash12(subject ...) _ hash12(extensions ...)
+\end{Verbatim}
+
+\subsection{Verdicts (\code{compare.py})}
+\begin{Verbatim}
+for each connection key in switch | reference, for each fingerprint name:
+   neither has it           -> nothing
+   only reference           -> MISSING      only switch -> EXTRA
+   JA4L                     -> EXACT if the TTLs are equal (latency difference kept as a measurement)
+   otherwise                -> EXACT if equal else WRONG
+   listed in EXPLAINED (checked by hand, with the reason) and not EXACT -> EXPLAINED
+DHCP: the sequence of messages compared position by position
+run fails if any WRONG or any frame not forwarded unchanged
+\end{Verbatim}

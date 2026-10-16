@@ -1,0 +1,103 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}[Scale=0.92]
+\setsansfont{DejaVu Sans}[Scale=0.92]
+\setmonofont{DejaVu Sans Mono}[Scale=0.82]
+\usepackage[margin=2.0cm]{geometry}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,shapes.multipart,fit,backgrounds,calc,decorations.pathreplacing,matrix}
+\usepackage{booktabs,tabularx,array,longtable,needspace}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{fancyvrb}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+
+\definecolor{sw}{HTML}{DCEBFA}      % switch (P4)
+\definecolor{swd}{HTML}{2B6CB0}
+\definecolor{ct}{HTML}{E6F4EA}      % controller (Python)
+\definecolor{ctd}{HTML}{2F855A}
+\definecolor{ho}{HTML}{FFF4E0}      % hosts / network
+\definecolor{hod}{HTML}{B7791F}
+\definecolor{rf}{HTML}{F3E8FD}      % reference / test tools
+\definecolor{rfd}{HTML}{6B46C1}
+\definecolor{fi}{HTML}{F2F2F2}      % files / results
+\definecolor{fid}{HTML}{555555}
+\definecolor{bad}{HTML}{C53030}
+
+\tikzset{
+  box/.style={draw, rounded corners=2pt, align=center, minimum height=7mm, inner sep=3pt, font=\scriptsize},
+  swbox/.style={box, fill=sw, draw=swd},
+  ctbox/.style={box, fill=ct, draw=ctd},
+  hobox/.style={box, fill=ho, draw=hod},
+  rfbox/.style={box, fill=rf, draw=rfd},
+  fibox/.style={box, fill=fi, draw=fid, font=\scriptsize\ttfamily},
+  dec/.style={draw, diamond, aspect=2.4, align=center, inner sep=0.5pt, font=\scriptsize, fill=white},
+  term/.style={draw, rounded corners=7pt, align=center, font=\scriptsize, inner sep=3pt, fill=gray!10},
+  arr/.style={-{Stealth[length=2mm]}, thick},
+  darr/.style={-{Stealth[length=2mm]}, thick, dashed},
+  lbl/.style={font=\scriptsize, fill=white, inner sep=1pt, align=center},
+  grp/.style={draw, rounded corners=4pt, inner sep=6pt, thick},
+  st/.style={draw, rounded corners=6pt, align=center, font=\scriptsize, inner sep=2pt, minimum height=6mm, fill=sw, draw=swd},
+}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\why}[1]{\par\noindent\textbf{Why:} #1}
+\newcommand{\whynot}[1]{\par\noindent\textbf{Why not something else:} #1}
+\setlist{nosep, leftmargin=*}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setcounter{tocdepth}{2}
+
+% An "artifact card": one row per aspect of a code file.
+\newenvironment{card}[1]{%
+  \par\smallskip\noindent\textbf{\large #1}\par\nopagebreak\small
+  \noindent\tabularx{\textwidth}{>{\bfseries\raggedright\arraybackslash}p{24mm} >{\raggedright\arraybackslash}X}
+  \toprule}{%
+  \bottomrule\endtabularx\par\medskip}
+
+\title{\textbf{ja4p4 --- detailed architecture}\\[3pt]
+\large JA4+ fingerprinting in a P4 switch: every block, every flow, every code file,\\ and why it is built this way}
+\author{Kept in step with the code: every change and fix is recorded here}
+\date{Version of \today}
+
+\begin{document}
+\maketitle
+\begin{center}\small
+\begin{tabular}{@{}l l@{}}
+\textcolor{swd}{\rule{3mm}{3mm}} blue & P4 program in the switch (data plane) \\
+\textcolor{ctd}{\rule{3mm}{3mm}} green & controller (Python, P4Runtime) \\
+\textcolor{hod}{\rule{3mm}{3mm}} orange & hosts, network, external programs \\
+\textcolor{rfd}{\rule{3mm}{3mm}} purple & references and test tools (independent of the project) \\
+\textcolor{fid}{\rule{3mm}{3mm}} grey & files: inputs, outputs, results \\
+\end{tabular}
+\end{center}
+\tableofcontents
+\newpage
+
+\part{Architecture}
+\input{arch/a1_overview.tex}
+\input{arch/a2_switch.tex}
+\input{arch/a3_channels.tex}
+\input{arch/a4_fingerprints.tex}
+\input{arch/a5_verification.tex}
+
+\part{Explanation}
+\input{arch/e1_problem.tex}
+\input{arch/e2_decisions.tex}
+\input{arch/e3_artifacts.tex}
+\input{arch/e4_algorithms.tex}
+\input{arch/e5_corner_cases.tex}
+
+\section{Problems found and how they were fixed}
+\label{sec:problems}
+Shared with \code{design.pdf} (one file, \code{docs/problems.tex}): every error and corner case met while building
+the project. Where a test was written for a bug, it failed on the old program before the fix and passed after it.
+\input{problems.tex}
+
+\input{arch/e6_results.tex}
+\input{arch/e7_faq.tex}
+
+\end{document}

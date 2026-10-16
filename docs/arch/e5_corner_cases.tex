@@ -1,0 +1,77 @@
+%=====================================================================
+\section{Corner cases and how each is handled}
+\label{sec:corners}
+
+{\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{36mm} >{\raggedright\arraybackslash}p{70mm} >{\raggedright\arraybackslash}p{22mm} >{\raggedright\arraybackslash}p{24mm}}
+\toprule
+\textbf{Case} & \textbf{What happens} & \textbf{Where} & \textbf{Checked by} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\multicolumn{4}{l}{\textit{Messages over several segments}} \\[2pt]
+hello / request split, in order & first segment: incomplete $\to$ copy (a); later pieces (b); joined, sent back, read & stream, reassembly & split/reorder \\
+a later piece arrives first (SYN seen) & copied by (c): the direction has not started; placed by its offset when the start arrives & stream (c) & split/reorder \\
+a later piece first, no SYN seen & cannot be placed (offsets unknown): the message is not reported, never wrong & documented limit & 8 limit cases \\
+segments duplicated / retransmitted & bytes already held are kept; the hello is reported once per direction (\code{tlsDone}); a request not twice for one sequence number & reassembly, tls, http & split/reorder \\
+overlapping segments with different bytes & the bytes received first are kept & reassembly & split/reorder \\
+hello spread over several TLS records & record headers removed, fragments joined, one record sent back & reassembly & split/reorder \\
+ServerHello and Certificate in one record & only the hello must be complete & parser\_tls & comparison \\
+first segment of 1--8 bytes & treated as a possible start if it begins with 0x16 or a method's first letter & parser\_tls & split/reorder \\
+message after other bytes (SOCKS, CONNECT) & read when whole in a segment; a TLS hello there split and out of order: limit (rule (e) covers HTTP directions only) & stream & comparison \\
+a later request on a keep-alive connection, split, second piece first & pieces ahead of the gap copied by (e); joined when the first piece arrives & stream (e) & keep-alive test \\
+a joined request reported after later whole ones & the connection's JA4H listed by each request's sequence number & http, main.py & keep-alive test \\
+a false start inside a request (a 1-byte piece beginning like a method) & ``joined'' first and ignored by the switch; the real request is still joined from the same bytes & reassembly & state test, split/reorder \\
+sequence numbers wrapping & offsets in 32-bit arithmetic & stream, reassembly & by construction \\
+\midrule
+\multicolumn{4}{l}{\textit{Digests}} \\[2pt]
+two fingerprints on one packet (hello on the handshake ACK) & the handshake digest waits for the second pass & main & one-digest test \\
+identical messages close together & serial number in DHCP, HTTP, SSH digests & dhcp, http, ssh & identical-digest test \\
+\midrule
+\multicolumn{4}{l}{\textit{TLS}} \\[2pt]
+GREASE in ciphers, extensions, signature algorithms, versions & skipped in the parser; ServerHello extensions kept as they are (as FoxIO) & parser\_tls & comparison \\
+lists past the capacity & count stays right, overflow bit, ``incomplete'' & parsers, controller & capacity test \\
+non-ASCII ALPN & '9' for the character, as FoxIO & tls.py & comparison \\
+TLS 1.3 & certificates encrypted: no JA4X (not compared, counted) & -- & comparison \\
+TLS 1.2 chain over many segments & flight copied (d)+(b), certificates cut and sent back one by one & stream, reassembly & live run, flight test \\
+server's later segment first (certificates before the ServerHello) & copied by (c); the ServerHello's segment starts the flight (d); joined when the gap closes & stream, reassembly & flight test \\
+TLS 1.2 ServerHello itself split & JA4S joined as any hello; no certificate copy starts: JA4X not reported (limit; a ServerHello is about 100 bytes, so TCP rarely splits it) & stream & flight test \\
+flight without Certificate & ServerHelloDone first: nothing to report & reassembly & by construction \\
+\midrule
+\multicolumn{4}{l}{\textit{TCP and IP}} \\[2pt]
+padding after EOL & each padding byte listed as another 0, as FoxIO & parser & comparison \\
+malformed option length & rest of the options kept as padding, not read & parser & by construction \\
+IPv4 options & parsed (varbit) and re-emitted & parser & forwarding check \\
+IPv4 fragments & only the first fragment is read beyond IP & parser & by construction \\
+IPv6 extension headers & not walked: forwarded, not fingerprinted & limit & -- \\
+SYN-ACK without its SYN & JA4TS only; no JA4L & handshake & comparison \\
+port reused: a new SYN with a new sequence number on the same endpoints & a new connection number: every control starts over, the controller opens a new record; an SSH connection's last window is reported on that SYN & ConnId, ssh, main.py & port-reuse test \\
+the same SYN repeated & same number: nothing restarts & ConnId, handshake & port-reuse test \\
+one or two VLAN tags (802.1Q; 802.1ad outside) & parsed and re-emitted; fingerprinted as untagged & parser & VLAN test \\
+three or more VLAN tags & forwarded, not fingerprinted & limit & -- \\
+two connections in one slot & told apart by the 32-bit check; the newer takes the slot & ConnKey & by construction \\
+\midrule
+\multicolumn{4}{l}{\textit{HTTP}} \\[2pt]
+bare LF line ends & accepted & parser\_http & comparison \\
+names in any case & compared lower-cased (bit 5), listed as sent & parser\_http & comparison \\
+several Cookie headers & the first one's pairs are used & parser\_http & not tested \\
+several requests per connection & one JA4H each, in order & http & comparison \\
+unknown method or version & no JA4H (FoxIO computes none) & http.py & comparison \\
+HTTP/2, HTTP/3 & inside TLS / QUIC: not compared, counted & -- & comparison \\
+\midrule
+\multicolumn{4}{l}{\textit{SSH, DHCP}} \\[2pt]
+last, partial SSH window & flush packet at the end & ssh, main.py & comparison \\
+SSH on a port other than 22 & recognised by its ``SSH-'' banner; bare ACKs before it counted (as FoxIO); the SYN sender is the client & ssh, parser\_tls & SSH-port test \\
+malformed / SSH v1 streams & every port-22 payload segment counted (tshark refuses a few): EXPLAINED & ssh & comparison \\
+DHCP retransmissions & every message reported & dhcp & live run \\
+DHCPv6 nested options & containers skip only their fixed fields & parser\_dhcp & comparison \\
+DHCPv6 empty FQDN name & flag \code{n} & parser\_dhcp & dhcp6 test \\
+DHCP quoted in an ICMP error & not a DHCP message: not parsed (switch), skipped (reference) & reference & live run \\
+\midrule
+\multicolumn{4}{l}{\textit{Switch and controller}} \\[2pt]
+controller buffers on a long run & 32 KB per direction, idle 60 s, 100,000 directions & reassembly & state test \\
+packets from the controller & read, never forwarded & main & forwarding check \\
+walked packets & resubmitted, original bytes forwarded & main & forwarding check \\
+\end{longtable}
+}

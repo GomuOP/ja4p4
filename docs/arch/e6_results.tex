@@ -1,0 +1,57 @@
+%=====================================================================
+\section{Results}
+\label{sec:results}
+
+The tables are the same files as in \code{design.pdf} (\code{docs/results\_*.tex}), regenerated from the result
+files after every run.
+
+\subsection{FoxIO's sample captures, replayed}
+\input{results_all.tex}
+
+\subsection{The live run}
+The final run, on the build with every fix: all 9 steps ended as expected (the script now waits for the servers
+and checks every client's exit status), every fingerprint matched FoxIO, and DHCP completed Discover, Offer,
+Request, ACK (dnsmasq \code{--no-ping}; earlier runs never got past the Offer, see the problems table). For the split
+ClientHello the console prints JA4S before JA4, and the 3\,KB request's JA4H after the step ends: both wait for the
+controller's join, as designed.
+\input{results_live.tex}
+
+\subsection{Capacities: the measurement study}
+\input{results_field_counts.tex}
+
+\subsection{Tests}
+\code{make test}: 11 files, 27 tests, all passing on an idle machine; split / reorder 202 of 202 cases exact; the server's TLS 1.2
+flight split and out of order 19 of 19 exact (JA4S and both JA4X); a later request on a keep-alive connection split
+and out of order 18 of 18 exact; port reuse (TLS and SSH), VLAN tags (one and two) and SSH on port 2222 exact; the
+controller's buffers bounded; the 8
+documented limit cases never wrong. (\code{test\_ja4l\_gaps} needs an idle machine: under heavy load BMv2 took a
+packet up 130\,ms late once; see the problems table.)
+
+\section{What is done, what is not, and why}
+\label{sec:coverage}
+\input{coverage.tex}
+
+\section{Assumptions, and what changes on a real network}
+\label{sec:assumptions}
+What the design assumes, why it holds on h1 -- s1 -- h2, and what a real network changes. Rows marked
+\textbf{fixed} were found by this review and fixed (tests in Section~\ref{sec:verif}; the problems table). The same
+table is in \code{design.pdf} (\code{docs/assumptions.tex}).
+
+\input{assumptions.tex}
+
+\section{Known limits}
+\label{sec:limits}
+\begin{itemize}
+\item Out of reach without keys: HTTP/2 and HTTP/3 requests, TLS 1.3 certificates. Not implemented: JA4 over QUIC
+  (\code{q}; readable passively, but v1model cannot decrypt) and DTLS (\code{d}); tunnels not opened; IPv6
+  extension headers not walked; more than two VLAN tags not read (forwarded).
+\item Not tested against FoxIO: several Cookie headers in one request; a second ClientHello after a TLS 1.3
+  HelloRetryRequest.
+\item Without the SYN, a piece that arrives before its message's first segment cannot be placed (not reported).
+  A TLS hello after other bytes (SOCKS) split and out of order: the same (rule (e) covers HTTP directions).
+\item A TLS 1.2 ServerHello that is itself split does not start the certificate copy (no JA4X for that flight).
+\item Two connections in one slot at the same time: the older loses its remaining state.
+\item JA4L is stamped when BMv2's pipeline takes the packet up; on a loaded machine that can be late.
+\item Lists past their capacity are reported incomplete.
+\item Connection numbers wrap after $2^{32}$ connections (harmless: a connection with an old number is long over).
+\end{itemize}

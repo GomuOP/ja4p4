@@ -1,0 +1,7989 @@
+[
+ {
+  "conn": [
+   "192.168.235.1",
+   53648,
+   "192.168.235.136",
+   8089
+  ],
+  "name": "ja4t",
+  "switch": "8192_2-1-3-1-1-4_1460_8",
+  "reference": "8192_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "CVE-2018-6794.pcap"
+ },
+ {
+  "conn": [
+   "192.168.235.1",
+   53648,
+   "192.168.235.136",
+   8089
+  ],
+  "name": "ja4ts",
+  "switch": "15500_00_00_00",
+  "reference": "15500_00_00_00",
+  "verdict": "EXACT",
+  "pcap": "CVE-2018-6794.pcap"
+ },
+ {
+  "conn": [
+   "192.168.235.1",
+   53648,
+   "192.168.235.136",
+   8089
+  ],
+  "name": "ja4l_c",
+  "switch": "908_128",
+  "reference": "950_128",
+  "verdict": "EXACT",
+  "pcap": "CVE-2018-6794.pcap"
+ },
+ {
+  "conn": [
+   "192.168.235.1",
+   53648,
+   "192.168.235.136",
+   8089
+  ],
+  "name": "ja4l_s",
+  "switch": "2921_255",
+  "reference": "2926_255",
+  "verdict": "EXACT",
+  "pcap": "CVE-2018-6794.pcap"
+ },
+ {
+  "conn": [
+   "192.168.235.1",
+   53649,
+   "192.168.235.136",
+   8089
+  ],
+  "name": "ja4t",
+  "switch": "8192_2-1-3-1-1-4_1460_8",
+  "reference": "8192_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "CVE-2018-6794.pcap"
+ },
+ {
+  "conn": [
+   "192.168.235.1",
+   53649,
+   "192.168.235.136",
+   8089
+  ],
+  "name": "ja4ts",
+  "switch": "15500_00_00_00",
+  "reference": "15500_00_00_00",
+  "verdict": "EXACT",
+  "pcap": "CVE-2018-6794.pcap"
+ },
+ {
+  "conn": [
+   "192.168.235.1",
+   53649,
+   "192.168.235.136",
+   8089
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn07ruru_6cd0fb54989b_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn07ruru_6cd0fb54989b_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "CVE-2018-6794.pcap"
+ },
+ {
+  "conn": [
+   "192.168.235.1",
+   53649,
+   "192.168.235.136",
+   8089
+  ],
+  "name": "ja4l_c",
+  "switch": "1579_128",
+  "reference": "1583_128",
+  "verdict": "EXACT",
+  "pcap": "CVE-2018-6794.pcap"
+ },
+ {
+  "conn": [
+   "192.168.235.1",
+   53649,
+   "192.168.235.136",
+   8089
+  ],
+  "name": "ja4l_s",
+  "switch": "2718_255",
+  "reference": "3029_255",
+  "verdict": "EXACT",
+  "pcap": "CVE-2018-6794.pcap"
+ },
+ {
+  "conn": [
+   "192.168.235.1",
+   53656,
+   "192.168.235.136",
+   8089
+  ],
+  "name": "ja4t",
+  "switch": "8192_2-1-3-1-1-4_1460_8",
+  "reference": "8192_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "CVE-2018-6794.pcap"
+ },
+ {
+  "conn": [
+   "192.168.235.1",
+   53656,
+   "192.168.235.136",
+   8089
+  ],
+  "name": "ja4ts",
+  "switch": "15500_00_00_00",
+  "reference": "15500_00_00_00",
+  "verdict": "EXACT",
+  "pcap": "CVE-2018-6794.pcap"
+ },
+ {
+  "conn": [
+   "192.168.235.1",
+   53656,
+   "192.168.235.136",
+   8089
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nr06ruru_cc6ec9a91856_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nr06ruru_cc6ec9a91856_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "CVE-2018-6794.pcap"
+ },
+ {
+  "conn": [
+   "192.168.235.1",
+   53656,
+   "192.168.235.136",
+   8089
+  ],
+  "name": "ja4l_c",
+  "switch": "859_128",
+  "reference": "928_128",
+  "verdict": "EXACT",
+  "pcap": "CVE-2018-6794.pcap"
+ },
+ {
+  "conn": [
+   "192.168.235.1",
+   53656,
+   "192.168.235.136",
+   8089
+  ],
+  "name": "ja4l_s",
+  "switch": "3160_255",
+  "reference": "3195_255",
+  "verdict": "EXACT",
+  "pcap": "CVE-2018-6794.pcap"
+ },
+ {
+  "conn": [
+   "172.130.128.76",
+   55318,
+   "54.226.182.138",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "65535_2-1-3-1-1-8-4-0-0_1386_6",
+  "reference": "65535_2-1-3-1-1-8-4-0-0_1386_6",
+  "verdict": "EXACT",
+  "pcap": "badcurveball.pcap"
+ },
+ {
+  "conn": [
+   "172.130.128.76",
+   55318,
+   "54.226.182.138",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "26847_2-4-8-1-3_1460_7",
+  "reference": "26847_2-4-8-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "badcurveball.pcap"
+ },
+ {
+  "conn": [
+   "172.130.128.76",
+   55318,
+   "54.226.182.138",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1615h2_46e7e9700bed_45f260be83e2",
+  "reference": "t13d1615h2_46e7e9700bed_45f260be83e2",
+  "verdict": "EXACT",
+  "pcap": "badcurveball.pcap"
+ },
+ {
+  "conn": [
+   "172.130.128.76",
+   55318,
+   "54.226.182.138",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t1205h1_c02b_845f7282a956",
+  "reference": "t1205h1_c02b_845f7282a956",
+  "verdict": "EXACT",
+  "pcap": "badcurveball.pcap"
+ },
+ {
+  "conn": [
+   "172.130.128.76",
+   55318,
+   "54.226.182.138",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "2e9214a636bc_a373a9f83c6b_0e17604154c5",
+   "2e9214a636bc_2e9214a636bc_795797892f9c"
+  ],
+  "reference": [
+   "2e9214a636bc_a373a9f83c6b_0e17604154c5",
+   "2e9214a636bc_2e9214a636bc_795797892f9c"
+  ],
+  "verdict": "EXACT",
+  "pcap": "badcurveball.pcap"
+ },
+ {
+  "conn": [
+   "172.130.128.76",
+   55318,
+   "54.226.182.138",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "2729_64",
+  "reference": "4147_64",
+  "verdict": "EXACT",
+  "pcap": "badcurveball.pcap"
+ },
+ {
+  "conn": [
+   "172.130.128.76",
+   55318,
+   "54.226.182.138",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "3161_238",
+  "reference": "1511_238",
+  "verdict": "EXACT",
+  "pcap": "badcurveball.pcap"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54524,
+   "13.107.21.239",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54524,
+   "13.107.21.239",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "64800_2-1-3-4-0-0_1440_2",
+  "reference": "64800_2-1-3-4-0-0_1440_2",
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54524,
+   "13.107.21.239",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54524,
+   "13.107.21.239",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t1206h2_c030_044dc9b3196d",
+  "reference": "t1206h2_c030_044dc9b3196d",
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54524,
+   "13.107.21.239",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "a373a9f83c6b_2bab15409345_0f2217ba412e",
+   "7d5dbb3783b4_a373a9f83c6b_c34b04c10969"
+  ],
+  "reference": [
+   "a373a9f83c6b_2bab15409345_0f2217ba412e",
+   "7d5dbb3783b4_a373a9f83c6b_c34b04c10969"
+  ],
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54524,
+   "13.107.21.239",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "1843_128",
+  "reference": "1316_128",
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54524,
+   "13.107.21.239",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "2066_112",
+  "reference": "3407_112",
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54525,
+   "68.67.160.117",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54525,
+   "68.67.160.117",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "64240_2-1-3-4-0-0_1460_2",
+  "reference": "64240_2-1-3-4-0-0_1460_2",
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54525,
+   "68.67.160.117",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54525,
+   "68.67.160.117",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t1207h2_c02b_cf25e267ce22",
+  "reference": "t1207h2_c02b_cf25e267ce22",
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54525,
+   "68.67.160.117",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "7d5dbb3783b4_2bab15409345_7bf9a7bf7029",
+   "7d5dbb3783b4_7d5dbb3783b4_44440d41940c"
+  ],
+  "reference": [
+   "7d5dbb3783b4_2bab15409345_7bf9a7bf7029",
+   "7d5dbb3783b4_7d5dbb3783b4_44440d41940c"
+  ],
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54525,
+   "68.67.160.117",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "1280_128",
+  "reference": "1167_128",
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54525,
+   "68.67.160.117",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "7769_41",
+  "reference": "7829_41",
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54603,
+   "103.42.133.15",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54603,
+   "103.42.133.15",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "64400_2-1-3-4-0-0_1400_2",
+  "reference": "64400_2-1-3-4-0-0_1400_2",
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54603,
+   "103.42.133.15",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54603,
+   "103.42.133.15",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t1205h2_c02f_845f7282a956",
+  "reference": "t1205h2_c02f_845f7282a956",
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54603,
+   "103.42.133.15",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "2bab15409345_2e9214a636bc_b891c0ad6f32",
+   "2bab15409345_2bab15409345_2367ce7fbc5b",
+   "2bab15409345_2bab15409345_2030e37f3421"
+  ],
+  "reference": [
+   "2bab15409345_2e9214a636bc_b891c0ad6f32",
+   "2bab15409345_2bab15409345_2367ce7fbc5b",
+   "2bab15409345_2bab15409345_2030e37f3421"
+  ],
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54603,
+   "103.42.133.15",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "809_128",
+  "reference": "678_128",
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "172.27.7.31",
+   54603,
+   "103.42.133.15",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "3853_229",
+  "reference": "3895_229",
+  "verdict": "EXACT",
+  "pcap": "browsers-x509.pcapng"
+ },
+ {
+  "conn": [
+   "2001:db8:1::1",
+   57098,
+   "2606:4700:10::6816:826",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "65535_2-1-3-1-1-8-4-0-0_1440_6",
+  "reference": "65535_2-1-3-1-1-8-4-0-0_1440_6",
+  "verdict": "EXACT",
+  "pcap": "chrome-cloudflare-quic-with-secrets.pcapng"
+ },
+ {
+  "conn": [
+   "2001:db8:1::1",
+   57098,
+   "2606:4700:10::6816:826",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "64704_2-4-8-1-3_1360_13",
+  "reference": "64704_2-4-8-1-3_1360_13",
+  "verdict": "EXACT",
+  "pcap": "chrome-cloudflare-quic-with-secrets.pcapng"
+ },
+ {
+  "conn": [
+   "2001:db8:1::1",
+   57098,
+   "2606:4700:10::6816:826",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "chrome-cloudflare-quic-with-secrets.pcapng"
+ },
+ {
+  "conn": [
+   "2001:db8:1::1",
+   57098,
+   "2606:4700:10::6816:826",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_234ea6891581",
+  "reference": "t130200_1301_234ea6891581",
+  "verdict": "EXACT",
+  "pcap": "chrome-cloudflare-quic-with-secrets.pcapng"
+ },
+ {
+  "conn": [
+   "2001:db8:1::1",
+   57098,
+   "2606:4700:10::6816:826",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "2491_64",
+  "reference": "813_64",
+  "verdict": "EXACT",
+  "pcap": "chrome-cloudflare-quic-with-secrets.pcapng"
+ },
+ {
+  "conn": [
+   "2001:db8:1::1",
+   57098,
+   "2606:4700:10::6816:826",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "6656_56",
+  "reference": "6680_56",
+  "verdict": "EXACT",
+  "pcap": "chrome-cloudflare-quic-with-secrets.pcapng"
+ },
+ {
+  "conn": "DHCP message 1",
+  "name": "ja4d",
+  "switch": "disco0000in_61-55_1-3-6-42",
+  "reference": "disco0000in_61-55_1-3-6-42",
+  "verdict": "EXACT",
+  "pcap": "dhcp.pcapng"
+ },
+ {
+  "conn": "DHCP message 2",
+  "name": "ja4d",
+  "switch": "offer0000nn_1-58-59-51-54_00",
+  "reference": "offer0000nn_1-58-59-51-54_00",
+  "verdict": "EXACT",
+  "pcap": "dhcp.pcapng"
+ },
+ {
+  "conn": "DHCP message 3",
+  "name": "ja4d",
+  "switch": "reqst0000in_61-54-55_1-3-6-42",
+  "reference": "reqst0000in_61-54-55_1-3-6-42",
+  "verdict": "EXACT",
+  "pcap": "dhcp.pcapng"
+ },
+ {
+  "conn": "DHCP message 4",
+  "name": "ja4d",
+  "switch": "dpack0000nn_58-59-51-54-1_00",
+  "reference": "dpack0000nn_58-59-51-54-1_00",
+  "verdict": "EXACT",
+  "pcap": "dhcp.pcapng"
+ },
+ {
+  "conn": "DHCP message 1",
+  "name": "ja4d",
+  "switch": "solct0014nn_1-6-8-25_23-24",
+  "reference": "solct0014nn_1-6-8-25_23-24",
+  "verdict": "EXACT",
+  "pcap": "dhcpv6.pcap"
+ },
+ {
+  "conn": "DHCP message 2",
+  "name": "ja4d",
+  "switch": "advrt0014nn_25-26-1-2_00",
+  "reference": "advrt0014nn_25-26-1-2_00",
+  "verdict": "EXACT",
+  "pcap": "dhcpv6.pcap"
+ },
+ {
+  "conn": "DHCP message 3",
+  "name": "ja4d",
+  "switch": "reqst0014nn_1-2-6-8-25-26_23-24",
+  "reference": "reqst0014nn_1-2-6-8-25-26_23-24",
+  "verdict": "EXACT",
+  "pcap": "dhcpv6.pcap"
+ },
+ {
+  "conn": "DHCP message 4",
+  "name": "ja4d",
+  "switch": "reply0014nn_25-26-1-2_00",
+  "reference": "reply0014nn_25-26-1-2_00",
+  "verdict": "EXACT",
+  "pcap": "dhcpv6.pcap"
+ },
+ {
+  "conn": "DHCP message 5",
+  "name": "ja4d",
+  "switch": "relse0014nn_1-2-6-8-25-26_23-24",
+  "reference": "relse0014nn_1-2-6-8-25-26_23-24",
+  "verdict": "EXACT",
+  "pcap": "dhcpv6.pcap"
+ },
+ {
+  "conn": "DHCP message 6",
+  "name": "ja4d",
+  "switch": "reply0014nn_1-2-13_00",
+  "reference": "reply0014nn_1-2-13_00",
+  "verdict": "EXACT",
+  "pcap": "dhcpv6.pcap"
+ },
+ {
+  "conn": [
+   "::1",
+   57722,
+   "::1",
+   9200
+  ],
+  "name": "ja4t",
+  "switch": "65535_2-1-3-1-1-8-4-0-0_16324_5",
+  "reference": "65535_2-1-3-1-1-8-4-0-0_16324_5",
+  "verdict": "EXACT",
+  "pcap": "http-empty-useragent.pcap"
+ },
+ {
+  "conn": [
+   "::1",
+   57722,
+   "::1",
+   9200
+  ],
+  "name": "ja4ts",
+  "switch": "65535_2-1-3-1-1-8-4-0-0_16324_5",
+  "reference": "65535_2-1-3-1-1-8-4-0-0_16324_5",
+  "verdict": "EXACT",
+  "pcap": "http-empty-useragent.pcap"
+ },
+ {
+  "conn": [
+   "::1",
+   57722,
+   "::1",
+   9200
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge10nn010000_b8bcd45ac095_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge10nn010000_b8bcd45ac095_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http-empty-useragent.pcap"
+ },
+ {
+  "conn": [
+   "::1",
+   57722,
+   "::1",
+   9200
+  ],
+  "name": "ja4l_c",
+  "switch": "974_64",
+  "reference": "1020_64",
+  "verdict": "EXACT",
+  "pcap": "http-empty-useragent.pcap"
+ },
+ {
+  "conn": [
+   "::1",
+   57722,
+   "::1",
+   9200
+  ],
+  "name": "ja4l_s",
+  "switch": "2466_64",
+  "reference": "2448_64",
+  "verdict": "EXACT",
+  "pcap": "http-empty-useragent.pcap"
+ },
+ {
+  "conn": [
+   "127.0.0.1",
+   61256,
+   "127.0.0.1",
+   8000
+  ],
+  "name": "ja4t",
+  "switch": "65535_2-1-3-1-1-8-4-0-0_16344_6",
+  "reference": "65535_2-1-3-1-1-8-4-0-0_16344_6",
+  "verdict": "EXACT",
+  "pcap": "http1-with-cookies.pcapng"
+ },
+ {
+  "conn": [
+   "127.0.0.1",
+   61256,
+   "127.0.0.1",
+   8000
+  ],
+  "name": "ja4ts",
+  "switch": "65535_2-1-3-1-1-8-4-0-0_16344_6",
+  "reference": "65535_2-1-3-1-1-8-4-0-0_16344_6",
+  "verdict": "EXACT",
+  "pcap": "http1-with-cookies.pcapng"
+ },
+ {
+  "conn": [
+   "127.0.0.1",
+   61256,
+   "127.0.0.1",
+   8000
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11cr04da00_8ddaef5d77af_280f366eaa04_c2fb0fe53442"
+  ],
+  "reference": [
+   "ge11cr04da00_8ddaef5d77af_280f366eaa04_c2fb0fe53442"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1-with-cookies.pcapng"
+ },
+ {
+  "conn": [
+   "127.0.0.1",
+   61256,
+   "127.0.0.1",
+   8000
+  ],
+  "name": "ja4l_c",
+  "switch": "1987_64",
+  "reference": "1036_64",
+  "verdict": "EXACT",
+  "pcap": "http1-with-cookies.pcapng"
+ },
+ {
+  "conn": [
+   "127.0.0.1",
+   61256,
+   "127.0.0.1",
+   8000
+  ],
+  "name": "ja4l_s",
+  "switch": "2347_64",
+  "reference": "1246_64",
+  "verdict": "EXACT",
+  "pcap": "http1-with-cookies.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.100",
+   40978,
+   "104.18.20.64",
+   80
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn040000_532a1ee47909_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn040000_532a1ee47909_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.100",
+   60164,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn030000_f8649f6808db_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn030000_f8649f6808db_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.100",
+   60180,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn080000_6977d1188c03_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn080000_6977d1188c03_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.100",
+   60186,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn080000_6977d1188c03_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn080000_6977d1188c03_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.100",
+   60200,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn080000_6977d1188c03_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn080000_6977d1188c03_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.100",
+   60204,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn030000_f8649f6808db_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn030000_f8649f6808db_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.100",
+   60220,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn080000_6977d1188c03_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn080000_6977d1188c03_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.100",
+   60222,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn080000_6977d1188c03_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn080000_6977d1188c03_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.100",
+   60230,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn080000_6977d1188c03_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn080000_6977d1188c03_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.118",
+   45042,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.118",
+   45044,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.118",
+   45046,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.118",
+   45048,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.118",
+   45050,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.118",
+   45052,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.118",
+   45054,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.118",
+   45056,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.118",
+   45058,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.118",
+   45060,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.118",
+   45062,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.136",
+   39698,
+   "104.86.99.193",
+   80
+  ],
+  "name": "ja4h",
+  "switch": [
+   "he11nn040000_4f6f4aad0c1e_000000000000_000000000000"
+  ],
+  "reference": [
+   "he11nn040000_4f6f4aad0c1e_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.136",
+   41355,
+   "142.251.167.94",
+   80
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn040000_4f6f4aad0c1e_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn040000_4f6f4aad0c1e_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.136",
+   44238,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.136",
+   44239,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.136",
+   44240,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.136",
+   44241,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.136",
+   44242,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.136",
+   44243,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.136",
+   44244,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.136",
+   44245,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.136",
+   44250,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.136",
+   44251,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.136",
+   44252,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.136",
+   44253,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.136",
+   44254,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.136",
+   44255,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.136",
+   44256,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.136",
+   44257,
+   "192.168.1.1",
+   41547
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn050000_e1365771aae9_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.147",
+   56404,
+   "142.251.16.94",
+   80
+  ],
+  "name": "ja4h",
+  "switch": [
+   "he11nn05enus_6f8992deff94_000000000000_000000000000",
+   "he11nn05enus_6f8992deff94_000000000000_000000000000"
+  ],
+  "reference": [
+   "he11nn05enus_6f8992deff94_000000000000_000000000000",
+   "he11nn05enus_6f8992deff94_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.188",
+   38660,
+   "52.85.151.11",
+   80
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn040000_ad0fd3707af2_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn040000_ad0fd3707af2_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.191",
+   48456,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.191",
+   48458,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.191",
+   48460,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.191",
+   48462,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.191",
+   48464,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.191",
+   48466,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.191",
+   48468,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.191",
+   48470,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.191",
+   48472,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.191",
+   48476,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.191",
+   48478,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.191",
+   48480,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.191",
+   48482,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.191",
+   48484,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.191",
+   48486,
+   "192.168.1.1",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "reference": [
+   "po11nn050000_530ceba2075f_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "http1.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.2.200",
+   58847,
+   "142.250.187.206",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "http2-with-cookies.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.2.200",
+   58847,
+   "142.250.187.206",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "65535_2-1-1-4-1-3_1412_8",
+  "reference": "65535_2-1-1-4-1-3_1412_8",
+  "verdict": "EXACT",
+  "pcap": "http2-with-cookies.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.2.200",
+   58847,
+   "142.250.187.206",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "http2-with-cookies.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.2.200",
+   58847,
+   "142.250.187.206",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_234ea6891581",
+  "reference": "t130200_1301_234ea6891581",
+  "verdict": "EXACT",
+  "pcap": "http2-with-cookies.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.2.200",
+   58847,
+   "142.250.187.206",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "943_128",
+  "reference": "642_128",
+  "verdict": "EXACT",
+  "pcap": "http2-with-cookies.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.2.200",
+   58847,
+   "142.250.187.206",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "45131_117",
+  "reference": "45532_117",
+  "verdict": "EXACT",
+  "pcap": "http2-with-cookies.pcapng"
+ },
+ {
+  "conn": [
+   "10.11.12.13",
+   54723,
+   "10.9.8.7",
+   8080
+  ],
+  "name": "ja4t",
+  "switch": "29200_2-1-1-4-1-3_1460_7",
+  "reference": "29200_2-1-1-4-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "https-connect.pcap"
+ },
+ {
+  "conn": [
+   "10.11.12.13",
+   54723,
+   "10.9.8.7",
+   8080
+  ],
+  "name": "ja4ts",
+  "switch": "29200_2-1-1-4-1-3_1360_7",
+  "reference": "29200_2-1-1-4-1-3_1360_7",
+  "verdict": "EXACT",
+  "pcap": "https-connect.pcap"
+ },
+ {
+  "conn": [
+   "10.11.12.13",
+   54723,
+   "10.9.8.7",
+   8080
+  ],
+  "name": "ja4",
+  "switch": "t12i860500_e18388e7f3a3_a1e935682795",
+  "reference": "t12i860500_e18388e7f3a3_a1e935682795",
+  "verdict": "EXACT",
+  "pcap": "https-connect.pcap"
+ },
+ {
+  "conn": [
+   "10.11.12.13",
+   54723,
+   "10.9.8.7",
+   8080
+  ],
+  "name": "ja4s",
+  "switch": "t120200_c030_5fbb12310400",
+  "reference": "t120200_c030_5fbb12310400",
+  "verdict": "EXACT",
+  "pcap": "https-connect.pcap"
+ },
+ {
+  "conn": [
+   "10.11.12.13",
+   54723,
+   "10.9.8.7",
+   8080
+  ],
+  "name": "ja4h",
+  "switch": [
+   "co10nn010000_b8bcd45ac095_000000000000_000000000000"
+  ],
+  "reference": [
+   "co10nn010000_b8bcd45ac095_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "https-connect.pcap"
+ },
+ {
+  "conn": [
+   "10.11.12.13",
+   54723,
+   "10.9.8.7",
+   8080
+  ],
+  "name": "ja4x",
+  "switch": [
+   "7d5dbb3783b4_2bab15409345_5e17a2514980",
+   "7d5dbb3783b4_7d5dbb3783b4_9c5875a5c227"
+  ],
+  "reference": [
+   "7d5dbb3783b4_2bab15409345_5e17a2514980",
+   "7d5dbb3783b4_7d5dbb3783b4_9c5875a5c227"
+  ],
+  "verdict": "EXACT",
+  "pcap": "https-connect.pcap"
+ },
+ {
+  "conn": [
+   "10.11.12.13",
+   54723,
+   "10.9.8.7",
+   8080
+  ],
+  "name": "ja4l_c",
+  "switch": "1692_64",
+  "reference": "689_64",
+  "verdict": "EXACT",
+  "pcap": "https-connect.pcap"
+ },
+ {
+  "conn": [
+   "10.11.12.13",
+   54723,
+   "10.9.8.7",
+   8080
+  ],
+  "name": "ja4l_s",
+  "switch": "14918_57",
+  "reference": "14691_57",
+  "verdict": "EXACT",
+  "pcap": "https-connect.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.141",
+   62599,
+   "192.30.252.130",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "65535_2-1-3-1-1-8-4-0-0_1460_4",
+  "reference": "65535_2-1-3-1-1-8-4-0-0_1460_4",
+  "verdict": "EXACT",
+  "pcap": "https3-301-get.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.141",
+   62599,
+   "192.30.252.130",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "14240_2-4-8-1-3_1436_10",
+  "reference": "14240_2-4-8-1-3_1436_10",
+  "verdict": "EXACT",
+  "pcap": "https3-301-get.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.141",
+   62599,
+   "192.30.252.130",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t10d230100_6a57a6f57151_000000000000",
+  "reference": "t10d230100_6a57a6f57151_000000000000",
+  "verdict": "EXACT",
+  "pcap": "https3-301-get.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.141",
+   62599,
+   "192.30.252.130",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t100200_0005_696072bc484d",
+  "reference": "t100200_0005_696072bc484d",
+  "verdict": "EXACT",
+  "pcap": "https3-301-get.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.141",
+   62599,
+   "192.30.252.130",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "7d5dbb3783b4_59b7510e6266_5e17a2514980",
+   "7d5dbb3783b4_7d5dbb3783b4_897f3043ab93"
+  ],
+  "reference": [
+   "7d5dbb3783b4_59b7510e6266_5e17a2514980",
+   "7d5dbb3783b4_7d5dbb3783b4_897f3043ab93"
+  ],
+  "verdict": "EXACT",
+  "pcap": "https3-301-get.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.141",
+   62599,
+   "192.30.252.130",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "1473_64",
+  "reference": "1284_64",
+  "verdict": "EXACT",
+  "pcap": "https3-301-get.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.141",
+   62599,
+   "192.30.252.130",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "18192_50",
+  "reference": "18754_50",
+  "verdict": "EXACT",
+  "pcap": "https3-301-get.pcap"
+ },
+ {
+  "conn": [
+   "2001:4998:ef83:14:8000::100d",
+   64034,
+   "2606:4700::6811:d209",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "65535_2-1-3-1-1-8-4-0-0_1346_6",
+  "reference": "65535_2-1-3-1-1-8-4-0-0_1346_6",
+  "verdict": "EXACT",
+  "pcap": "ipv6.pcapng"
+ },
+ {
+  "conn": [
+   "2001:4998:ef83:14:8000::100d",
+   64034,
+   "2606:4700::6811:d209",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "65535_2-1-1-4-1-3_1346_10",
+  "reference": "65535_2-1-1-4-1-3_1346_10",
+  "verdict": "EXACT",
+  "pcap": "ipv6.pcapng"
+ },
+ {
+  "conn": [
+   "2001:4998:ef83:14:8000::100d",
+   64034,
+   "2606:4700::6811:d209",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t12d4605h2_85626a9a5f7f_aaf95bb78ec9",
+  "reference": "t12d4605h2_85626a9a5f7f_aaf95bb78ec9",
+  "verdict": "EXACT",
+  "pcap": "ipv6.pcapng"
+ },
+ {
+  "conn": [
+   "2001:4998:ef83:14:8000::100d",
+   64034,
+   "2606:4700::6811:d209",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t1204h2_cca9_1428ce7b4018",
+  "reference": "t1204h2_cca9_1428ce7b4018",
+  "verdict": "EXACT",
+  "pcap": "ipv6.pcapng"
+ },
+ {
+  "conn": [
+   "2001:4998:ef83:14:8000::100d",
+   64034,
+   "2606:4700::6811:d209",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "7d5dbb3783b4_ba7ce0880c07_7bf9a7bf7029",
+   "7d5dbb3783b4_7d5dbb3783b4_41a019652939"
+  ],
+  "reference": [
+   "7d5dbb3783b4_ba7ce0880c07_7bf9a7bf7029",
+   "7d5dbb3783b4_7d5dbb3783b4_41a019652939"
+  ],
+  "verdict": "EXACT",
+  "pcap": "ipv6.pcapng"
+ },
+ {
+  "conn": [
+   "2001:4998:ef83:14:8000::100d",
+   64034,
+   "2606:4700::6811:d209",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "2467_64",
+  "reference": "2641_64",
+  "verdict": "EXACT",
+  "pcap": "ipv6.pcapng"
+ },
+ {
+  "conn": [
+   "2001:4998:ef83:14:8000::100d",
+   64034,
+   "2606:4700::6811:d209",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "20918_59",
+  "reference": "20903_59",
+  "verdict": "EXACT",
+  "pcap": "ipv6.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52936,
+   "34.212.93.65",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52936,
+   "34.212.93.65",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "26883_2-1-1-4-1-3_1460_8",
+  "reference": "26883_2-1-1-4-1-3_1460_8",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52936,
+   "34.212.93.65",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52936,
+   "34.212.93.65",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t1206h2_c02f_3603f09c43ba",
+  "reference": "t1206h2_c02f_3603f09c43ba",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52936,
+   "34.212.93.65",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "a373a9f83c6b_2bab15409345_7bf9a7bf7029",
+   "7d5dbb3783b4_a373a9f83c6b_a83ffcd6e6c2"
+  ],
+  "reference": [
+   "a373a9f83c6b_2bab15409345_7bf9a7bf7029",
+   "7d5dbb3783b4_a373a9f83c6b_a83ffcd6e6c2"
+  ],
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52936,
+   "34.212.93.65",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "1222_128",
+  "reference": "626_128",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52936,
+   "34.212.93.65",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "34933_227",
+  "reference": "34776_227",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52937,
+   "13.33.165.101",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52937,
+   "13.33.165.101",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "65535_2-1-1-4-1-3_1440_9",
+  "reference": "65535_2-1-1-4-1-3_1440_9",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52937,
+   "13.33.165.101",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t12d190800_d83cc789557e_7af1ed941c26",
+  "reference": "t12d190800_d83cc789557e_7af1ed941c26",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52937,
+   "13.33.165.101",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t120600_c02f_51ad275821ba",
+  "reference": "t120600_c02f_51ad275821ba",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52937,
+   "13.33.165.101",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "a373a9f83c6b_2bab15409345_7bf9a7bf7029",
+   "7d5dbb3783b4_a373a9f83c6b_a83ffcd6e6c2"
+  ],
+  "reference": [
+   "a373a9f83c6b_2bab15409345_7bf9a7bf7029",
+   "7d5dbb3783b4_a373a9f83c6b_a83ffcd6e6c2"
+  ],
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52937,
+   "13.33.165.101",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "654_128",
+  "reference": "580_128",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52937,
+   "13.33.165.101",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "8337_245",
+  "reference": "8271_245",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52938,
+   "34.205.195.66",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52938,
+   "34.205.195.66",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "32500_2-1-1-4-1-3_1300_12",
+  "reference": "32500_2-1-1-4-1-3_1300_12",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52938,
+   "34.205.195.66",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_9b887d9acb53",
+  "reference": "t13d1516h2_8daaf6152771_9b887d9acb53",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52938,
+   "34.205.195.66",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130300_1301_6bbbaf601ed8",
+  "reference": "t130300_1301_6bbbaf601ed8",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52938,
+   "34.205.195.66",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "687_128",
+  "reference": "633_128",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52938,
+   "34.205.195.66",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "18933_43",
+  "reference": "18824_43",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52939,
+   "23.43.242.57",
+   80
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52939,
+   "23.43.242.57",
+   80
+  ],
+  "name": "ja4ts",
+  "switch": "64240_2-1-1-4-1-3_1460_7",
+  "reference": "64240_2-1-1-4-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52939,
+   "23.43.242.57",
+   80
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn07enus_3e3b55d61660_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn07enus_3e3b55d61660_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52939,
+   "23.43.242.57",
+   80
+  ],
+  "name": "ja4l_c",
+  "switch": "566_128",
+  "reference": "538_128",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52939,
+   "23.43.242.57",
+   80
+  ],
+  "name": "ja4l_s",
+  "switch": "5612_57",
+  "reference": "5660_57",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52940,
+   "52.249.29.248",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52940,
+   "52.249.29.248",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "65535_2-1-3-1-1-4_1440_8",
+  "reference": "65535_2-1-3-1-1-4_1440_8",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52940,
+   "52.249.29.248",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52940,
+   "52.249.29.248",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t120300_c030_09f674154ab3",
+  "reference": "t120300_c030_09f674154ab3",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52940,
+   "52.249.29.248",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "a373a9f83c6b_2bab15409345_0f2217ba412e",
+   "7d5dbb3783b4_a373a9f83c6b_c34b04c10969"
+  ],
+  "reference": [
+   "a373a9f83c6b_2bab15409345_0f2217ba412e",
+   "7d5dbb3783b4_a373a9f83c6b_c34b04c10969"
+  ],
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52940,
+   "52.249.29.248",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "813_128",
+  "reference": "638_128",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52940,
+   "52.249.29.248",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "56393_109",
+  "reference": "56370_109",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52941,
+   "52.249.29.248",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52941,
+   "52.249.29.248",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "65535_2-1-3-1-1-4_1440_8",
+  "reference": "65535_2-1-3-1-1-4_1440_8",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52941,
+   "52.249.29.248",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52941,
+   "52.249.29.248",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t120300_c030_09f674154ab3",
+  "reference": "t120300_c030_09f674154ab3",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52941,
+   "52.249.29.248",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "a373a9f83c6b_2bab15409345_0f2217ba412e",
+   "7d5dbb3783b4_a373a9f83c6b_c34b04c10969"
+  ],
+  "reference": [
+   "a373a9f83c6b_2bab15409345_0f2217ba412e",
+   "7d5dbb3783b4_a373a9f83c6b_c34b04c10969"
+  ],
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52941,
+   "52.249.29.248",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "1286_128",
+  "reference": "1504_128",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   52941,
+   "52.249.29.248",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "57857_109",
+  "reference": "57831_109",
+  "verdict": "EXACT",
+  "pcap": "latest.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.5.16",
+   61311,
+   "172.67.24.71",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "65535_2-1-3-1-1-8-4-0-0_1460_6",
+  "reference": "65535_2-1-3-1-1-8-4-0-0_1460_6",
+  "verdict": "EXACT",
+  "pcap": "macos_tcp_flags.pcap"
+ },
+ {
+  "conn": [
+   "172.16.5.16",
+   61311,
+   "172.67.24.71",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "65160_2-4-8-1-3_1134_8",
+  "reference": "65160_2-4-8-1-3_1134_8",
+  "verdict": "EXACT",
+  "pcap": "macos_tcp_flags.pcap"
+ },
+ {
+  "conn": [
+   "172.16.5.16",
+   61311,
+   "172.67.24.71",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d2613h2_2802a3db6c62_845d286b0d67",
+  "reference": "t13d2613h2_2802a3db6c62_845d286b0d67",
+  "verdict": "EXACT",
+  "pcap": "macos_tcp_flags.pcap"
+ },
+ {
+  "conn": [
+   "172.16.5.16",
+   61311,
+   "172.67.24.71",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_234ea6891581",
+  "reference": "t130200_1301_234ea6891581",
+  "verdict": "EXACT",
+  "pcap": "macos_tcp_flags.pcap"
+ },
+ {
+  "conn": [
+   "172.16.5.16",
+   61311,
+   "172.67.24.71",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "2019_64",
+  "reference": "1363_64",
+  "verdict": "EXACT",
+  "pcap": "macos_tcp_flags.pcap"
+ },
+ {
+  "conn": [
+   "172.16.5.16",
+   61311,
+   "172.67.24.71",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "18900_63",
+  "reference": "18165_63",
+  "verdict": "EXACT",
+  "pcap": "macos_tcp_flags.pcap"
+ },
+ {
+  "conn": [
+   "192.168.0.1",
+   56544,
+   "10.10.10.1",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "65535_2-1-3-1-1-8-4-0-0_1460_6",
+  "reference": "65535_2-1-3-1-1-8-4-0-0_1460_6",
+  "verdict": "EXACT",
+  "pcap": "sigalg-grease.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.0.1",
+   56544,
+   "10.10.10.1",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "65535_2-4-8-1-3_1412_8",
+  "reference": "65535_2-4-8-1-3_1412_8",
+  "verdict": "EXACT",
+  "pcap": "sigalg-grease.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.0.1",
+   56544,
+   "10.10.10.1",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1517h2_8daaf6152771_cb7bf5808d99",
+  "reference": "t13d1517h2_8daaf6152771_cb7bf5808d99",
+  "verdict": "EXACT",
+  "pcap": "sigalg-grease.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.0.1",
+   56544,
+   "10.10.10.1",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_234ea6891581",
+  "reference": "t130200_1302_234ea6891581",
+  "verdict": "EXACT",
+  "pcap": "sigalg-grease.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.0.1",
+   56544,
+   "10.10.10.1",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "1741_64",
+  "reference": "1535_64",
+  "verdict": "EXACT",
+  "pcap": "sigalg-grease.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.0.1",
+   56544,
+   "10.10.10.1",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "6052_120",
+  "reference": "6753_120",
+  "verdict": "EXACT",
+  "pcap": "sigalg-grease.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.25.150",
+   49654,
+   "118.215.80.242",
+   80
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11cr07enus_45c71a3fb6ea_a25bf252eb59_43a9e3e95c85"
+  ],
+  "reference": [
+   "ge11cr07enus_45c71a3fb6ea_a25bf252eb59_43a9e3e95c85"
+  ],
+  "verdict": "EXACT",
+  "pcap": "single-packets.pcap"
+ },
+ {
+  "conn": [
+   "192.168.25.150",
+   49677,
+   "74.125.24.149",
+   80
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11cr06enus_8c2f9ef95269_2a79f5d9f8b3_7b4d78c057bc"
+  ],
+  "reference": [
+   "ge11cr06enus_8c2f9ef95269_2a79f5d9f8b3_7b4d78c057bc"
+  ],
+  "verdict": "EXACT",
+  "pcap": "single-packets.pcap"
+ },
+ {
+  "conn": [
+   "192.168.25.150",
+   49683,
+   "13.115.50.210",
+   80
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nr06enus_8c2f9ef95269_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nr06enus_8c2f9ef95269_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "single-packets.pcap"
+ },
+ {
+  "conn": [
+   "192.168.25.150",
+   49708,
+   "104.89.119.175",
+   80
+  ],
+  "name": "ja4h",
+  "switch": [
+   "po11cr09enus_130d8cd1913c_f81c0e5c6793_90689f748de6"
+  ],
+  "reference": [
+   "po11cr09enus_130d8cd1913c_f81c0e5c6793_90689f748de6"
+  ],
+  "verdict": "EXACT",
+  "pcap": "single-packets.pcap"
+ },
+ {
+  "conn": [
+   "192.168.25.150",
+   49733,
+   "74.125.24.100",
+   80
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nr06enus_8c2f9ef95269_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nr06enus_8c2f9ef95269_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "single-packets.pcap"
+ },
+ {
+  "conn": [
+   "192.168.25.150",
+   49735,
+   "193.242.192.43",
+   80
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11cr07enus_45c71a3fb6ea_9ee64e91aa30_109254663367"
+  ],
+  "reference": [
+   "ge11cr07enus_45c71a3fb6ea_9ee64e91aa30_109254663367"
+  ],
+  "verdict": "EXACT",
+  "pcap": "single-packets.pcap"
+ },
+ {
+  "conn": [
+   "192.168.25.150",
+   49738,
+   "35.174.150.168",
+   80
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11cr06enus_8c2f9ef95269_d23bf79698dc_69e42fa741fe"
+  ],
+  "reference": [
+   "ge11cr06enus_8c2f9ef95269_d23bf79698dc_69e42fa741fe"
+  ],
+  "verdict": "EXACT",
+  "pcap": "single-packets.pcap"
+ },
+ {
+  "conn": [
+   "192.168.25.150",
+   49743,
+   "74.125.24.95",
+   80
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nr06enus_8c2f9ef95269_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nr06enus_8c2f9ef95269_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "single-packets.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53554,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4t",
+  "switch": "65535_2-1-3-1-1-8-4-0-0_1460_4",
+  "reference": "65535_2-1-3-1-1-8-4-0-0_1460_4",
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53554,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4ts",
+  "switch": "14480_2-4-8-1-3_1460_7",
+  "reference": "14480_2-4-8-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53554,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4",
+  "switch": "t10d230100_6a57a6f57151_000000000000",
+  "reference": "t10d230100_6a57a6f57151_000000000000",
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53554,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4s",
+  "switch": "t100100_0005_bc98f8e001b5",
+  "reference": "t100100_0005_bc98f8e001b5",
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53554,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4x",
+  "switch": [
+   "7d5dbb3783b4_2bab15409345_5e17a2514980",
+   "7d5dbb3783b4_7d5dbb3783b4_c519788dcb01"
+  ],
+  "reference": [
+   "7d5dbb3783b4_2bab15409345_5e17a2514980",
+   "7d5dbb3783b4_7d5dbb3783b4_c519788dcb01"
+  ],
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53554,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4l_c",
+  "switch": "829_64",
+  "reference": "881_64",
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53554,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4l_s",
+  "switch": "1774_64",
+  "reference": "1034_64",
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53555,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4t",
+  "switch": "65535_2-1-3-1-1-8-4-0-0_1460_4",
+  "reference": "65535_2-1-3-1-1-8-4-0-0_1460_4",
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53555,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4ts",
+  "switch": "14480_2-4-8-1-3_1460_7",
+  "reference": "14480_2-4-8-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53555,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4",
+  "switch": "t10d230100_6a57a6f57151_000000000000",
+  "reference": "t10d230100_6a57a6f57151_000000000000",
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53555,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4s",
+  "switch": "t100100_0005_bc98f8e001b5",
+  "reference": "t100100_0005_bc98f8e001b5",
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53555,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4x",
+  "switch": [
+   "7d5dbb3783b4_2bab15409345_5e17a2514980",
+   "7d5dbb3783b4_7d5dbb3783b4_c519788dcb01"
+  ],
+  "reference": [
+   "7d5dbb3783b4_2bab15409345_5e17a2514980",
+   "7d5dbb3783b4_7d5dbb3783b4_c519788dcb01"
+  ],
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53555,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4l_c",
+  "switch": "721_64",
+  "reference": "733_64",
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53555,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4l_s",
+  "switch": "879_64",
+  "reference": "818_64",
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53556,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4t",
+  "switch": "65535_2-1-3-1-1-8-4-0-0_1460_4",
+  "reference": "65535_2-1-3-1-1-8-4-0-0_1460_4",
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53556,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4ts",
+  "switch": "14480_2-4-8-1-3_1460_7",
+  "reference": "14480_2-4-8-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53556,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4",
+  "switch": "t10d230100_6a57a6f57151_000000000000",
+  "reference": "t10d230100_6a57a6f57151_000000000000",
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53556,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4s",
+  "switch": "t100100_0005_bc98f8e001b5",
+  "reference": "t100100_0005_bc98f8e001b5",
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53556,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4x",
+  "switch": [
+   "7d5dbb3783b4_2bab15409345_5e17a2514980",
+   "7d5dbb3783b4_7d5dbb3783b4_c519788dcb01"
+  ],
+  "reference": [
+   "7d5dbb3783b4_2bab15409345_5e17a2514980",
+   "7d5dbb3783b4_7d5dbb3783b4_c519788dcb01"
+  ],
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53556,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4l_c",
+  "switch": "6593_64",
+  "reference": "1834_64",
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.180.156.185",
+   53556,
+   "10.180.156.249",
+   1080
+  ],
+  "name": "ja4l_s",
+  "switch": "1466_64",
+  "reference": "1195_64",
+  "verdict": "EXACT",
+  "pcap": "socks-https-example.pcap"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   50606,
+   "10.0.0.2",
+   9901
+  ],
+  "name": "ja4t",
+  "switch": "8192_2-1-3-1-1-4_1360_2",
+  "reference": "8192_2-1-3-1-1-4_1360_2",
+  "verdict": "EXACT",
+  "pcap": "socks4-https.pcap"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   50606,
+   "10.0.0.2",
+   9901
+  ],
+  "name": "ja4ts",
+  "switch": "5840_2-1-1-4-1-3_1460_7",
+  "reference": "5840_2-1-1-4-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "socks4-https.pcap"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   50606,
+   "10.0.0.2",
+   9901
+  ],
+  "name": "ja4s",
+  "switch": "t120200_c027_fee41c0d62a8",
+  "reference": null,
+  "verdict": "EXPLAINED",
+  "note": "the ClientHello is missing from the capture and TLS runs on port 9901, so FoxIO's tool decodes no TLS; the ServerHello bytes decoded by hand give version 0x0303, cipher c027, extensions 0005,ff01, no ALPN: t120200_c027_fee41c0d62a8, the switch's value",
+  "pcap": "socks4-https.pcap"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   50606,
+   "10.0.0.2",
+   9901
+  ],
+  "name": "ja4l_c",
+  "switch": "120920_126",
+  "reference": "120054_126",
+  "verdict": "EXACT",
+  "pcap": "socks4-https.pcap"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   50606,
+   "10.0.0.2",
+   9901
+  ],
+  "name": "ja4l_s",
+  "switch": "41573_52",
+  "reference": "42584_52",
+  "verdict": "EXACT",
+  "pcap": "socks4-https.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   64980,
+   "192.168.1.197",
+   22
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh-r.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   64980,
+   "192.168.1.197",
+   22
+  ],
+  "name": "ja4ts",
+  "switch": "29200_2-1-1-4-1-3_1460_7",
+  "reference": "29200_2-1-1-4-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "ssh-r.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   64980,
+   "192.168.1.197",
+   22
+  ],
+  "name": "ja4ssh",
+  "switch": [
+   "c64s64_c107s93_c74s10",
+   "c64s64_c33s48_c42s2"
+  ],
+  "reference": [
+   "c64s64_c107s93_c74s10",
+   "c64s64_c33s48_c42s2"
+  ],
+  "verdict": "EXACT",
+  "pcap": "ssh-r.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   64980,
+   "192.168.1.197",
+   22
+  ],
+  "name": "ja4l_c",
+  "switch": "1443_128",
+  "reference": "1211_128",
+  "verdict": "EXACT",
+  "pcap": "ssh-r.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   64980,
+   "192.168.1.197",
+   22
+  ],
+  "name": "ja4l_s",
+  "switch": "1993_64",
+  "reference": "1352_64",
+  "verdict": "EXACT",
+  "pcap": "ssh-r.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.197",
+   46394,
+   "44.212.59.210",
+   22
+  ],
+  "name": "ja4t",
+  "switch": "29200_2-4-8-1-3_1460_7",
+  "reference": "29200_2-4-8-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "ssh-r.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.197",
+   46394,
+   "44.212.59.210",
+   22
+  ],
+  "name": "ja4ts",
+  "switch": "62643_2-4-8-1-3_1460_7",
+  "reference": "62643_2-4-8-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "ssh-r.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.197",
+   46394,
+   "44.212.59.210",
+   22
+  ],
+  "name": "ja4ssh",
+  "switch": [
+   "c48s21_c7s5_c5s5"
+  ],
+  "reference": [
+   "c48s21_c7s5_c5s5"
+  ],
+  "verdict": "EXACT",
+  "pcap": "ssh-r.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.197",
+   46394,
+   "44.212.59.210",
+   22
+  ],
+  "name": "ja4l_c",
+  "switch": "2278_64",
+  "reference": "505_64",
+  "verdict": "EXACT",
+  "pcap": "ssh-r.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.197",
+   46394,
+   "44.212.59.210",
+   22
+  ],
+  "name": "ja4l_s",
+  "switch": "5450_116",
+  "reference": "6366_116",
+  "verdict": "EXACT",
+  "pcap": "ssh-r.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.197",
+   46396,
+   "44.212.59.210",
+   22
+  ],
+  "name": "ja4t",
+  "switch": "29200_2-4-8-1-3_1460_7",
+  "reference": "29200_2-4-8-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "ssh-r.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.197",
+   46396,
+   "44.212.59.210",
+   22
+  ],
+  "name": "ja4ts",
+  "switch": "62643_2-4-8-1-3_1460_7",
+  "reference": "62643_2-4-8-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "ssh-r.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.197",
+   46396,
+   "44.212.59.210",
+   22
+  ],
+  "name": "ja4ssh",
+  "switch": [
+   "c76s76_c104s96_c19s82",
+   "c76s76_c108s92_c0s105",
+   "c76s76_c106s94_c0s107",
+   "c76s76_c111s89_c0s102",
+   "c76s76_c67s65_c10s52"
+  ],
+  "reference": [
+   "c76s76_c104s96_c19s82",
+   "c76s76_c108s92_c0s105",
+   "c76s76_c106s94_c0s107",
+   "c76s76_c111s89_c0s102",
+   "c76s76_c67s65_c10s52"
+  ],
+  "verdict": "EXACT",
+  "pcap": "ssh-r.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.197",
+   46396,
+   "44.212.59.210",
+   22
+  ],
+  "name": "ja4l_c",
+  "switch": "976_64",
+  "reference": "1040_64",
+  "verdict": "EXACT",
+  "pcap": "ssh-r.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.197",
+   46396,
+   "44.212.59.210",
+   22
+  ],
+  "name": "ja4l_s",
+  "switch": "4067_116",
+  "reference": "3732_116",
+  "verdict": "EXACT",
+  "pcap": "ssh-r.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   49237,
+   "192.168.1.197",
+   22
+  ],
+  "name": "ja4t",
+  "switch": "65535_2-1-3-1-1-4_1460_7",
+  "reference": "65535_2-1-3-1-1-4_1460_7",
+  "verdict": "EXACT",
+  "pcap": "ssh-scp-1050.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   49237,
+   "192.168.1.197",
+   22
+  ],
+  "name": "ja4ts",
+  "switch": "29200_2-1-1-4-1-3_1460_7",
+  "reference": "29200_2-1-1-4-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "ssh-scp-1050.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   49237,
+   "192.168.1.197",
+   22
+  ],
+  "name": "ja4ssh",
+  "switch": [
+   "c112s1460_c52s148_c41s4",
+   "c112s1460_c13s187_c35s0",
+   "c0s1460_c0s200_c36s0",
+   "c0s1460_c0s200_c23s0",
+   "c0s1460_c0s53_c6s0"
+  ],
+  "reference": [
+   "c112s1460_c52s148_c41s4",
+   "c112s1460_c13s187_c35s0",
+   "c0s1460_c0s200_c36s0",
+   "c0s1460_c0s200_c23s0",
+   "c0s1460_c0s53_c6s0"
+  ],
+  "verdict": "EXACT",
+  "pcap": "ssh-scp-1050.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   49237,
+   "192.168.1.197",
+   22
+  ],
+  "name": "ja4l_c",
+  "switch": "1047_128",
+  "reference": "968_128",
+  "verdict": "EXACT",
+  "pcap": "ssh-scp-1050.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   49237,
+   "192.168.1.197",
+   22
+  ],
+  "name": "ja4l_s",
+  "switch": "2454_64",
+  "reference": "823_64",
+  "verdict": "EXACT",
+  "pcap": "ssh-scp-1050.pcap"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57377,
+   "54.160.114.75",
+   22
+  ],
+  "name": "ja4ssh",
+  "switch": [
+   "c36s36_c76s124_c0s0",
+   "c36s52_c42s76_c0s0"
+  ],
+  "reference": [
+   "c36s36_c76s124_c0s0",
+   "c36s52_c42s76_c0s0"
+  ],
+  "verdict": "EXACT",
+  "pcap": "ssh.pcapng"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   61672,
+   "10.0.0.2",
+   22
+  ],
+  "name": "ja4t",
+  "switch": "14600_2-1-1-4-1-3_1460_9",
+  "reference": "14600_2-1-1-4-1-3_1460_9",
+  "verdict": "EXACT",
+  "pcap": "ssh2-malformed.pcap"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   61672,
+   "10.0.0.2",
+   22
+  ],
+  "name": "ja4ts",
+  "switch": "5840_2-1-1-4-1-3_1460_2",
+  "reference": "5840_2-1-1-4-1-3_1460_2",
+  "verdict": "EXACT",
+  "pcap": "ssh2-malformed.pcap"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   61672,
+   "10.0.0.2",
+   22
+  ],
+  "name": "ja4ssh",
+  "switch": [
+   "c16s23_c7s6_c3s4"
+  ],
+  "reference": [
+   "c16s23_c7s5_c3s4"
+  ],
+  "verdict": "EXPLAINED",
+  "note": "the stream is deliberately malformed: tshark refuses frame 21 (an 80-byte server segment on port 22) as SSH, so FoxIO's tool does not count it; the switch counts every payload segment on port 22 as SSH, giving one more server SSH packet (s6 instead of s5); every other part equal",
+  "pcap": "ssh2-malformed.pcap"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   61672,
+   "10.0.0.2",
+   22
+  ],
+  "name": "ja4l_c",
+  "switch": "1299_64",
+  "reference": "1834_64",
+  "verdict": "EXACT",
+  "pcap": "ssh2-malformed.pcap"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   61672,
+   "10.0.0.2",
+   22
+  ],
+  "name": "ja4l_s",
+  "switch": "1721_60",
+  "reference": "1725_60",
+  "verdict": "EXACT",
+  "pcap": "ssh2-malformed.pcap"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   61672,
+   "10.0.0.2",
+   22
+  ],
+  "name": "ja4t",
+  "switch": "14600_2-1-1-4-1-3_1460_9",
+  "reference": "14600_2-1-1-4-1-3_1460_9",
+  "verdict": "EXACT",
+  "pcap": "ssh2-moloch-crash.pcap"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   61672,
+   "10.0.0.2",
+   22
+  ],
+  "name": "ja4ts",
+  "switch": "5840_2-1-1-4-1-3_1460_2",
+  "reference": "5840_2-1-1-4-1-3_1460_2",
+  "verdict": "EXACT",
+  "pcap": "ssh2-moloch-crash.pcap"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   61672,
+   "10.0.0.2",
+   22
+  ],
+  "name": "ja4ssh",
+  "switch": [
+   "c16s23_c7s6_c3s4"
+  ],
+  "reference": [
+   "c16s23_c7s5_c3s4"
+  ],
+  "verdict": "EXPLAINED",
+  "note": "the stream is deliberately malformed: tshark refuses frame 21 (an 80-byte server segment on port 22) as SSH, so FoxIO's tool does not count it; the switch counts every payload segment on port 22 as SSH, giving one more server SSH packet (s6 instead of s5); every other part equal",
+  "pcap": "ssh2-moloch-crash.pcap"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   61672,
+   "10.0.0.2",
+   22
+  ],
+  "name": "ja4l_c",
+  "switch": "2231_64",
+  "reference": "2901_64",
+  "verdict": "EXACT",
+  "pcap": "ssh2-moloch-crash.pcap"
+ },
+ {
+  "conn": [
+   "10.0.0.1",
+   61672,
+   "10.0.0.2",
+   22
+  ],
+  "name": "ja4l_s",
+  "switch": "2620_60",
+  "reference": "2623_60",
+  "verdict": "EXACT",
+  "pcap": "ssh2-moloch-crash.pcap"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57360,
+   "192.168.1.13",
+   80
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57361,
+   "10.244.39.47",
+   5000
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57362,
+   "10.244.39.47",
+   5000
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57363,
+   "10.244.39.47",
+   5000
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57368,
+   "146.112.255.155",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57368,
+   "146.112.255.155",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "42600_2-1-1-4-1-3_1300_9",
+  "reference": "42600_2-1-1-4-1-3_1300_9",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57368,
+   "146.112.255.155",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t12d190800_d83cc789557e_7af1ed941c26",
+  "reference": "t12d190800_d83cc789557e_7af1ed941c26",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57368,
+   "146.112.255.155",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t120400_c02f_4993ccf7354b",
+  "reference": "t120400_c02f_4993ccf7354b",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57368,
+   "146.112.255.155",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "a373a9f83c6b_2bab15409345_7bf9a7bf7029",
+   "7d5dbb3783b4_a373a9f83c6b_a83ffcd6e6c2"
+  ],
+  "reference": [
+   "a373a9f83c6b_2bab15409345_7bf9a7bf7029",
+   "7d5dbb3783b4_a373a9f83c6b_a83ffcd6e6c2"
+  ],
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57368,
+   "146.112.255.155",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "2019_128",
+  "reference": "1146_128",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57368,
+   "146.112.255.155",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "14180_53",
+  "reference": "13307_53",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57369,
+   "146.112.255.155",
+   1
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57371,
+   "34.248.242.11",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57371,
+   "34.248.242.11",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "26883_2-1-1-4-1-3_1460_8",
+  "reference": "26883_2-1-1-4-1-3_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57371,
+   "34.248.242.11",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t12d1909h2_d83cc789557e_7af1ed941c26",
+  "reference": "t12d1909h2_d83cc789557e_7af1ed941c26",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57371,
+   "34.248.242.11",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t120500_c02f_6471ab80eb72",
+  "reference": "t120500_c02f_6471ab80eb72",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57371,
+   "34.248.242.11",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "f7a0b866a27b_30b9c68c9fc8_8f2dd91f85ae",
+   "f7a0b866a27b_f7a0b866a27b_b189698ac141"
+  ],
+  "reference": [
+   "f7a0b866a27b_30b9c68c9fc8_8f2dd91f85ae",
+   "f7a0b866a27b_f7a0b866a27b_b189698ac141"
+  ],
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57371,
+   "34.248.242.11",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "1296_128",
+  "reference": "3182_128",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57371,
+   "34.248.242.11",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "112901_235",
+  "reference": "111631_235",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57374,
+   "52.178.17.3",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "65535_2-1-3-1-1-4_1460_8",
+  "reference": "65535_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57374,
+   "52.178.17.3",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "65535_2-1-3-1-1-4_1440_8",
+  "reference": "65535_2-1-3-1-1-4_1440_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57374,
+   "52.178.17.3",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t12d190800_d83cc789557e_7af1ed941c26",
+  "reference": "t12d190800_d83cc789557e_7af1ed941c26",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57374,
+   "52.178.17.3",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t120300_c030_09f674154ab3",
+  "reference": "t120300_c030_09f674154ab3",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57374,
+   "52.178.17.3",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "a373a9f83c6b_2bab15409345_0f2217ba412e",
+   "7d5dbb3783b4_a373a9f83c6b_c34b04c10969"
+  ],
+  "reference": [
+   "a373a9f83c6b_2bab15409345_0f2217ba412e",
+   "7d5dbb3783b4_a373a9f83c6b_c34b04c10969"
+  ],
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57374,
+   "52.178.17.3",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "2576_128",
+  "reference": "1539_128",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57374,
+   "52.178.17.3",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "50394_110",
+  "reference": "50349_110",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57375,
+   "204.79.197.220",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57375,
+   "204.79.197.220",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "65535_2-1-3-1-1-4_1440_8",
+  "reference": "65535_2-1-3-1-1-4_1440_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57375,
+   "204.79.197.220",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57375,
+   "204.79.197.220",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t1205h2_c030_015e35fdd027",
+  "reference": "t1205h2_c030_015e35fdd027",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57375,
+   "204.79.197.220",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "a373a9f83c6b_7022c563de38_0ce9ea683d50",
+   "7d5dbb3783b4_a373a9f83c6b_44440d41940c"
+  ],
+  "reference": [
+   "a373a9f83c6b_7022c563de38_0ce9ea683d50",
+   "7d5dbb3783b4_a373a9f83c6b_44440d41940c"
+  ],
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57375,
+   "204.79.197.220",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "2301_128",
+  "reference": "667_128",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57375,
+   "204.79.197.220",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "4875_119",
+  "reference": "4821_119",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57376,
+   "52.86.25.233",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57376,
+   "52.86.25.233",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "26883_2_1460_00",
+  "reference": "26883_2_1460_00",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57376,
+   "52.86.25.233",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t12d1909h2_d83cc789557e_7af1ed941c26",
+  "reference": "t12d1909h2_d83cc789557e_7af1ed941c26",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57376,
+   "52.86.25.233",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t120200_c02f_344b4dce5a52",
+  "reference": "t120200_c02f_344b4dce5a52",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57376,
+   "52.86.25.233",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "a373a9f83c6b_7022c563de38_7bf9a7bf7029",
+   "a373a9f83c6b_a373a9f83c6b_3684c5172069",
+   "2bab15409345_a373a9f83c6b_44ce05048d28",
+   "e7bc7ebc3d9e_2bab15409345_44ce05048d28"
+  ],
+  "reference": [
+   "a373a9f83c6b_7022c563de38_7bf9a7bf7029",
+   "a373a9f83c6b_a373a9f83c6b_3684c5172069",
+   "2bab15409345_a373a9f83c6b_44ce05048d28",
+   "e7bc7ebc3d9e_2bab15409345_44ce05048d28"
+  ],
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57376,
+   "52.86.25.233",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "961_128",
+  "reference": "1501_128",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57376,
+   "52.86.25.233",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "21739_241",
+  "reference": "20810_241",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57377,
+   "54.160.114.75",
+   22
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57377,
+   "54.160.114.75",
+   22
+  ],
+  "name": "ja4ts",
+  "switch": "62727_2-1-1-4-1-3_1460_7",
+  "reference": "62727_2-1-1-4-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57377,
+   "54.160.114.75",
+   22
+  ],
+  "name": "ja4ssh",
+  "switch": [
+   "c36s36_c76s124_c74s5",
+   "c36s52_c42s76_c51s2"
+  ],
+  "reference": [
+   "c36s36_c76s124_c74s5",
+   "c36s52_c42s76_c51s2"
+  ],
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57377,
+   "54.160.114.75",
+   22
+  ],
+  "name": "ja4l_c",
+  "switch": "7178_128",
+  "reference": "5644_128",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57377,
+   "54.160.114.75",
+   22
+  ],
+  "name": "ja4l_s",
+  "switch": "18937_50",
+  "reference": "19291_50",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57380,
+   "184.150.157.177",
+   80
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57380,
+   "184.150.157.177",
+   80
+  ],
+  "name": "ja4ts",
+  "switch": "64240_2-1-1-4-1-3_1460_7",
+  "reference": "64240_2-1-1-4-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57380,
+   "184.150.157.177",
+   80
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn030000_9ab90a797ba7_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn030000_9ab90a797ba7_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57380,
+   "184.150.157.177",
+   80
+  ],
+  "name": "ja4l_c",
+  "switch": "969_128",
+  "reference": "1865_128",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57380,
+   "184.150.157.177",
+   80
+  ],
+  "name": "ja4l_s",
+  "switch": "7145_58",
+  "reference": "7231_58",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57388,
+   "10.244.39.47",
+   5000
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57389,
+   "10.244.39.47",
+   5000
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57390,
+   "10.244.39.47",
+   5000
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57396,
+   "184.150.157.177",
+   80
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57396,
+   "184.150.157.177",
+   80
+  ],
+  "name": "ja4ts",
+  "switch": "64240_2-1-1-4-1-3_1460_7",
+  "reference": "64240_2-1-1-4-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57396,
+   "184.150.157.177",
+   80
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn030000_9ab90a797ba7_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn030000_9ab90a797ba7_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57396,
+   "184.150.157.177",
+   80
+  ],
+  "name": "ja4l_c",
+  "switch": "784_128",
+  "reference": "756_128",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57396,
+   "184.150.157.177",
+   80
+  ],
+  "name": "ja4l_s",
+  "switch": "5428_58",
+  "reference": "5418_58",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57402,
+   "10.244.39.47",
+   5000
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57403,
+   "10.244.39.47",
+   5000
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "172.16.225.48",
+   57404,
+   "10.244.39.47",
+   5000
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "ssh2.pcapng"
+ },
+ {
+  "conn": [
+   "3ffe:507:0:1:200:86ff:fe05:80da",
+   1022,
+   "3ffe:501:410:0:2c0:dfff:fe47:33e",
+   22
+  ],
+  "name": "ja4t",
+  "switch": "8192_2-1-3-1-1-8_1440_00",
+  "reference": "8192_2-1-3-1-1-8_1440_00",
+  "verdict": "EXACT",
+  "pcap": "sshv1.pcap"
+ },
+ {
+  "conn": [
+   "3ffe:507:0:1:200:86ff:fe05:80da",
+   1022,
+   "3ffe:501:410:0:2c0:dfff:fe47:33e",
+   22
+  ],
+  "name": "ja4ts",
+  "switch": "8540_2-1-3-1-1-8_1220_00",
+  "reference": "8540_2-1-3-1-1-8_1220_00",
+  "verdict": "EXACT",
+  "pcap": "sshv1.pcap"
+ },
+ {
+  "conn": [
+   "3ffe:507:0:1:200:86ff:fe05:80da",
+   1022,
+   "3ffe:501:410:0:2c0:dfff:fe47:33e",
+   22
+  ],
+  "name": "ja4ssh",
+  "switch": [
+   "c20s20_c18s25_c11s2"
+  ],
+  "reference": [
+   "c20s12_c18s23_c11s2"
+  ],
+  "verdict": "EXPLAINED",
+  "note": "SSH protocol version 1: tshark does not dissect frames 68 and 70 (server, 28 and 20 bytes) as SSH, so FoxIO's tool does not count them; the switch counts every payload segment on port 22, giving 25 server SSH packets instead of 23, and the extra 20-byte packet makes 20 the server's most frequent length (s20, not s12)",
+  "pcap": "sshv1.pcap"
+ },
+ {
+  "conn": [
+   "3ffe:507:0:1:200:86ff:fe05:80da",
+   1022,
+   "3ffe:501:410:0:2c0:dfff:fe47:33e",
+   22
+  ],
+  "name": "ja4l_c",
+  "switch": "992_64",
+  "reference": "825_64",
+  "verdict": "EXACT",
+  "pcap": "sshv1.pcap"
+ },
+ {
+  "conn": [
+   "3ffe:507:0:1:200:86ff:fe05:80da",
+   1022,
+   "3ffe:501:410:0:2c0:dfff:fe47:33e",
+   22
+  ],
+  "name": "ja4l_s",
+  "switch": "29868_61",
+  "reference": "29169_61",
+  "verdict": "EXACT",
+  "pcap": "sshv1.pcap"
+ },
+ {
+  "conn": [
+   "2001:4998:ef83:14:8000::100d",
+   64034,
+   "2606:4700::6811:d209",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "65535_2-1-3-1-1-8-4-0-0_1346_6",
+  "reference": "65535_2-1-3-1-1-8-4-0-0_1346_6",
+  "verdict": "EXACT",
+  "pcap": "tls-alpn-h2.pcap"
+ },
+ {
+  "conn": [
+   "2001:4998:ef83:14:8000::100d",
+   64034,
+   "2606:4700::6811:d209",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "65535_2-1-1-4-1-3_1346_10",
+  "reference": "65535_2-1-1-4-1-3_1346_10",
+  "verdict": "EXACT",
+  "pcap": "tls-alpn-h2.pcap"
+ },
+ {
+  "conn": [
+   "2001:4998:ef83:14:8000::100d",
+   64034,
+   "2606:4700::6811:d209",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t12d4605h2_85626a9a5f7f_aaf95bb78ec9",
+  "reference": "t12d4605h2_85626a9a5f7f_aaf95bb78ec9",
+  "verdict": "EXACT",
+  "pcap": "tls-alpn-h2.pcap"
+ },
+ {
+  "conn": [
+   "2001:4998:ef83:14:8000::100d",
+   64034,
+   "2606:4700::6811:d209",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t1204h2_cca9_1428ce7b4018",
+  "reference": "t1204h2_cca9_1428ce7b4018",
+  "verdict": "EXACT",
+  "pcap": "tls-alpn-h2.pcap"
+ },
+ {
+  "conn": [
+   "2001:4998:ef83:14:8000::100d",
+   64034,
+   "2606:4700::6811:d209",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "7d5dbb3783b4_ba7ce0880c07_7bf9a7bf7029",
+   "7d5dbb3783b4_7d5dbb3783b4_41a019652939"
+  ],
+  "reference": [
+   "7d5dbb3783b4_ba7ce0880c07_7bf9a7bf7029",
+   "7d5dbb3783b4_7d5dbb3783b4_41a019652939"
+  ],
+  "verdict": "EXACT",
+  "pcap": "tls-alpn-h2.pcap"
+ },
+ {
+  "conn": [
+   "2001:4998:ef83:14:8000::100d",
+   64034,
+   "2606:4700::6811:d209",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "2680_64",
+  "reference": "3584_64",
+  "verdict": "EXACT",
+  "pcap": "tls-alpn-h2.pcap"
+ },
+ {
+  "conn": [
+   "2001:4998:ef83:14:8000::100d",
+   64034,
+   "2606:4700::6811:d209",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "288975_59",
+  "reference": "288668_59",
+  "verdict": "EXACT",
+  "pcap": "tls-alpn-h2.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50112,
+   "142.251.16.94",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50112,
+   "142.251.16.94",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_234ea6891581",
+  "reference": "t130200_1301_234ea6891581",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50113,
+   "142.251.163.147",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50113,
+   "142.251.163.147",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_234ea6891581",
+  "reference": "t130200_1301_234ea6891581",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50114,
+   "172.253.122.84",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50114,
+   "172.253.122.84",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_234ea6891581",
+  "reference": "t130200_1301_234ea6891581",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50115,
+   "142.251.16.95",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50115,
+   "142.251.16.95",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_234ea6891581",
+  "reference": "t130200_1301_234ea6891581",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50116,
+   "104.112.30.74",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50116,
+   "104.112.30.74",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50122,
+   "192.241.241.147",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h1_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h1_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50122,
+   "192.241.241.147",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t120300_c030_bec8bdbaef8a",
+  "reference": "t120300_c030_bec8bdbaef8a",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50122,
+   "192.241.241.147",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "a373a9f83c6b_2bab15409345_5a6862e71bea",
+   "0b479b1b5763_a373a9f83c6b_2fbee3f04f3b"
+  ],
+  "reference": [
+   "a373a9f83c6b_2bab15409345_5a6862e71bea",
+   "0b479b1b5763_a373a9f83c6b_2fbee3f04f3b"
+  ],
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50123,
+   "142.251.163.188",
+   5228
+  ],
+  "name": "ja4",
+  "switch": "t13d151400_8daaf6152771_de4a06bb82e3",
+  "reference": "t13d151400_8daaf6152771_de4a06bb82e3",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50123,
+   "142.251.163.188",
+   5228
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_234ea6891581",
+  "reference": "t130200_1301_234ea6891581",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50126,
+   "172.253.122.94",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50126,
+   "172.253.122.94",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_234ea6891581",
+  "reference": "t130200_1301_234ea6891581",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50127,
+   "142.251.16.100",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50127,
+   "142.251.16.100",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_234ea6891581",
+  "reference": "t130200_1301_234ea6891581",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50128,
+   "142.251.111.101",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50128,
+   "142.251.111.101",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_234ea6891581",
+  "reference": "t130200_1301_234ea6891581",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50130,
+   "142.251.163.95",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50130,
+   "142.251.163.95",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_234ea6891581",
+  "reference": "t130200_1301_234ea6891581",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50131,
+   "31.13.66.35",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50131,
+   "31.13.66.35",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50132,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50132,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50133,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50133,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50134,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50134,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50135,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50135,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50136,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50136,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50137,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50137,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50139,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50139,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50140,
+   "31.13.66.2",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h1_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h1_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50140,
+   "31.13.66.2",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50141,
+   "157.240.14.19",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50141,
+   "157.240.14.19",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50142,
+   "157.240.241.1",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50142,
+   "157.240.241.1",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50143,
+   "208.255.115.145",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50143,
+   "208.255.115.145",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50144,
+   "157.240.229.2",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50144,
+   "157.240.229.2",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50145,
+   "157.240.229.2",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50145,
+   "157.240.229.2",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50146,
+   "157.240.229.2",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50146,
+   "157.240.229.2",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50147,
+   "157.240.229.2",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50147,
+   "157.240.229.2",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50148,
+   "157.240.229.2",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50148,
+   "157.240.229.2",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50149,
+   "157.240.229.2",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50149,
+   "157.240.229.2",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50151,
+   "142.251.163.95",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50151,
+   "142.251.163.95",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_234ea6891581",
+  "reference": "t130200_1301_234ea6891581",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50152,
+   "157.240.229.17",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h1_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h1_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50152,
+   "157.240.229.17",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50153,
+   "157.240.229.17",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1517h1_8daaf6152771_6cdcb247c39b",
+  "reference": "t13d1517h1_8daaf6152771_6cdcb247c39b",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50153,
+   "157.240.229.17",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130300_1301_0ee26285a86f",
+  "reference": "t130300_1301_0ee26285a86f",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50155,
+   "23.50.125.163",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50155,
+   "23.50.125.163",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50157,
+   "23.218.218.147",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50157,
+   "23.218.218.147",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t1206h1_c02b_9bd66850b8f2",
+  "reference": "t1206h1_c02b_9bd66850b8f2",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50157,
+   "23.218.218.147",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "a373a9f83c6b_2bab15409345_7bf9a7bf7029",
+   "7d5dbb3783b4_a373a9f83c6b_a83ffcd6e6c2"
+  ],
+  "reference": [
+   "a373a9f83c6b_2bab15409345_7bf9a7bf7029",
+   "7d5dbb3783b4_a373a9f83c6b_a83ffcd6e6c2"
+  ],
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50158,
+   "23.218.218.171",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50158,
+   "23.218.218.171",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t1206h2_c02b_9bd66850b8f2",
+  "reference": "t1206h2_c02b_9bd66850b8f2",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50158,
+   "23.218.218.171",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "a373a9f83c6b_2bab15409345_7bf9a7bf7029",
+   "7d5dbb3783b4_a373a9f83c6b_a83ffcd6e6c2"
+  ],
+  "reference": [
+   "a373a9f83c6b_2bab15409345_7bf9a7bf7029",
+   "7d5dbb3783b4_a373a9f83c6b_a83ffcd6e6c2"
+  ],
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50159,
+   "13.107.237.40",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50159,
+   "13.107.237.40",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50160,
+   "23.212.251.12",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50160,
+   "23.212.251.12",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50161,
+   "23.212.251.12",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50161,
+   "23.212.251.12",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50162,
+   "23.212.251.12",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50162,
+   "23.212.251.12",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50163,
+   "18.67.65.105",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50163,
+   "18.67.65.105",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50164,
+   "13.107.237.40",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50164,
+   "13.107.237.40",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t1206h2_c02f_46cf7c3c6b8f",
+  "reference": "t1206h2_c02f_46cf7c3c6b8f",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50164,
+   "13.107.237.40",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "a373a9f83c6b_2bab15409345_7bf9a7bf7029",
+   "7d5dbb3783b4_a373a9f83c6b_a83ffcd6e6c2",
+   "7d5dbb3783b4_7d5dbb3783b4_f269f029c206"
+  ],
+  "reference": [
+   "a373a9f83c6b_2bab15409345_7bf9a7bf7029",
+   "7d5dbb3783b4_a373a9f83c6b_a83ffcd6e6c2",
+   "7d5dbb3783b4_7d5dbb3783b4_f269f029c206"
+  ],
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50165,
+   "13.107.238.40",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50165,
+   "13.107.238.40",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50166,
+   "13.107.237.40",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50166,
+   "13.107.237.40",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50167,
+   "40.126.24.84",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50167,
+   "40.126.24.84",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t120400_c030_4e8089b08790",
+  "reference": "t120400_c030_4e8089b08790",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50167,
+   "40.126.24.84",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "a373a9f83c6b_2bab15409345_7bf9a7bf7029",
+   "7d5dbb3783b4_a373a9f83c6b_44440d41940c"
+  ],
+  "reference": [
+   "a373a9f83c6b_2bab15409345_7bf9a7bf7029",
+   "7d5dbb3783b4_a373a9f83c6b_44440d41940c"
+  ],
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50168,
+   "13.107.238.40",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50168,
+   "13.107.238.40",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50169,
+   "13.107.237.40",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50169,
+   "13.107.237.40",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50170,
+   "3.223.179.120",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50170,
+   "3.223.179.120",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t1204h2_c02f_1428ce7b4018",
+  "reference": "t1204h2_c02f_1428ce7b4018",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50170,
+   "3.223.179.120",
+   443
+  ],
+  "name": "ja4x",
+  "switch": [
+   "a373a9f83c6b_2bab15409345_7bf9a7bf7029",
+   "7d5dbb3783b4_a373a9f83c6b_a83ffcd6e6c2",
+   "7d5dbb3783b4_7d5dbb3783b4_f269f029c206"
+  ],
+  "reference": [
+   "a373a9f83c6b_2bab15409345_7bf9a7bf7029",
+   "7d5dbb3783b4_a373a9f83c6b_a83ffcd6e6c2",
+   "7d5dbb3783b4_7d5dbb3783b4_f269f029c206"
+  ],
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50172,
+   "23.55.200.211",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50172,
+   "23.55.200.211",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50174,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50174,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50175,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50175,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50176,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50176,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50177,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50177,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50178,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50178,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50179,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50179,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50180,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50180,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50181,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50181,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50182,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50182,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50183,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50183,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1302_a56c5b993250",
+  "reference": "t130200_1302_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50184,
+   "172.253.63.95",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50184,
+   "172.253.63.95",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_234ea6891581",
+  "reference": "t130200_1301_234ea6891581",
+  "verdict": "EXACT",
+  "pcap": "tls-handshake.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50112,
+   "142.251.16.94",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d151699_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d151699_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-non-ascii-alpn.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50112,
+   "142.251.16.94",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_234ea6891581",
+  "reference": "t130200_1301_234ea6891581",
+  "verdict": "EXACT",
+  "pcap": "tls-non-ascii-alpn.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50112,
+   "142.251.16.94",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50113,
+   "142.251.163.147",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50114,
+   "172.253.122.84",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50115,
+   "142.251.16.95",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50116,
+   "104.112.30.74",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50122,
+   "192.241.241.147",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h1_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h1_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50123,
+   "142.251.163.188",
+   5228
+  ],
+  "name": "ja4",
+  "switch": "t13d151400_8daaf6152771_de4a06bb82e3",
+  "reference": "t13d151400_8daaf6152771_de4a06bb82e3",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50126,
+   "172.253.122.94",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50127,
+   "142.251.16.100",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50128,
+   "142.251.111.101",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50130,
+   "142.251.163.95",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50131,
+   "31.13.66.35",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50132,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50133,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50134,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50135,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50136,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50137,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50139,
+   "157.240.229.1",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50140,
+   "31.13.66.2",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h1_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h1_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50141,
+   "157.240.14.19",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50142,
+   "157.240.241.1",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50143,
+   "208.255.115.145",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50144,
+   "157.240.229.2",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50145,
+   "157.240.229.2",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50146,
+   "157.240.229.2",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50147,
+   "157.240.229.2",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50148,
+   "157.240.229.2",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50149,
+   "157.240.229.2",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50151,
+   "142.251.163.95",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50152,
+   "157.240.229.17",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h1_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h1_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50153,
+   "157.240.229.17",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1517h1_8daaf6152771_6cdcb247c39b",
+  "reference": "t13d1517h1_8daaf6152771_6cdcb247c39b",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50155,
+   "23.50.125.163",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50157,
+   "23.218.218.147",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50158,
+   "23.218.218.171",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50159,
+   "13.107.237.40",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50160,
+   "23.212.251.12",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50161,
+   "23.212.251.12",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50162,
+   "23.212.251.12",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50163,
+   "18.67.65.105",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50164,
+   "13.107.237.40",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50165,
+   "13.107.238.40",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50166,
+   "13.107.237.40",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50167,
+   "40.126.24.84",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50168,
+   "13.107.238.40",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50169,
+   "13.107.237.40",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50170,
+   "3.223.179.120",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50172,
+   "23.55.200.211",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50174,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50175,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50176,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50177,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50178,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50179,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50180,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50181,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50182,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50183,
+   "23.62.168.26",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.168",
+   50184,
+   "172.253.63.95",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls-sni.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.133.129",
+   36372,
+   "34.117.237.239",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1715h2_5b57614c22b0_3d5424432f57",
+  "reference": "t13d1715h2_5b57614c22b0_3d5424432f57",
+  "verdict": "EXACT",
+  "pcap": "tls12.pcap"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63248,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63248,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "64240_2-1-1-4-1-3_1460_7",
+  "reference": "64240_2-1-1-4-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63248,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63248,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63248,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "976_128",
+  "reference": "758_128",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63248,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "35494_35",
+  "reference": "35531_35",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63249,
+   "23.222.12.9",
+   80
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63249,
+   "23.222.12.9",
+   80
+  ],
+  "name": "ja4ts",
+  "switch": "64240_2-1-1-4-1-3_1460_7",
+  "reference": "64240_2-1-1-4-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63249,
+   "23.222.12.9",
+   80
+  ],
+  "name": "ja4h",
+  "switch": [
+   "ge11nn07enus_3e3b55d61660_000000000000_000000000000"
+  ],
+  "reference": [
+   "ge11nn07enus_3e3b55d61660_000000000000_000000000000"
+  ],
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63249,
+   "23.222.12.9",
+   80
+  ],
+  "name": "ja4l_c",
+  "switch": "924_128",
+  "reference": "777_128",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63249,
+   "23.222.12.9",
+   80
+  ],
+  "name": "ja4l_s",
+  "switch": "3878_57",
+  "reference": "3806_57",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63250,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63250,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "64240_2-1-1-4-1-3_1460_7",
+  "reference": "64240_2-1-1-4-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63250,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_9b887d9acb53",
+  "reference": "t13d1516h2_8daaf6152771_9b887d9acb53",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63250,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130300_1301_0ee26285a86f",
+  "reference": "t130300_1301_0ee26285a86f",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63250,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "473_128",
+  "reference": "1128_128",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63250,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "232236_35",
+  "reference": "230988_35",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63251,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63251,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "64240_2-1-1-4-1-3_1460_7",
+  "reference": "64240_2-1-1-4-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63251,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_9b887d9acb53",
+  "reference": "t13d1516h2_8daaf6152771_9b887d9acb53",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63251,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130300_1301_0ee26285a86f",
+  "reference": "t130300_1301_0ee26285a86f",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63251,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "514_128",
+  "reference": "889_128",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63251,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "225255_38",
+  "reference": "224886_38",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63252,
+   "104.21.234.234",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63252,
+   "104.21.234.234",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "64240_2-1-1-4-1-3_1400_13",
+  "reference": "64240_2-1-1-4-1-3_1400_13",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63252,
+   "104.21.234.234",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_9b887d9acb53",
+  "reference": "t13d1516h2_8daaf6152771_9b887d9acb53",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63252,
+   "104.21.234.234",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130300_1301_6bbbaf601ed8",
+  "reference": "t130300_1301_6bbbaf601ed8",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63252,
+   "104.21.234.234",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "981_128",
+  "reference": "2982_128",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63252,
+   "104.21.234.234",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "27450_57",
+  "reference": "26906_57",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63253,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63253,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "64240_2-1-1-4-1-3_1460_7",
+  "reference": "64240_2-1-1-4-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63253,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63253,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63253,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "108_128",
+  "reference": "486_128",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63253,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "560340_35",
+  "reference": "559752_35",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63254,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63254,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "64240_2-1-1-4-1-3_1460_7",
+  "reference": "64240_2-1-1-4-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63254,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63254,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63254,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "85_128",
+  "reference": "416_128",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63254,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "380082_32",
+  "reference": "379385_32",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63255,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4t",
+  "switch": "64240_2-1-3-1-1-4_1460_8",
+  "reference": "64240_2-1-3-1-1-4_1460_8",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63255,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4ts",
+  "switch": "64240_2-1-1-4-1-3_1460_7",
+  "reference": "64240_2-1-1-4-1-3_1460_7",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63255,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4",
+  "switch": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "reference": "t13d1516h2_8daaf6152771_e5627efa2ab1",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63255,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4s",
+  "switch": "t130200_1301_a56c5b993250",
+  "reference": "t130200_1301_a56c5b993250",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63255,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4l_c",
+  "switch": "1068_128",
+  "reference": "664_128",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "192.168.1.169",
+   63255,
+   "54.190.49.36",
+   443
+  ],
+  "name": "ja4l_s",
+  "switch": "381484_33",
+  "reference": "381305_33",
+  "verdict": "EXACT",
+  "pcap": "tls3.pcapng"
+ },
+ {
+  "conn": [
+   "3ffe:507:0:1:200:86ff:fe05:80da",
+   1022,
+   "3ffe:501:410:0:2c0:dfff:fe47:33e",
+   22
+  ],
+  "name": "ja4t",
+  "switch": "8192_2-1-3-1-1-8_1440_00",
+  "reference": "8192_2-1-3-1-1-8_1440_00",
+  "verdict": "EXACT",
+  "pcap": "v6.pcap"
+ },
+ {
+  "conn": [
+   "3ffe:507:0:1:200:86ff:fe05:80da",
+   1022,
+   "3ffe:501:410:0:2c0:dfff:fe47:33e",
+   22
+  ],
+  "name": "ja4ts",
+  "switch": "8540_2-1-3-1-1-8_1220_00",
+  "reference": "8540_2-1-3-1-1-8_1220_00",
+  "verdict": "EXACT",
+  "pcap": "v6.pcap"
+ },
+ {
+  "conn": [
+   "3ffe:507:0:1:200:86ff:fe05:80da",
+   1022,
+   "3ffe:501:410:0:2c0:dfff:fe47:33e",
+   22
+  ],
+  "name": "ja4ssh",
+  "switch": [
+   "c20s20_c18s25_c11s2"
+  ],
+  "reference": [
+   "c20s12_c18s23_c11s2"
+  ],
+  "verdict": "EXPLAINED",
+  "note": "the same SSH version 1 connection as in sshv1.pcap (same addresses and ports), with the same difference: tshark does not dissect frames 68 and 70 as SSH",
+  "pcap": "v6.pcap"
+ },
+ {
+  "conn": [
+   "3ffe:507:0:1:200:86ff:fe05:80da",
+   1022,
+   "3ffe:501:410:0:2c0:dfff:fe47:33e",
+   22
+  ],
+  "name": "ja4l_c",
+  "switch": "2063_64",
+  "reference": "1506_64",
+  "verdict": "EXACT",
+  "pcap": "v6.pcap"
+ },
+ {
+  "conn": [
+   "3ffe:507:0:1:200:86ff:fe05:80da",
+   1022,
+   "3ffe:501:410:0:2c0:dfff:fe47:33e",
+   22
+  ],
+  "name": "ja4l_s",
+  "switch": "31958_61",
+  "reference": "30917_61",
+  "verdict": "EXACT",
+  "pcap": "v6.pcap"
+ }
+]
