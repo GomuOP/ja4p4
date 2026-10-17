@@ -5,7 +5,7 @@ P4 switch, and gets the same values as FoxIO's reference `ja4` tool on the same 
 (`simple_switch_grpc`, P4-16, v1model). A small Python controller talks to it over P4Runtime. Every packet is
 forwarded byte for byte unchanged.
 
-![Architecture](architecture.jpg)
+![Architecture](architecture.png)
 
 The work is split between the switch and the controller:
 
